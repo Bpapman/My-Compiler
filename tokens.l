@@ -16,6 +16,9 @@
             {
                 case NUMBER:
                     yyval.tokenData->numvalue = atof(svalue);
+                case ID:
+                    yyval.tokenData->idvalue = svalue[0] - 'a';
+                case
 
 
 
@@ -31,10 +34,10 @@
 %%
 
 
-[ \t\n]					;
-[a-zA-Z_][a-zA-Z0-9_]*                  SAVE_TOKEN; return TIDENTIFIER;
-[0-9]+\.[0-9]*                          SAVE_TOKEN; return TDOUBLE;
-[0-9]+					SAVE_TOKEN; return TINTEGER;
+[ \t]					; //whitespace
+[a-zA-Z_][a-zA-Z0-9_]*                  return TIDENTIFIER;
+[0-9]+\.[0-9]*                          return TDOUBLE;
+[0-9]+					return TINTEGER;
 "="					return TOKEN(TEQUAL);
 "=="					return TOKEN(TCEQ);
 "!="					return TOKEN(TCNE);
@@ -52,6 +55,8 @@
 "-"					return TOKEN(TMINUS);
 "*"					return TOKEN(TMUL);
 "/"					return TOKEN(TDIV);
+"\n"                                    {line++;}
 .					printf("Unknown token!\n"); yyterminate();
+
 
 %%

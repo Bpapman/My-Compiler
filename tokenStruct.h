@@ -13,8 +13,9 @@ struct TokenData
 	int tokenclass;
 	int linenum;
 	char *tokenstr;
-	int idvalue;				// depend on tokenclass
-	double numvalue;			//
+	int idvalue;
+        int numvalue;
+        char* keyvalue;
 };
 
 

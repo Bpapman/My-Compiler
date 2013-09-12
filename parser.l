@@ -1,11 +1,11 @@
 %{
     #include <string>
     #include <stdio.h>
-    #include <cstdlib>
+    #include <stdlib.h>
     #include "tokenStruct.h"
-    #include "parser.tab.h"
+    #include "parser.tab.c"
 
-    extern int line;
+    int line = 1;
     
     int setValue(int linenum, int tokenClass, char* svalue)
     {
@@ -13,22 +13,22 @@
             yylval.tokenData->tokenClass = tokenClass;
             yylval.tokenData->linenum = linenum;
             
-            Switch(tokenClass)
+            switch(tokenClass)
             {
-                case NUMCONSTANT:
-                    yyval.tokenData->numvalue = atoi(svalue);
+                case NUMCONST:
+                    yylval.tokenData->numvalue = atoi(svalue);
                 case ID:
-                    yyval.tokenData->idvalue = svalue;
-                case CHARCONSTANT:
-                    yyval.tokenData->tokenStr = svalue;
-                case STRINGCONSTANT:
-                    yyval.tokenData->tokenStr = svalue;
+                    yylval.tokenData->idvalue = atoi(svalue);
+                case CHARCONST:
+                    yylval.tokenData->tokenstr = svalue;
+                case STRINGCONST:
+                    yylval.tokenData->tokenstr = svalue;
                 default:
-                    yyval.tokenData->keyvalue = svalue;
+                    yylval.tokenData->keyvalue = svalue;
             }
 
 
-            return tokenclass;
+            return tokenClass;
 
     }
 %}
@@ -39,30 +39,30 @@
 [ \t]					; //whitespace
 \n                                      line++;
 
-\/\/.*\n                                line++;
+\/\/.*\n                                line++; //comments
 
 
 
+\'.\' | \'\\.\'                         {return setValue(line, CHARCONST, yytext);}
+[a-zA-z][^\t ]                          {return setValue(line, ID, yytext);}
+[0-9]+                                  {return setValue(line, NUMCONST, yytext);}
+\'.*\'                                  {return setValue(line, STRINGCONST, yytext);}
 
 
 "and"                                   {return setValue(line, AND, yytext);}
 "break"                                 {return setValue(line, BREAK, yytext);}
 "bool"                                  {return setValue(line, BOOL, yytext);}
 "char"                                  {return setValue(line, CHAR, yytext);}
-\'.\' | \'\\.\'                         {return setValue(line, CHARCONST, yytext);}
 "else"                                  {return setValue(line, ELSE, yytext);}
 "false"                                 {return setValue(line, FALSE, yytext);}
 "foreach"                               {return setValue(line, FOREACH, yytext);}
-[a-zA-z][^\t ]                          {return setValue(line, ID, yytext);}
 "if"                                    {return setValue(line, IF, yytext);}
 "in"                                    {return setValue(line, IN, yytext);}
-"int"                                   {return setValue(line, AND, yytext);}
+"int"                                   {return setValue(line, INT, yytext);}
 "or"                                    {return setValue(line, OR, yytext);}
 "not"                                   {return setValue(line, NOT, yytext);}
-[0-9]+                                  {return setValue(line, NUMCONST, yytext);}
 "true"                                  {return setValue(line, TRUE, yytext);}
 "static"                                {return setValue(line, STATIC, yytext);}
-\'.*\'                                  {return setValue(line, STRINGCONST, yytext);}
 "while"                                 {return setValue(line, WHILE, yytext);}
 
 
@@ -91,10 +91,9 @@
 "-"                                     {return setValue(line, MINUS, yytext);}
 "/"                                     {return setValue(line, DIVIDE, yytext);}
 "%"                                     {return setValue(line, MOD, yytext);}
-"*"                                     {return setValue(line, MULT, yytext);}
+"*"                                     {return setValue(line, MULTI, yytext);}
 
-
-.					{return yytext;}
+.					{return setValue(line, yytext[0], yytext);}
 
 
 %%

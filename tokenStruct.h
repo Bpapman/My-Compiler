@@ -10,9 +10,9 @@
 
 struct TokenData
 {
-	int tokenclass;
+	int tokenClass;
 	int linenum;
-	char *tokenstr;
+	char* tokenstr;
 	int idvalue;
         int numvalue;
         char* keyvalue;

@@ -1,0 +1,2345 @@
+State 156 conflicts: 1 shift/reduce
+
+
+Grammar
+
+    0 $accept: program $end
+
+    1 program: declaration-list
+
+    2 declaration-list: declaration-list declaration
+    3                 | declaration
+
+    4 declaration: var-declaration
+    5            | fun-declaration
+
+    6 var-declaration: type-specifier var-decl-list SEMI
+
+    7 scoped-var-declaration: scoped-type-specifier var-decl-list SEMI
+
+    8 var-decl-list: var-decl-list COMMA var-decl-initialize
+    9              | var-decl-initialize
+
+   10 var-decl-initialize: var-decl-id
+   11                    | var-decl-id COLON simple-expression
+
+   12 var-decl-id: ID
+   13            | ID LBRACKET NUMCONST RBRACKET
+
+   14 scoped-type-specifier: STATIC type-specifier
+   15                      | type-specifier
+
+   16 type-specifier: INT
+   17               | BOOL
+   18               | CHAR
+
+   19 fun-declaration: type-specifier ID LPAREN params RPAREN statement
+   20                | ID LPAREN params RPAREN statement
+
+   21 params: param-list
+   22       | /* empty */
+
+   23 param-list: param-list SEMI param-type-list
+   24           | param-type-list
+
+   25 param-type-list: type-specifier param-id-list
+
+   26 param-id-list: param-id-list COMMA param-id
+   27              | param-id
+
+   28 param-id: ID
+   29         | ID LBRACKET RBRACKET
+
+   30 statement: matched
+   31          | unmatched-selection-stmt
+
+   32 matched: expression-stmt
+   33        | compound-stmt
+   34        | matched-selection-stmt
+   35        | iteration-stmt
+   36        | return-stmt
+   37        | break-stmt
+
+   38 compound-stmt: LBRACE local-declarations statement-list RBRACE
+
+   39 local-declarations: local-declarations scoped-var-declaration
+   40                   | /* empty */
+
+   41 statement-list: statement-list statement
+   42               | /* empty */
+
+   43 expression-stmt: expression SEMI
+   44                | SEMI
+
+   45 unmatched-selection-stmt: IF LPAREN simple-expression RPAREN statement
+   46                         | IF LPAREN simple-expression RPAREN matched ELSE unmatched-selection-stmt
+
+   47 matched-selection-stmt: IF LPAREN simple-expression RPAREN matched ELSE matched
+
+   48 iteration-stmt: WHILE LPAREN simple-expression RPAREN statement
+   49               | FOREACH LPAREN mutable IN simple-expression RPAREN statement
+
+   50 return-stmt: RETURN SEMI
+   51            | RETURN expression SEMI
+
+   52 break-stmt: BREAK SEMI
+
+   53 expression: mutable ASSIGN expression
+   54           | mutable PASSIGN expression
+   55           | mutable MASSIGN expression
+   56           | mutable INC
+   57           | mutable DEC
+   58           | simple-expression
+
+   59 simple-expression: simple-expression OR and-expression
+   60                  | and-expression
+
+   61 and-expression: and-expression AND unary-rel-expression
+   62               | unary-rel-expression
+
+   63 unary-rel-expression: NOT unary-rel-expression
+   64                     | rel-expression
+
+   65 rel-expression: sum-expression relop sum-expression
+   66               | sum-expression
+
+   67 relop: LEQ
+   68      | LESSER
+   69      | GREATER
+   70      | GEQ
+   71      | EQUIV
+   72      | NEQ
+
+   73 sum-expression: sum-expression sumop term
+   74               | term
+
+   75 sumop: PLUS
+   76      | MINUS
+
+   77 term: term mulop unary-expression
+   78     | unary-expression
+
+   79 mulop: MULTI
+   80      | DIVIDE
+   81      | MOD
+
+   82 unary-expression: unaryop unary-expression
+   83                 | factor
+
+   84 unaryop: MINUS
+   85        | MULTI
+
+   86 factor: immutable
+   87       | mutable
+
+   88 mutable: ID
+   89        | ID LBRACKET expression RBRACKET
+
+   90 immutable: LPAREN expression RPAREN
+   91          | call
+   92          | constant
+
+   93 call: ID LPAREN args RPAREN
+
+   94 args: arg-list
+   95     | /* empty */
+
+   96 arg-list: arg-list COMMA expression
+   97         | expression
+
+   98 constant: NUMCONST
+   99         | CHARCONST
+  100         | STRINGCONST
+  101         | TRUE
+  102         | FALSE
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+ID (258) 12 13 19 20 28 29 88 89 93
+NUMCONST (259) 13 98
+CHARCONST (260) 99
+STRINGCONST (261) 100
+AND (262) 61
+BREAK (263) 52
+BOOL (264) 17
+CHAR (265) 18
+ELSE (266) 46 47
+FALSE (267) 102
+FOREACH (268) 49
+IF (269) 45 46 47
+IN (270) 49
+INT (271) 16
+OR (272) 59
+NOT (273) 63
+RETURN (274) 50 51
+TRUE (275) 101
+STATIC (276) 14
+WHILE (277) 48
+COMMA (278) 8 26 96
+LBRACKET (279) 13 29 89
+RBRACKET (280) 13 29 89
+LPAREN (281) 19 20 45 46 47 48 49 90 93
+RPAREN (282) 19 20 45 46 47 48 49 90 93
+LBRACE (283) 38
+RBRACE (284) 38
+SEMI (285) 6 7 23 43 44 50 51 52
+EQUIV (286) 71
+NEQ (287) 72
+LEQ (288) 67
+LESSER (289) 68
+GEQ (290) 70
+GREATER (291) 69
+ASSIGN (292) 53
+PASSIGN (293) 54
+MASSIGN (294) 55
+DEC (295) 57
+INC (296) 56
+COLON (297) 11
+PLUS (298) 75
+MINUS (299) 76 84
+DIVIDE (300) 80
+MOD (301) 81
+MULTI (302) 79 85
+
+
+Nonterminals, with rules where they appear
+
+$accept (48)
+    on left: 0
+program (49)
+    on left: 1, on right: 0
+declaration-list (50)
+    on left: 2 3, on right: 1 2
+declaration (51)
+    on left: 4 5, on right: 2 3
+var-declaration (52)
+    on left: 6, on right: 4
+scoped-var-declaration (53)
+    on left: 7, on right: 39
+var-decl-list (54)
+    on left: 8 9, on right: 6 7 8
+var-decl-initialize (55)
+    on left: 10 11, on right: 8 9
+var-decl-id (56)
+    on left: 12 13, on right: 10 11
+scoped-type-specifier (57)
+    on left: 14 15, on right: 7
+type-specifier (58)
+    on left: 16 17 18, on right: 6 14 15 19 25
+fun-declaration (59)
+    on left: 19 20, on right: 5
+params (60)
+    on left: 21 22, on right: 19 20
+param-list (61)
+    on left: 23 24, on right: 21 23
+param-type-list (62)
+    on left: 25, on right: 23 24
+param-id-list (63)
+    on left: 26 27, on right: 25 26
+param-id (64)
+    on left: 28 29, on right: 26 27
+statement (65)
+    on left: 30 31, on right: 19 20 41 45 48 49
+matched (66)
+    on left: 32 33 34 35 36 37, on right: 30 46 47
+compound-stmt (67)
+    on left: 38, on right: 33
+local-declarations (68)
+    on left: 39 40, on right: 38 39
+statement-list (69)
+    on left: 41 42, on right: 38 41
+expression-stmt (70)
+    on left: 43 44, on right: 32
+unmatched-selection-stmt (71)
+    on left: 45 46, on right: 31 46
+matched-selection-stmt (72)
+    on left: 47, on right: 34
+iteration-stmt (73)
+    on left: 48 49, on right: 35
+return-stmt (74)
+    on left: 50 51, on right: 36
+break-stmt (75)
+    on left: 52, on right: 37
+expression (76)
+    on left: 53 54 55 56 57 58, on right: 43 51 53 54 55 89 90 96 97
+simple-expression (77)
+    on left: 59 60, on right: 11 45 46 47 48 49 58 59
+and-expression (78)
+    on left: 61 62, on right: 59 60 61
+unary-rel-expression (79)
+    on left: 63 64, on right: 61 62 63
+rel-expression (80)
+    on left: 65 66, on right: 64
+relop (81)
+    on left: 67 68 69 70 71 72, on right: 65
+sum-expression (82)
+    on left: 73 74, on right: 65 66 73
+sumop (83)
+    on left: 75 76, on right: 73
+term (84)
+    on left: 77 78, on right: 73 74 77
+mulop (85)
+    on left: 79 80 81, on right: 77
+unary-expression (86)
+    on left: 82 83, on right: 77 78 82
+unaryop (87)
+    on left: 84 85, on right: 82
+factor (88)
+    on left: 86 87, on right: 83
+mutable (89)
+    on left: 88 89, on right: 49 53 54 55 56 57 87
+immutable (90)
+    on left: 90 91 92, on right: 86
+call (91)
+    on left: 93, on right: 91
+args (92)
+    on left: 94 95, on right: 93
+arg-list (93)
+    on left: 96 97, on right: 94 96
+constant (94)
+    on left: 98 99 100 101 102, on right: 92
+
+
+state 0
+
+    0 $accept: . program $end
+
+    ID    shift, and go to state 1
+    BOOL  shift, and go to state 2
+    CHAR  shift, and go to state 3
+    INT   shift, and go to state 4
+
+    program           go to state 5
+    declaration-list  go to state 6
+    declaration       go to state 7
+    var-declaration   go to state 8
+    type-specifier    go to state 9
+    fun-declaration   go to state 10
+
+
+state 1
+
+   20 fun-declaration: ID . LPAREN params RPAREN statement
+
+    LPAREN  shift, and go to state 11
+
+
+state 2
+
+   17 type-specifier: BOOL .
+
+    $default  reduce using rule 17 (type-specifier)
+
+
+state 3
+
+   18 type-specifier: CHAR .
+
+    $default  reduce using rule 18 (type-specifier)
+
+
+state 4
+
+   16 type-specifier: INT .
+
+    $default  reduce using rule 16 (type-specifier)
+
+
+state 5
+
+    0 $accept: program . $end
+
+    $end  shift, and go to state 12
+
+
+state 6
+
+    1 program: declaration-list .
+    2 declaration-list: declaration-list . declaration
+
+    ID    shift, and go to state 1
+    BOOL  shift, and go to state 2
+    CHAR  shift, and go to state 3
+    INT   shift, and go to state 4
+
+    $default  reduce using rule 1 (program)
+
+    declaration      go to state 13
+    var-declaration  go to state 8
+    type-specifier   go to state 9
+    fun-declaration  go to state 10
+
+
+state 7
+
+    3 declaration-list: declaration .
+
+    $default  reduce using rule 3 (declaration-list)
+
+
+state 8
+
+    4 declaration: var-declaration .
+
+    $default  reduce using rule 4 (declaration)
+
+
+state 9
+
+    6 var-declaration: type-specifier . var-decl-list SEMI
+   19 fun-declaration: type-specifier . ID LPAREN params RPAREN statement
+
+    ID  shift, and go to state 14
+
+    var-decl-list        go to state 15
+    var-decl-initialize  go to state 16
+    var-decl-id          go to state 17
+
+
+state 10
+
+    5 declaration: fun-declaration .
+
+    $default  reduce using rule 5 (declaration)
+
+
+state 11
+
+   20 fun-declaration: ID LPAREN . params RPAREN statement
+
+    BOOL  shift, and go to state 2
+    CHAR  shift, and go to state 3
+    INT   shift, and go to state 4
+
+    $default  reduce using rule 22 (params)
+
+    type-specifier   go to state 18
+    params           go to state 19
+    param-list       go to state 20
+    param-type-list  go to state 21
+
+
+state 12
+
+    0 $accept: program $end .
+
+    $default  accept
+
+
+state 13
+
+    2 declaration-list: declaration-list declaration .
+
+    $default  reduce using rule 2 (declaration-list)
+
+
+state 14
+
+   12 var-decl-id: ID .
+   13            | ID . LBRACKET NUMCONST RBRACKET
+   19 fun-declaration: type-specifier ID . LPAREN params RPAREN statement
+
+    LBRACKET  shift, and go to state 22
+    LPAREN    shift, and go to state 23
+
+    $default  reduce using rule 12 (var-decl-id)
+
+
+state 15
+
+    6 var-declaration: type-specifier var-decl-list . SEMI
+    8 var-decl-list: var-decl-list . COMMA var-decl-initialize
+
+    COMMA  shift, and go to state 24
+    SEMI   shift, and go to state 25
+
+
+state 16
+
+    9 var-decl-list: var-decl-initialize .
+
+    $default  reduce using rule 9 (var-decl-list)
+
+
+state 17
+
+   10 var-decl-initialize: var-decl-id .
+   11                    | var-decl-id . COLON simple-expression
+
+    COLON  shift, and go to state 26
+
+    $default  reduce using rule 10 (var-decl-initialize)
+
+
+state 18
+
+   25 param-type-list: type-specifier . param-id-list
+
+    ID  shift, and go to state 27
+
+    param-id-list  go to state 28
+    param-id       go to state 29
+
+
+state 19
+
+   20 fun-declaration: ID LPAREN params . RPAREN statement
+
+    RPAREN  shift, and go to state 30
+
+
+state 20
+
+   21 params: param-list .
+   23 param-list: param-list . SEMI param-type-list
+
+    SEMI  shift, and go to state 31
+
+    $default  reduce using rule 21 (params)
+
+
+state 21
+
+   24 param-list: param-type-list .
+
+    $default  reduce using rule 24 (param-list)
+
+
+state 22
+
+   13 var-decl-id: ID LBRACKET . NUMCONST RBRACKET
+
+    NUMCONST  shift, and go to state 32
+
+
+state 23
+
+   19 fun-declaration: type-specifier ID LPAREN . params RPAREN statement
+
+    BOOL  shift, and go to state 2
+    CHAR  shift, and go to state 3
+    INT   shift, and go to state 4
+
+    $default  reduce using rule 22 (params)
+
+    type-specifier   go to state 18
+    params           go to state 33
+    param-list       go to state 20
+    param-type-list  go to state 21
+
+
+state 24
+
+    8 var-decl-list: var-decl-list COMMA . var-decl-initialize
+
+    ID  shift, and go to state 34
+
+    var-decl-initialize  go to state 35
+    var-decl-id          go to state 17
+
+
+state 25
+
+    6 var-declaration: type-specifier var-decl-list SEMI .
+
+    $default  reduce using rule 6 (var-declaration)
+
+
+state 26
+
+   11 var-decl-initialize: var-decl-id COLON . simple-expression
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    FALSE        shift, and go to state 40
+    NOT          shift, and go to state 41
+    TRUE         shift, and go to state 42
+    LPAREN       shift, and go to state 43
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    simple-expression     go to state 46
+    and-expression        go to state 47
+    unary-rel-expression  go to state 48
+    rel-expression        go to state 49
+    sum-expression        go to state 50
+    term                  go to state 51
+    unary-expression      go to state 52
+    unaryop               go to state 53
+    factor                go to state 54
+    mutable               go to state 55
+    immutable             go to state 56
+    call                  go to state 57
+    constant              go to state 58
+
+
+state 27
+
+   28 param-id: ID .
+   29         | ID . LBRACKET RBRACKET
+
+    LBRACKET  shift, and go to state 59
+
+    $default  reduce using rule 28 (param-id)
+
+
+state 28
+
+   25 param-type-list: type-specifier param-id-list .
+   26 param-id-list: param-id-list . COMMA param-id
+
+    COMMA  shift, and go to state 60
+
+    $default  reduce using rule 25 (param-type-list)
+
+
+state 29
+
+   27 param-id-list: param-id .
+
+    $default  reduce using rule 27 (param-id-list)
+
+
+state 30
+
+   20 fun-declaration: ID LPAREN params RPAREN . statement
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    BREAK        shift, and go to state 61
+    FALSE        shift, and go to state 40
+    FOREACH      shift, and go to state 62
+    IF           shift, and go to state 63
+    NOT          shift, and go to state 41
+    RETURN       shift, and go to state 64
+    TRUE         shift, and go to state 42
+    WHILE        shift, and go to state 65
+    LPAREN       shift, and go to state 43
+    LBRACE       shift, and go to state 66
+    SEMI         shift, and go to state 67
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    statement                 go to state 68
+    matched                   go to state 69
+    compound-stmt             go to state 70
+    expression-stmt           go to state 71
+    unmatched-selection-stmt  go to state 72
+    matched-selection-stmt    go to state 73
+    iteration-stmt            go to state 74
+    return-stmt               go to state 75
+    break-stmt                go to state 76
+    expression                go to state 77
+    simple-expression         go to state 78
+    and-expression            go to state 47
+    unary-rel-expression      go to state 48
+    rel-expression            go to state 49
+    sum-expression            go to state 50
+    term                      go to state 51
+    unary-expression          go to state 52
+    unaryop                   go to state 53
+    factor                    go to state 54
+    mutable                   go to state 79
+    immutable                 go to state 56
+    call                      go to state 57
+    constant                  go to state 58
+
+
+state 31
+
+   23 param-list: param-list SEMI . param-type-list
+
+    BOOL  shift, and go to state 2
+    CHAR  shift, and go to state 3
+    INT   shift, and go to state 4
+
+    type-specifier   go to state 18
+    param-type-list  go to state 80
+
+
+state 32
+
+   13 var-decl-id: ID LBRACKET NUMCONST . RBRACKET
+
+    RBRACKET  shift, and go to state 81
+
+
+state 33
+
+   19 fun-declaration: type-specifier ID LPAREN params . RPAREN statement
+
+    RPAREN  shift, and go to state 82
+
+
+state 34
+
+   12 var-decl-id: ID .
+   13            | ID . LBRACKET NUMCONST RBRACKET
+
+    LBRACKET  shift, and go to state 22
+
+    $default  reduce using rule 12 (var-decl-id)
+
+
+state 35
+
+    8 var-decl-list: var-decl-list COMMA var-decl-initialize .
+
+    $default  reduce using rule 8 (var-decl-list)
+
+
+state 36
+
+   88 mutable: ID .
+   89        | ID . LBRACKET expression RBRACKET
+   93 call: ID . LPAREN args RPAREN
+
+    LBRACKET  shift, and go to state 83
+    LPAREN    shift, and go to state 84
+
+    $default  reduce using rule 88 (mutable)
+
+
+state 37
+
+   98 constant: NUMCONST .
+
+    $default  reduce using rule 98 (constant)
+
+
+state 38
+
+   99 constant: CHARCONST .
+
+    $default  reduce using rule 99 (constant)
+
+
+state 39
+
+  100 constant: STRINGCONST .
+
+    $default  reduce using rule 100 (constant)
+
+
+state 40
+
+  102 constant: FALSE .
+
+    $default  reduce using rule 102 (constant)
+
+
+state 41
+
+   63 unary-rel-expression: NOT . unary-rel-expression
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    FALSE        shift, and go to state 40
+    NOT          shift, and go to state 41
+    TRUE         shift, and go to state 42
+    LPAREN       shift, and go to state 43
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    unary-rel-expression  go to state 85
+    rel-expression        go to state 49
+    sum-expression        go to state 50
+    term                  go to state 51
+    unary-expression      go to state 52
+    unaryop               go to state 53
+    factor                go to state 54
+    mutable               go to state 55
+    immutable             go to state 56
+    call                  go to state 57
+    constant              go to state 58
+
+
+state 42
+
+  101 constant: TRUE .
+
+    $default  reduce using rule 101 (constant)
+
+
+state 43
+
+   90 immutable: LPAREN . expression RPAREN
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    FALSE        shift, and go to state 40
+    NOT          shift, and go to state 41
+    TRUE         shift, and go to state 42
+    LPAREN       shift, and go to state 43
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    expression            go to state 86
+    simple-expression     go to state 78
+    and-expression        go to state 47
+    unary-rel-expression  go to state 48
+    rel-expression        go to state 49
+    sum-expression        go to state 50
+    term                  go to state 51
+    unary-expression      go to state 52
+    unaryop               go to state 53
+    factor                go to state 54
+    mutable               go to state 79
+    immutable             go to state 56
+    call                  go to state 57
+    constant              go to state 58
+
+
+state 44
+
+   84 unaryop: MINUS .
+
+    $default  reduce using rule 84 (unaryop)
+
+
+state 45
+
+   85 unaryop: MULTI .
+
+    $default  reduce using rule 85 (unaryop)
+
+
+state 46
+
+   11 var-decl-initialize: var-decl-id COLON simple-expression .
+   59 simple-expression: simple-expression . OR and-expression
+
+    OR  shift, and go to state 87
+
+    $default  reduce using rule 11 (var-decl-initialize)
+
+
+state 47
+
+   60 simple-expression: and-expression .
+   61 and-expression: and-expression . AND unary-rel-expression
+
+    AND  shift, and go to state 88
+
+    $default  reduce using rule 60 (simple-expression)
+
+
+state 48
+
+   62 and-expression: unary-rel-expression .
+
+    $default  reduce using rule 62 (and-expression)
+
+
+state 49
+
+   64 unary-rel-expression: rel-expression .
+
+    $default  reduce using rule 64 (unary-rel-expression)
+
+
+state 50
+
+   65 rel-expression: sum-expression . relop sum-expression
+   66               | sum-expression .
+   73 sum-expression: sum-expression . sumop term
+
+    EQUIV    shift, and go to state 89
+    NEQ      shift, and go to state 90
+    LEQ      shift, and go to state 91
+    LESSER   shift, and go to state 92
+    GEQ      shift, and go to state 93
+    GREATER  shift, and go to state 94
+    PLUS     shift, and go to state 95
+    MINUS    shift, and go to state 96
+
+    $default  reduce using rule 66 (rel-expression)
+
+    relop  go to state 97
+    sumop  go to state 98
+
+
+state 51
+
+   74 sum-expression: term .
+   77 term: term . mulop unary-expression
+
+    DIVIDE  shift, and go to state 99
+    MOD     shift, and go to state 100
+    MULTI   shift, and go to state 101
+
+    $default  reduce using rule 74 (sum-expression)
+
+    mulop  go to state 102
+
+
+state 52
+
+   78 term: unary-expression .
+
+    $default  reduce using rule 78 (term)
+
+
+state 53
+
+   82 unary-expression: unaryop . unary-expression
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    FALSE        shift, and go to state 40
+    TRUE         shift, and go to state 42
+    LPAREN       shift, and go to state 43
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    unary-expression  go to state 103
+    unaryop           go to state 53
+    factor            go to state 54
+    mutable           go to state 55
+    immutable         go to state 56
+    call              go to state 57
+    constant          go to state 58
+
+
+state 54
+
+   83 unary-expression: factor .
+
+    $default  reduce using rule 83 (unary-expression)
+
+
+state 55
+
+   87 factor: mutable .
+
+    $default  reduce using rule 87 (factor)
+
+
+state 56
+
+   86 factor: immutable .
+
+    $default  reduce using rule 86 (factor)
+
+
+state 57
+
+   91 immutable: call .
+
+    $default  reduce using rule 91 (immutable)
+
+
+state 58
+
+   92 immutable: constant .
+
+    $default  reduce using rule 92 (immutable)
+
+
+state 59
+
+   29 param-id: ID LBRACKET . RBRACKET
+
+    RBRACKET  shift, and go to state 104
+
+
+state 60
+
+   26 param-id-list: param-id-list COMMA . param-id
+
+    ID  shift, and go to state 27
+
+    param-id  go to state 105
+
+
+state 61
+
+   52 break-stmt: BREAK . SEMI
+
+    SEMI  shift, and go to state 106
+
+
+state 62
+
+   49 iteration-stmt: FOREACH . LPAREN mutable IN simple-expression RPAREN statement
+
+    LPAREN  shift, and go to state 107
+
+
+state 63
+
+   45 unmatched-selection-stmt: IF . LPAREN simple-expression RPAREN statement
+   46                         | IF . LPAREN simple-expression RPAREN matched ELSE unmatched-selection-stmt
+   47 matched-selection-stmt: IF . LPAREN simple-expression RPAREN matched ELSE matched
+
+    LPAREN  shift, and go to state 108
+
+
+state 64
+
+   50 return-stmt: RETURN . SEMI
+   51            | RETURN . expression SEMI
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    FALSE        shift, and go to state 40
+    NOT          shift, and go to state 41
+    TRUE         shift, and go to state 42
+    LPAREN       shift, and go to state 43
+    SEMI         shift, and go to state 109
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    expression            go to state 110
+    simple-expression     go to state 78
+    and-expression        go to state 47
+    unary-rel-expression  go to state 48
+    rel-expression        go to state 49
+    sum-expression        go to state 50
+    term                  go to state 51
+    unary-expression      go to state 52
+    unaryop               go to state 53
+    factor                go to state 54
+    mutable               go to state 79
+    immutable             go to state 56
+    call                  go to state 57
+    constant              go to state 58
+
+
+state 65
+
+   48 iteration-stmt: WHILE . LPAREN simple-expression RPAREN statement
+
+    LPAREN  shift, and go to state 111
+
+
+state 66
+
+   38 compound-stmt: LBRACE . local-declarations statement-list RBRACE
+
+    $default  reduce using rule 40 (local-declarations)
+
+    local-declarations  go to state 112
+
+
+state 67
+
+   44 expression-stmt: SEMI .
+
+    $default  reduce using rule 44 (expression-stmt)
+
+
+state 68
+
+   20 fun-declaration: ID LPAREN params RPAREN statement .
+
+    $default  reduce using rule 20 (fun-declaration)
+
+
+state 69
+
+   30 statement: matched .
+
+    $default  reduce using rule 30 (statement)
+
+
+state 70
+
+   33 matched: compound-stmt .
+
+    $default  reduce using rule 33 (matched)
+
+
+state 71
+
+   32 matched: expression-stmt .
+
+    $default  reduce using rule 32 (matched)
+
+
+state 72
+
+   31 statement: unmatched-selection-stmt .
+
+    $default  reduce using rule 31 (statement)
+
+
+state 73
+
+   34 matched: matched-selection-stmt .
+
+    $default  reduce using rule 34 (matched)
+
+
+state 74
+
+   35 matched: iteration-stmt .
+
+    $default  reduce using rule 35 (matched)
+
+
+state 75
+
+   36 matched: return-stmt .
+
+    $default  reduce using rule 36 (matched)
+
+
+state 76
+
+   37 matched: break-stmt .
+
+    $default  reduce using rule 37 (matched)
+
+
+state 77
+
+   43 expression-stmt: expression . SEMI
+
+    SEMI  shift, and go to state 113
+
+
+state 78
+
+   58 expression: simple-expression .
+   59 simple-expression: simple-expression . OR and-expression
+
+    OR  shift, and go to state 87
+
+    $default  reduce using rule 58 (expression)
+
+
+state 79
+
+   53 expression: mutable . ASSIGN expression
+   54           | mutable . PASSIGN expression
+   55           | mutable . MASSIGN expression
+   56           | mutable . INC
+   57           | mutable . DEC
+   87 factor: mutable .
+
+    ASSIGN   shift, and go to state 114
+    PASSIGN  shift, and go to state 115
+    MASSIGN  shift, and go to state 116
+    DEC      shift, and go to state 117
+    INC      shift, and go to state 118
+
+    $default  reduce using rule 87 (factor)
+
+
+state 80
+
+   23 param-list: param-list SEMI param-type-list .
+
+    $default  reduce using rule 23 (param-list)
+
+
+state 81
+
+   13 var-decl-id: ID LBRACKET NUMCONST RBRACKET .
+
+    $default  reduce using rule 13 (var-decl-id)
+
+
+state 82
+
+   19 fun-declaration: type-specifier ID LPAREN params RPAREN . statement
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    BREAK        shift, and go to state 61
+    FALSE        shift, and go to state 40
+    FOREACH      shift, and go to state 62
+    IF           shift, and go to state 63
+    NOT          shift, and go to state 41
+    RETURN       shift, and go to state 64
+    TRUE         shift, and go to state 42
+    WHILE        shift, and go to state 65
+    LPAREN       shift, and go to state 43
+    LBRACE       shift, and go to state 66
+    SEMI         shift, and go to state 67
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    statement                 go to state 119
+    matched                   go to state 69
+    compound-stmt             go to state 70
+    expression-stmt           go to state 71
+    unmatched-selection-stmt  go to state 72
+    matched-selection-stmt    go to state 73
+    iteration-stmt            go to state 74
+    return-stmt               go to state 75
+    break-stmt                go to state 76
+    expression                go to state 77
+    simple-expression         go to state 78
+    and-expression            go to state 47
+    unary-rel-expression      go to state 48
+    rel-expression            go to state 49
+    sum-expression            go to state 50
+    term                      go to state 51
+    unary-expression          go to state 52
+    unaryop                   go to state 53
+    factor                    go to state 54
+    mutable                   go to state 79
+    immutable                 go to state 56
+    call                      go to state 57
+    constant                  go to state 58
+
+
+state 83
+
+   89 mutable: ID LBRACKET . expression RBRACKET
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    FALSE        shift, and go to state 40
+    NOT          shift, and go to state 41
+    TRUE         shift, and go to state 42
+    LPAREN       shift, and go to state 43
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    expression            go to state 120
+    simple-expression     go to state 78
+    and-expression        go to state 47
+    unary-rel-expression  go to state 48
+    rel-expression        go to state 49
+    sum-expression        go to state 50
+    term                  go to state 51
+    unary-expression      go to state 52
+    unaryop               go to state 53
+    factor                go to state 54
+    mutable               go to state 79
+    immutable             go to state 56
+    call                  go to state 57
+    constant              go to state 58
+
+
+state 84
+
+   93 call: ID LPAREN . args RPAREN
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    FALSE        shift, and go to state 40
+    NOT          shift, and go to state 41
+    TRUE         shift, and go to state 42
+    LPAREN       shift, and go to state 43
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    $default  reduce using rule 95 (args)
+
+    expression            go to state 121
+    simple-expression     go to state 78
+    and-expression        go to state 47
+    unary-rel-expression  go to state 48
+    rel-expression        go to state 49
+    sum-expression        go to state 50
+    term                  go to state 51
+    unary-expression      go to state 52
+    unaryop               go to state 53
+    factor                go to state 54
+    mutable               go to state 79
+    immutable             go to state 56
+    call                  go to state 57
+    args                  go to state 122
+    arg-list              go to state 123
+    constant              go to state 58
+
+
+state 85
+
+   63 unary-rel-expression: NOT unary-rel-expression .
+
+    $default  reduce using rule 63 (unary-rel-expression)
+
+
+state 86
+
+   90 immutable: LPAREN expression . RPAREN
+
+    RPAREN  shift, and go to state 124
+
+
+state 87
+
+   59 simple-expression: simple-expression OR . and-expression
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    FALSE        shift, and go to state 40
+    NOT          shift, and go to state 41
+    TRUE         shift, and go to state 42
+    LPAREN       shift, and go to state 43
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    and-expression        go to state 125
+    unary-rel-expression  go to state 48
+    rel-expression        go to state 49
+    sum-expression        go to state 50
+    term                  go to state 51
+    unary-expression      go to state 52
+    unaryop               go to state 53
+    factor                go to state 54
+    mutable               go to state 55
+    immutable             go to state 56
+    call                  go to state 57
+    constant              go to state 58
+
+
+state 88
+
+   61 and-expression: and-expression AND . unary-rel-expression
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    FALSE        shift, and go to state 40
+    NOT          shift, and go to state 41
+    TRUE         shift, and go to state 42
+    LPAREN       shift, and go to state 43
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    unary-rel-expression  go to state 126
+    rel-expression        go to state 49
+    sum-expression        go to state 50
+    term                  go to state 51
+    unary-expression      go to state 52
+    unaryop               go to state 53
+    factor                go to state 54
+    mutable               go to state 55
+    immutable             go to state 56
+    call                  go to state 57
+    constant              go to state 58
+
+
+state 89
+
+   71 relop: EQUIV .
+
+    $default  reduce using rule 71 (relop)
+
+
+state 90
+
+   72 relop: NEQ .
+
+    $default  reduce using rule 72 (relop)
+
+
+state 91
+
+   67 relop: LEQ .
+
+    $default  reduce using rule 67 (relop)
+
+
+state 92
+
+   68 relop: LESSER .
+
+    $default  reduce using rule 68 (relop)
+
+
+state 93
+
+   70 relop: GEQ .
+
+    $default  reduce using rule 70 (relop)
+
+
+state 94
+
+   69 relop: GREATER .
+
+    $default  reduce using rule 69 (relop)
+
+
+state 95
+
+   75 sumop: PLUS .
+
+    $default  reduce using rule 75 (sumop)
+
+
+state 96
+
+   76 sumop: MINUS .
+
+    $default  reduce using rule 76 (sumop)
+
+
+state 97
+
+   65 rel-expression: sum-expression relop . sum-expression
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    FALSE        shift, and go to state 40
+    TRUE         shift, and go to state 42
+    LPAREN       shift, and go to state 43
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    sum-expression    go to state 127
+    term              go to state 51
+    unary-expression  go to state 52
+    unaryop           go to state 53
+    factor            go to state 54
+    mutable           go to state 55
+    immutable         go to state 56
+    call              go to state 57
+    constant          go to state 58
+
+
+state 98
+
+   73 sum-expression: sum-expression sumop . term
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    FALSE        shift, and go to state 40
+    TRUE         shift, and go to state 42
+    LPAREN       shift, and go to state 43
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    term              go to state 128
+    unary-expression  go to state 52
+    unaryop           go to state 53
+    factor            go to state 54
+    mutable           go to state 55
+    immutable         go to state 56
+    call              go to state 57
+    constant          go to state 58
+
+
+state 99
+
+   80 mulop: DIVIDE .
+
+    $default  reduce using rule 80 (mulop)
+
+
+state 100
+
+   81 mulop: MOD .
+
+    $default  reduce using rule 81 (mulop)
+
+
+state 101
+
+   79 mulop: MULTI .
+
+    $default  reduce using rule 79 (mulop)
+
+
+state 102
+
+   77 term: term mulop . unary-expression
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    FALSE        shift, and go to state 40
+    TRUE         shift, and go to state 42
+    LPAREN       shift, and go to state 43
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    unary-expression  go to state 129
+    unaryop           go to state 53
+    factor            go to state 54
+    mutable           go to state 55
+    immutable         go to state 56
+    call              go to state 57
+    constant          go to state 58
+
+
+state 103
+
+   82 unary-expression: unaryop unary-expression .
+
+    $default  reduce using rule 82 (unary-expression)
+
+
+state 104
+
+   29 param-id: ID LBRACKET RBRACKET .
+
+    $default  reduce using rule 29 (param-id)
+
+
+state 105
+
+   26 param-id-list: param-id-list COMMA param-id .
+
+    $default  reduce using rule 26 (param-id-list)
+
+
+state 106
+
+   52 break-stmt: BREAK SEMI .
+
+    $default  reduce using rule 52 (break-stmt)
+
+
+state 107
+
+   49 iteration-stmt: FOREACH LPAREN . mutable IN simple-expression RPAREN statement
+
+    ID  shift, and go to state 130
+
+    mutable  go to state 131
+
+
+state 108
+
+   45 unmatched-selection-stmt: IF LPAREN . simple-expression RPAREN statement
+   46                         | IF LPAREN . simple-expression RPAREN matched ELSE unmatched-selection-stmt
+   47 matched-selection-stmt: IF LPAREN . simple-expression RPAREN matched ELSE matched
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    FALSE        shift, and go to state 40
+    NOT          shift, and go to state 41
+    TRUE         shift, and go to state 42
+    LPAREN       shift, and go to state 43
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    simple-expression     go to state 132
+    and-expression        go to state 47
+    unary-rel-expression  go to state 48
+    rel-expression        go to state 49
+    sum-expression        go to state 50
+    term                  go to state 51
+    unary-expression      go to state 52
+    unaryop               go to state 53
+    factor                go to state 54
+    mutable               go to state 55
+    immutable             go to state 56
+    call                  go to state 57
+    constant              go to state 58
+
+
+state 109
+
+   50 return-stmt: RETURN SEMI .
+
+    $default  reduce using rule 50 (return-stmt)
+
+
+state 110
+
+   51 return-stmt: RETURN expression . SEMI
+
+    SEMI  shift, and go to state 133
+
+
+state 111
+
+   48 iteration-stmt: WHILE LPAREN . simple-expression RPAREN statement
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    FALSE        shift, and go to state 40
+    NOT          shift, and go to state 41
+    TRUE         shift, and go to state 42
+    LPAREN       shift, and go to state 43
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    simple-expression     go to state 134
+    and-expression        go to state 47
+    unary-rel-expression  go to state 48
+    rel-expression        go to state 49
+    sum-expression        go to state 50
+    term                  go to state 51
+    unary-expression      go to state 52
+    unaryop               go to state 53
+    factor                go to state 54
+    mutable               go to state 55
+    immutable             go to state 56
+    call                  go to state 57
+    constant              go to state 58
+
+
+state 112
+
+   38 compound-stmt: LBRACE local-declarations . statement-list RBRACE
+   39 local-declarations: local-declarations . scoped-var-declaration
+
+    BOOL    shift, and go to state 2
+    CHAR    shift, and go to state 3
+    INT     shift, and go to state 4
+    STATIC  shift, and go to state 135
+
+    $default  reduce using rule 42 (statement-list)
+
+    scoped-var-declaration  go to state 136
+    scoped-type-specifier   go to state 137
+    type-specifier          go to state 138
+    statement-list          go to state 139
+
+
+state 113
+
+   43 expression-stmt: expression SEMI .
+
+    $default  reduce using rule 43 (expression-stmt)
+
+
+state 114
+
+   53 expression: mutable ASSIGN . expression
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    FALSE        shift, and go to state 40
+    NOT          shift, and go to state 41
+    TRUE         shift, and go to state 42
+    LPAREN       shift, and go to state 43
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    expression            go to state 140
+    simple-expression     go to state 78
+    and-expression        go to state 47
+    unary-rel-expression  go to state 48
+    rel-expression        go to state 49
+    sum-expression        go to state 50
+    term                  go to state 51
+    unary-expression      go to state 52
+    unaryop               go to state 53
+    factor                go to state 54
+    mutable               go to state 79
+    immutable             go to state 56
+    call                  go to state 57
+    constant              go to state 58
+
+
+state 115
+
+   54 expression: mutable PASSIGN . expression
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    FALSE        shift, and go to state 40
+    NOT          shift, and go to state 41
+    TRUE         shift, and go to state 42
+    LPAREN       shift, and go to state 43
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    expression            go to state 141
+    simple-expression     go to state 78
+    and-expression        go to state 47
+    unary-rel-expression  go to state 48
+    rel-expression        go to state 49
+    sum-expression        go to state 50
+    term                  go to state 51
+    unary-expression      go to state 52
+    unaryop               go to state 53
+    factor                go to state 54
+    mutable               go to state 79
+    immutable             go to state 56
+    call                  go to state 57
+    constant              go to state 58
+
+
+state 116
+
+   55 expression: mutable MASSIGN . expression
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    FALSE        shift, and go to state 40
+    NOT          shift, and go to state 41
+    TRUE         shift, and go to state 42
+    LPAREN       shift, and go to state 43
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    expression            go to state 142
+    simple-expression     go to state 78
+    and-expression        go to state 47
+    unary-rel-expression  go to state 48
+    rel-expression        go to state 49
+    sum-expression        go to state 50
+    term                  go to state 51
+    unary-expression      go to state 52
+    unaryop               go to state 53
+    factor                go to state 54
+    mutable               go to state 79
+    immutable             go to state 56
+    call                  go to state 57
+    constant              go to state 58
+
+
+state 117
+
+   57 expression: mutable DEC .
+
+    $default  reduce using rule 57 (expression)
+
+
+state 118
+
+   56 expression: mutable INC .
+
+    $default  reduce using rule 56 (expression)
+
+
+state 119
+
+   19 fun-declaration: type-specifier ID LPAREN params RPAREN statement .
+
+    $default  reduce using rule 19 (fun-declaration)
+
+
+state 120
+
+   89 mutable: ID LBRACKET expression . RBRACKET
+
+    RBRACKET  shift, and go to state 143
+
+
+state 121
+
+   97 arg-list: expression .
+
+    $default  reduce using rule 97 (arg-list)
+
+
+state 122
+
+   93 call: ID LPAREN args . RPAREN
+
+    RPAREN  shift, and go to state 144
+
+
+state 123
+
+   94 args: arg-list .
+   96 arg-list: arg-list . COMMA expression
+
+    COMMA  shift, and go to state 145
+
+    $default  reduce using rule 94 (args)
+
+
+state 124
+
+   90 immutable: LPAREN expression RPAREN .
+
+    $default  reduce using rule 90 (immutable)
+
+
+state 125
+
+   59 simple-expression: simple-expression OR and-expression .
+   61 and-expression: and-expression . AND unary-rel-expression
+
+    AND  shift, and go to state 88
+
+    $default  reduce using rule 59 (simple-expression)
+
+
+state 126
+
+   61 and-expression: and-expression AND unary-rel-expression .
+
+    $default  reduce using rule 61 (and-expression)
+
+
+state 127
+
+   65 rel-expression: sum-expression relop sum-expression .
+   73 sum-expression: sum-expression . sumop term
+
+    PLUS   shift, and go to state 95
+    MINUS  shift, and go to state 96
+
+    $default  reduce using rule 65 (rel-expression)
+
+    sumop  go to state 98
+
+
+state 128
+
+   73 sum-expression: sum-expression sumop term .
+   77 term: term . mulop unary-expression
+
+    DIVIDE  shift, and go to state 99
+    MOD     shift, and go to state 100
+    MULTI   shift, and go to state 101
+
+    $default  reduce using rule 73 (sum-expression)
+
+    mulop  go to state 102
+
+
+state 129
+
+   77 term: term mulop unary-expression .
+
+    $default  reduce using rule 77 (term)
+
+
+state 130
+
+   88 mutable: ID .
+   89        | ID . LBRACKET expression RBRACKET
+
+    LBRACKET  shift, and go to state 83
+
+    $default  reduce using rule 88 (mutable)
+
+
+state 131
+
+   49 iteration-stmt: FOREACH LPAREN mutable . IN simple-expression RPAREN statement
+
+    IN  shift, and go to state 146
+
+
+state 132
+
+   45 unmatched-selection-stmt: IF LPAREN simple-expression . RPAREN statement
+   46                         | IF LPAREN simple-expression . RPAREN matched ELSE unmatched-selection-stmt
+   47 matched-selection-stmt: IF LPAREN simple-expression . RPAREN matched ELSE matched
+   59 simple-expression: simple-expression . OR and-expression
+
+    OR      shift, and go to state 87
+    RPAREN  shift, and go to state 147
+
+
+state 133
+
+   51 return-stmt: RETURN expression SEMI .
+
+    $default  reduce using rule 51 (return-stmt)
+
+
+state 134
+
+   48 iteration-stmt: WHILE LPAREN simple-expression . RPAREN statement
+   59 simple-expression: simple-expression . OR and-expression
+
+    OR      shift, and go to state 87
+    RPAREN  shift, and go to state 148
+
+
+state 135
+
+   14 scoped-type-specifier: STATIC . type-specifier
+
+    BOOL  shift, and go to state 2
+    CHAR  shift, and go to state 3
+    INT   shift, and go to state 4
+
+    type-specifier  go to state 149
+
+
+state 136
+
+   39 local-declarations: local-declarations scoped-var-declaration .
+
+    $default  reduce using rule 39 (local-declarations)
+
+
+state 137
+
+    7 scoped-var-declaration: scoped-type-specifier . var-decl-list SEMI
+
+    ID  shift, and go to state 34
+
+    var-decl-list        go to state 150
+    var-decl-initialize  go to state 16
+    var-decl-id          go to state 17
+
+
+state 138
+
+   15 scoped-type-specifier: type-specifier .
+
+    $default  reduce using rule 15 (scoped-type-specifier)
+
+
+state 139
+
+   38 compound-stmt: LBRACE local-declarations statement-list . RBRACE
+   41 statement-list: statement-list . statement
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    BREAK        shift, and go to state 61
+    FALSE        shift, and go to state 40
+    FOREACH      shift, and go to state 62
+    IF           shift, and go to state 63
+    NOT          shift, and go to state 41
+    RETURN       shift, and go to state 64
+    TRUE         shift, and go to state 42
+    WHILE        shift, and go to state 65
+    LPAREN       shift, and go to state 43
+    LBRACE       shift, and go to state 66
+    RBRACE       shift, and go to state 151
+    SEMI         shift, and go to state 67
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    statement                 go to state 152
+    matched                   go to state 69
+    compound-stmt             go to state 70
+    expression-stmt           go to state 71
+    unmatched-selection-stmt  go to state 72
+    matched-selection-stmt    go to state 73
+    iteration-stmt            go to state 74
+    return-stmt               go to state 75
+    break-stmt                go to state 76
+    expression                go to state 77
+    simple-expression         go to state 78
+    and-expression            go to state 47
+    unary-rel-expression      go to state 48
+    rel-expression            go to state 49
+    sum-expression            go to state 50
+    term                      go to state 51
+    unary-expression          go to state 52
+    unaryop                   go to state 53
+    factor                    go to state 54
+    mutable                   go to state 79
+    immutable                 go to state 56
+    call                      go to state 57
+    constant                  go to state 58
+
+
+state 140
+
+   53 expression: mutable ASSIGN expression .
+
+    $default  reduce using rule 53 (expression)
+
+
+state 141
+
+   54 expression: mutable PASSIGN expression .
+
+    $default  reduce using rule 54 (expression)
+
+
+state 142
+
+   55 expression: mutable MASSIGN expression .
+
+    $default  reduce using rule 55 (expression)
+
+
+state 143
+
+   89 mutable: ID LBRACKET expression RBRACKET .
+
+    $default  reduce using rule 89 (mutable)
+
+
+state 144
+
+   93 call: ID LPAREN args RPAREN .
+
+    $default  reduce using rule 93 (call)
+
+
+state 145
+
+   96 arg-list: arg-list COMMA . expression
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    FALSE        shift, and go to state 40
+    NOT          shift, and go to state 41
+    TRUE         shift, and go to state 42
+    LPAREN       shift, and go to state 43
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    expression            go to state 153
+    simple-expression     go to state 78
+    and-expression        go to state 47
+    unary-rel-expression  go to state 48
+    rel-expression        go to state 49
+    sum-expression        go to state 50
+    term                  go to state 51
+    unary-expression      go to state 52
+    unaryop               go to state 53
+    factor                go to state 54
+    mutable               go to state 79
+    immutable             go to state 56
+    call                  go to state 57
+    constant              go to state 58
+
+
+state 146
+
+   49 iteration-stmt: FOREACH LPAREN mutable IN . simple-expression RPAREN statement
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    FALSE        shift, and go to state 40
+    NOT          shift, and go to state 41
+    TRUE         shift, and go to state 42
+    LPAREN       shift, and go to state 43
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    simple-expression     go to state 154
+    and-expression        go to state 47
+    unary-rel-expression  go to state 48
+    rel-expression        go to state 49
+    sum-expression        go to state 50
+    term                  go to state 51
+    unary-expression      go to state 52
+    unaryop               go to state 53
+    factor                go to state 54
+    mutable               go to state 55
+    immutable             go to state 56
+    call                  go to state 57
+    constant              go to state 58
+
+
+state 147
+
+   45 unmatched-selection-stmt: IF LPAREN simple-expression RPAREN . statement
+   46                         | IF LPAREN simple-expression RPAREN . matched ELSE unmatched-selection-stmt
+   47 matched-selection-stmt: IF LPAREN simple-expression RPAREN . matched ELSE matched
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    BREAK        shift, and go to state 61
+    FALSE        shift, and go to state 40
+    FOREACH      shift, and go to state 62
+    IF           shift, and go to state 63
+    NOT          shift, and go to state 41
+    RETURN       shift, and go to state 64
+    TRUE         shift, and go to state 42
+    WHILE        shift, and go to state 65
+    LPAREN       shift, and go to state 43
+    LBRACE       shift, and go to state 66
+    SEMI         shift, and go to state 67
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    statement                 go to state 155
+    matched                   go to state 156
+    compound-stmt             go to state 70
+    expression-stmt           go to state 71
+    unmatched-selection-stmt  go to state 72
+    matched-selection-stmt    go to state 73
+    iteration-stmt            go to state 74
+    return-stmt               go to state 75
+    break-stmt                go to state 76
+    expression                go to state 77
+    simple-expression         go to state 78
+    and-expression            go to state 47
+    unary-rel-expression      go to state 48
+    rel-expression            go to state 49
+    sum-expression            go to state 50
+    term                      go to state 51
+    unary-expression          go to state 52
+    unaryop                   go to state 53
+    factor                    go to state 54
+    mutable                   go to state 79
+    immutable                 go to state 56
+    call                      go to state 57
+    constant                  go to state 58
+
+
+state 148
+
+   48 iteration-stmt: WHILE LPAREN simple-expression RPAREN . statement
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    BREAK        shift, and go to state 61
+    FALSE        shift, and go to state 40
+    FOREACH      shift, and go to state 62
+    IF           shift, and go to state 63
+    NOT          shift, and go to state 41
+    RETURN       shift, and go to state 64
+    TRUE         shift, and go to state 42
+    WHILE        shift, and go to state 65
+    LPAREN       shift, and go to state 43
+    LBRACE       shift, and go to state 66
+    SEMI         shift, and go to state 67
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    statement                 go to state 157
+    matched                   go to state 69
+    compound-stmt             go to state 70
+    expression-stmt           go to state 71
+    unmatched-selection-stmt  go to state 72
+    matched-selection-stmt    go to state 73
+    iteration-stmt            go to state 74
+    return-stmt               go to state 75
+    break-stmt                go to state 76
+    expression                go to state 77
+    simple-expression         go to state 78
+    and-expression            go to state 47
+    unary-rel-expression      go to state 48
+    rel-expression            go to state 49
+    sum-expression            go to state 50
+    term                      go to state 51
+    unary-expression          go to state 52
+    unaryop                   go to state 53
+    factor                    go to state 54
+    mutable                   go to state 79
+    immutable                 go to state 56
+    call                      go to state 57
+    constant                  go to state 58
+
+
+state 149
+
+   14 scoped-type-specifier: STATIC type-specifier .
+
+    $default  reduce using rule 14 (scoped-type-specifier)
+
+
+state 150
+
+    7 scoped-var-declaration: scoped-type-specifier var-decl-list . SEMI
+    8 var-decl-list: var-decl-list . COMMA var-decl-initialize
+
+    COMMA  shift, and go to state 24
+    SEMI   shift, and go to state 158
+
+
+state 151
+
+   38 compound-stmt: LBRACE local-declarations statement-list RBRACE .
+
+    $default  reduce using rule 38 (compound-stmt)
+
+
+state 152
+
+   41 statement-list: statement-list statement .
+
+    $default  reduce using rule 41 (statement-list)
+
+
+state 153
+
+   96 arg-list: arg-list COMMA expression .
+
+    $default  reduce using rule 96 (arg-list)
+
+
+state 154
+
+   49 iteration-stmt: FOREACH LPAREN mutable IN simple-expression . RPAREN statement
+   59 simple-expression: simple-expression . OR and-expression
+
+    OR      shift, and go to state 87
+    RPAREN  shift, and go to state 159
+
+
+state 155
+
+   45 unmatched-selection-stmt: IF LPAREN simple-expression RPAREN statement .
+
+    $default  reduce using rule 45 (unmatched-selection-stmt)
+
+
+state 156
+
+   30 statement: matched .
+   46 unmatched-selection-stmt: IF LPAREN simple-expression RPAREN matched . ELSE unmatched-selection-stmt
+   47 matched-selection-stmt: IF LPAREN simple-expression RPAREN matched . ELSE matched
+
+    ELSE  shift, and go to state 160
+
+    ELSE      [reduce using rule 30 (statement)]
+    $default  reduce using rule 30 (statement)
+
+
+state 157
+
+   48 iteration-stmt: WHILE LPAREN simple-expression RPAREN statement .
+
+    $default  reduce using rule 48 (iteration-stmt)
+
+
+state 158
+
+    7 scoped-var-declaration: scoped-type-specifier var-decl-list SEMI .
+
+    $default  reduce using rule 7 (scoped-var-declaration)
+
+
+state 159
+
+   49 iteration-stmt: FOREACH LPAREN mutable IN simple-expression RPAREN . statement
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    BREAK        shift, and go to state 61
+    FALSE        shift, and go to state 40
+    FOREACH      shift, and go to state 62
+    IF           shift, and go to state 63
+    NOT          shift, and go to state 41
+    RETURN       shift, and go to state 64
+    TRUE         shift, and go to state 42
+    WHILE        shift, and go to state 65
+    LPAREN       shift, and go to state 43
+    LBRACE       shift, and go to state 66
+    SEMI         shift, and go to state 67
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    statement                 go to state 161
+    matched                   go to state 69
+    compound-stmt             go to state 70
+    expression-stmt           go to state 71
+    unmatched-selection-stmt  go to state 72
+    matched-selection-stmt    go to state 73
+    iteration-stmt            go to state 74
+    return-stmt               go to state 75
+    break-stmt                go to state 76
+    expression                go to state 77
+    simple-expression         go to state 78
+    and-expression            go to state 47
+    unary-rel-expression      go to state 48
+    rel-expression            go to state 49
+    sum-expression            go to state 50
+    term                      go to state 51
+    unary-expression          go to state 52
+    unaryop                   go to state 53
+    factor                    go to state 54
+    mutable                   go to state 79
+    immutable                 go to state 56
+    call                      go to state 57
+    constant                  go to state 58
+
+
+state 160
+
+   46 unmatched-selection-stmt: IF LPAREN simple-expression RPAREN matched ELSE . unmatched-selection-stmt
+   47 matched-selection-stmt: IF LPAREN simple-expression RPAREN matched ELSE . matched
+
+    ID           shift, and go to state 36
+    NUMCONST     shift, and go to state 37
+    CHARCONST    shift, and go to state 38
+    STRINGCONST  shift, and go to state 39
+    BREAK        shift, and go to state 61
+    FALSE        shift, and go to state 40
+    FOREACH      shift, and go to state 62
+    IF           shift, and go to state 63
+    NOT          shift, and go to state 41
+    RETURN       shift, and go to state 64
+    TRUE         shift, and go to state 42
+    WHILE        shift, and go to state 65
+    LPAREN       shift, and go to state 43
+    LBRACE       shift, and go to state 66
+    SEMI         shift, and go to state 67
+    MINUS        shift, and go to state 44
+    MULTI        shift, and go to state 45
+
+    matched                   go to state 162
+    compound-stmt             go to state 70
+    expression-stmt           go to state 71
+    unmatched-selection-stmt  go to state 163
+    matched-selection-stmt    go to state 73
+    iteration-stmt            go to state 74
+    return-stmt               go to state 75
+    break-stmt                go to state 76
+    expression                go to state 77
+    simple-expression         go to state 78
+    and-expression            go to state 47
+    unary-rel-expression      go to state 48
+    rel-expression            go to state 49
+    sum-expression            go to state 50
+    term                      go to state 51
+    unary-expression          go to state 52
+    unaryop                   go to state 53
+    factor                    go to state 54
+    mutable                   go to state 79
+    immutable                 go to state 56
+    call                      go to state 57
+    constant                  go to state 58
+
+
+state 161
+
+   49 iteration-stmt: FOREACH LPAREN mutable IN simple-expression RPAREN statement .
+
+    $default  reduce using rule 49 (iteration-stmt)
+
+
+state 162
+
+   47 matched-selection-stmt: IF LPAREN simple-expression RPAREN matched ELSE matched .
+
+    $default  reduce using rule 47 (matched-selection-stmt)
+
+
+state 163
+
+   46 unmatched-selection-stmt: IF LPAREN simple-expression RPAREN matched ELSE unmatched-selection-stmt .
+
+    $default  reduce using rule 46 (unmatched-selection-stmt)

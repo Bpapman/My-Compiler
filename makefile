@@ -2,8 +2,8 @@ BIN  = parser
 CC   = g++
 CFLAGS = -DCPLUSPLUS -g     # for use with C++ if file ext is .c
 
-SRCS = $(BIN).y $(BIN).l
-HDRS = tokenStruct.h
+SRCS = $(BIN).y $(BIN).l tree.c
+HDRS = tokenStruct.h tree.h
 OBJS = lex.yy.o $(BIN).tab.o
 LIBS = -lfl -lm
 

@@ -92,14 +92,16 @@ typedef union YYSTYPE
 {
 
 /* Line 2068 of yacc.c  */
-#line 25 "parser.y"
+#line 28 "parser.y"
 
-	TokenData *tokenData;
+    ExpType type;
+    TokenData *tokenData;
+    TreeNode *tNode;
 
 
 
 /* Line 2068 of yacc.c  */
-#line 103 "parser.tab.h"
+#line 105 "parser.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

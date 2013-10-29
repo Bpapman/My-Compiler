@@ -11,9 +11,9 @@
 struct TokenData
 {
 	int tokenClass;
-	int linenum;
+	int lineno;
 	char* tokenstr;
-	int idvalue;
+	char* idvalue;
         int numvalue;
         char* keyvalue;
 };

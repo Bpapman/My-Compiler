@@ -1,104 +1,180 @@
 %{
+    #include "tree.h"
     #include <string>
     #include <stdio.h>
     #include <stdlib.h>
     #include "tokenStruct.h"
     #include "parser.tab.h"
 
-    int line = 1;
+
+    int lineno = 1;
+
+    char* copystring(char* s)
+    {
+        int n;
+        char* t;
+        if(s==NULL) return NULL;
+        n = strlen(s)+1;
+        t = (char*)malloc(n);
+        if(t==NULL)
+            printf("Error Copystring");
+        else strcpy(t,s);
+        
+        return t;
+    }
+
+    char* stripliterals(char* s, int type)
+    {
+        int i;
+        char *t = copystring(s);
+        int n = strlen(t) + 1;
+        
+        
+        for(i=0; i<n; i++)
+        {
+            if(t[i]=='\\')
+            {
+                int j = i;
+                while(j < n)
+                {
+                    t[j] = t[j+1];
+                    j++;
+                }
+                t[j] = '\0';
+                switch(t[i])
+                {
+                    case 'n':
+                        t[i]='\n';
+                        break;
+                    case 't':
+                        t[i]='\t';
+                        break;
+                    case '0':
+                        t[i+1]='\0';
+                        if(type == 0)
+                        {
+                            t[i] = '\'';
+                        }
+                        else
+                            t[i] = '\"';
+                        break;
+                    default:
+                        printf("String literal you didn't account for");
+                        break;
+                }
+                j++;
+            }
+            else if(t[i]== '^')
+            {
+                int j = i;
+                while(j < n)
+                {
+                    t[j] = t[j+i];
+                    j++;
+                }
+                t[j] = '\0';
+                t[i] = t[i] ^ 0x40;
+            }
+            else
+                t[i]=s[i];
+        }
+        return t;
+    }
+
+
+            
     
     int setValue(int linenum, int tokenClass, char* svalue)
     {
             yylval.tokenData = new TokenData;
             yylval.tokenData->tokenClass = tokenClass;
-            yylval.tokenData->linenum = linenum;
+            yylval.tokenData->lineno = linenum;
             
             switch(tokenClass)
             {
                 case NUMCONST:
                     yylval.tokenData->numvalue = atoi(svalue);
                 case ID:
-                    yylval.tokenData->idvalue = atoi(svalue);
+                    yylval.tokenData->idvalue = copystring(svalue);
                 case CHARCONST:
-                    yylval.tokenData->tokenstr = svalue;
+                    yylval.tokenData->tokenstr = copystring(stripliterals(svalue, 0));
                 case STRINGCONST:
-                    yylval.tokenData->tokenstr = svalue;
+                    yylval.tokenData->tokenstr = copystring(stripliterals(svalue, 0));
                 default:
                     yylval.tokenData->keyvalue = svalue;
             }
-
 
             return tokenClass;
 
     }
 
-//\"                                      {return setValue(line, QUOTE, yytext);}
-//            |QUOTE              { cout << "Line " << yylval.tokenData->linenum << " Token: \"" << endl; }
-
+//.					{return setValue(lineno, yytext[0], yytext);}
 %}
 
 %%
 
 
 [ \t]					; //whitespace
-\n                                      line++;
+\n                                      lineno++;
 
-\/\/.*\n                                line++; //comments
-
-
-"and"                                   {return setValue(line, AND, yytext);}
-"break"                                 {return setValue(line, BREAK, yytext);}
-"bool"                                  {return setValue(line, BOOL, yytext);}
-"char"                                  {return setValue(line, CHAR, yytext);}
-"else"                                  {return setValue(line, ELSE, yytext);}
-"false"                                 {return setValue(line, FALSE, yytext);}
-"foreach"                               {return setValue(line, FOREACH, yytext);}
-"if"                                    {return setValue(line, IF, yytext);}
-"in"                                    {return setValue(line, IN, yytext);}
-"int"                                   {return setValue(line, INT, yytext);}
-"or"                                    {return setValue(line, OR, yytext);}
-"not"                                   {return setValue(line, NOT, yytext);}
-"return"                                {return setValue(line, RETURN, yytext);}
-"true"                                  {return setValue(line, TRUE, yytext);}
-"static"                                {return setValue(line, STATIC, yytext);}
-"while"                                 {return setValue(line, WHILE, yytext);}
-
-","                                     {return setValue(line, COMMA, yytext);}
-"["                                     {return setValue(line, LBRACKET, yytext);}
-"]"                                     {return setValue(line, RBRACKET, yytext);}
-"("                                     {return setValue(line, LPAREN, yytext);}
-")"                                     {return setValue(line, RPAREN, yytext);}
-"{"                                     {return setValue(line, LBRACE, yytext);}
-"}"                                     {return setValue(line, RBRACE, yytext);}
-";"                                     {return setValue(line, SEMI, yytext);}
+\/\/.*\n                                lineno++; //comments
 
 
-"=="                                    {return setValue(line, EQUIV, yytext);}
-"!="                                    {return setValue(line, NEQ, yytext);}
-"<="                                    {return setValue(line, LEQ, yytext);}
-"<"                                     {return setValue(line, LESSER, yytext);}
-">="                                    {return setValue(line, GEQ, yytext);}
-">"                                     {return setValue(line, GREATER, yytext);}
-"="                                     {return setValue(line, ASSIGN, yytext);}
-"+="                                    {return setValue(line, PASSIGN, yytext);}
-"-="                                    {return setValue(line, MASSIGN, yytext);}
-"--"                                    {return setValue(line, DEC, yytext);}
-"++"                                    {return setValue(line, INC, yytext);}
-":"                                     {return setValue(line, COLON, yytext);}
+"and"                                   {return setValue(lineno, AND, yytext);}
+"break"                                 {return setValue(lineno, BREAK, yytext);}
+"bool"                                  {return setValue(lineno, BOOL, yytext);}
+"char"                                  {return setValue(lineno, CHAR, yytext);}
+"else"                                  {return setValue(lineno, ELSE, yytext);}
+"false"                                 {return setValue(lineno, FALSE, yytext);}
+"foreach"                               {return setValue(lineno, FOREACH, yytext);}
+"if"                                    {return setValue(lineno, IF, yytext);}
+"in"                                    {return setValue(lineno, IN, yytext);}
+"int"                                   {return setValue(lineno, INT, yytext);}
+"or"                                    {return setValue(lineno, OR, yytext);}
+"not"                                   {return setValue(lineno, NOT, yytext);}
+"return"                                {return setValue(lineno, RETURN, yytext);}
+"true"                                  {return setValue(lineno, TRUE, yytext);}
+"static"                                {return setValue(lineno, STATIC, yytext);}
+"while"                                 {return setValue(lineno, WHILE, yytext);}
 
-"+"                                     {return setValue(line, PLUS, yytext);}
-"-"                                     {return setValue(line, MINUS, yytext);}
-"/"                                     {return setValue(line, DIVIDE, yytext);}
-"%"                                     {return setValue(line, MOD, yytext);}
-"*"                                     {return setValue(line, MULTI, yytext);}
-
-\'.\'|\'\\.\'                           {return setValue(line, CHARCONST, yytext);}
-\"(\\.|[^ \n"\\])*\"                    {return setValue(line, STRINGCONST, yytext);}
-[a-zA-Z][a-zA-Z0-9_]*                   {return setValue(line, ID, yytext);}
-[0-9]+                                  {return setValue(line, NUMCONST, yytext);}
+","                                     {return setValue(lineno, COMMA, yytext);}
+"["                                     {return setValue(lineno, LBRACKET, yytext);}
+"]"                                     {return setValue(lineno, RBRACKET, yytext);}
+"("                                     {return setValue(lineno, LPAREN, yytext);}
+")"                                     {return setValue(lineno, RPAREN, yytext);}
+"{"                                     {return setValue(lineno, LBRACE, yytext);}
+"}"                                     {return setValue(lineno, RBRACE, yytext);}
+";"                                     {return setValue(lineno, SEMI, yytext);}
 
 
-.					{return setValue(line, yytext[0], yytext);}
+"=="                                    {return setValue(lineno, EQUIV, yytext);}
+"!="                                    {return setValue(lineno, NEQ, yytext);}
+"<="                                    {return setValue(lineno, LEQ, yytext);}
+"<"                                     {return setValue(lineno, LESSER, yytext);}
+">="                                    {return setValue(lineno, GEQ, yytext);}
+">"                                     {return setValue(lineno, GREATER, yytext);}
+"="                                     {return setValue(lineno, ASSIGN, yytext);}
+"+="                                    {return setValue(lineno, PASSIGN, yytext);}
+"-="                                    {return setValue(lineno, MASSIGN, yytext);}
+"--"                                    {return setValue(lineno, DEC, yytext);}
+"++"                                    {return setValue(lineno, INC, yytext);}
+":"                                     {return setValue(lineno, COLON, yytext);}
+
+"+"                                     {return setValue(lineno, PLUS, yytext);}
+"-"                                     {return setValue(lineno, MINUS, yytext);}
+"/"                                     {return setValue(lineno, DIVIDE, yytext);}
+"%"                                     {return setValue(lineno, MOD, yytext);}
+"*"                                     {return setValue(lineno, MULTI, yytext);}
+
+[a-zA-Z][a-zA-Z0-9_]*                   {return setValue(lineno, ID, yytext);}
+[0-9]+                                  {return setValue(lineno, NUMCONST, yytext);}
+'([^'\\\n]]|\\.|^.)'                    {return setValue(lineno, CHARCONST, yytext);}
+\"(\\.|[^\\"])*\"                       {return setValue(lineno, STRINGCONST, yytext);}
+
+
+
+
+
 
 
 %%

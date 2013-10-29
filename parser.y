@@ -3,17 +3,20 @@
     #include <stdlib.h>
     #include <stdio.h>
     #include "tokenStruct.h"
-    
-    //double var[26]; //places to store variable's values
+    #include "tree.c"
 
     extern int yylex();
+    extern int yydebug;
     extern FILE* yyin;
+
+    static TreeNode *savedTree;
 
 
 void yyerror(const char *s)
 {
-      printf("%s\n", s);
+      printf("\nyyerror: %s\n", s);
 }
+
 
     using namespace std;
 
@@ -23,7 +26,9 @@ void yyerror(const char *s)
 
 %union  
 {
-	TokenData *tokenData;
+    ExpType type;
+    TokenData *tokenData;
+    TreeNode *tNode;
 }
 
 
@@ -34,211 +39,404 @@ void yyerror(const char *s)
 %token <tokenData> PLUS MINUS DIVIDE MOD MULTI
 
 
+%type <tNode> program declarationlist declaration
 
+%type <tNode> vardeclaration scopedvardeclaration vardecllist vardeclinitialize vardeclid
+
+%type <tNode> fundeclaration params paramlist paramtypelist paramidlist paramid
+
+%type <tNode> statement sstatement compoundstmt localdeclarations statementlist expressionstmt
+%type <tNode> matchedselectionstmt unmatchedselectionstmt
+%type <tNode> returnstmt breakstmt
+
+%type <tNode> expression simpleexpression andexpression unaryrelexpression relexpression
+%type <tNode> relop sumexpression sumop term mulop unaryexpression unaryop
+%type <tNode> factor mutable immutable call args arglist constant
+
+%type <type> typespecifier scopedtypespecifier
 %%
 
-program                 :   declaration-list
+program                 :   declarationlist                                     { savedTree = $1; }
                         ;
 
-declaration-list        :   declaration-list declaration
-                        |   declaration
+declarationlist         :   declarationlist declaration                         { TreeNode* t = $1;
+                                                                                    if(t!=NULL)
+                                                                                    {
+                                                                                        while(t->sibling != NULL)
+                                                                                            t = t->sibling;
+                                                                                        t->sibling = $2;
+                                                                                        $$ = $1;
+                                                                                    }
+                                                                                    else
+                                                                                        $$ = $2;
+                                                                                }
+                                                                                    
+                        |   declaration                                         { $$ = $1; }
                         ;
 
-declaration             :   var-declaration
-                        |   fun-declaration
-                        ;
-
-
-
-
-var-declaration         :   type-specifier var-decl-list SEMI
-                        ;
-
-scoped-var-declaration  :   scoped-type-specifier var-decl-list SEMI
-                        ;
-
-var-decl-list           :   var-decl-list COMMA var-decl-initialize
-                        |   var-decl-initialize
-                        ;
-
-var-decl-initialize     :   var-decl-id
-                        |   var-decl-id COLON simple-expression
-                        ;
-
-var-decl-id             :   ID
-                        |   ID LBRACKET NUMCONST RBRACKET
-                        ;
-
-scoped-type-specifier   :   STATIC type-specifier
-                        |   type-specifier
-                        ;
-
-type-specifier          :   INT
-                        |   BOOL
-                        |   CHAR
-                        ;
-
-
-
-fun-declaration         :   type-specifier ID LPAREN params RPAREN statement   { cout << "Line: " << yyval.tokenData->linenum << " Got to new function dec" << endl; }
-                        |   ID LPAREN params RPAREN statement   { cout << "Line: " << yyval.tokenData->linenum << " Got to new function dec" << endl; }
-                        ;
-
-params                  :   param-list
-                        |   
-                        ;
-
-param-list              :   param-list SEMI param-type-list
-                        |   param-type-list
-                        ;
-
-param-type-list         :   type-specifier param-id-list
-                        ;
-
-param-id-list           :   param-id-list COMMA param-id
-                        |   param-id
-                        ;
-
-param-id                :   ID
-                        |   ID LBRACKET RBRACKET
-                        ;
-
-
-statement               :   matched
-                        |   unmatched-selection-stmt
-                        ;
-
-matched                 :   expression-stmt
-                        |   compound-stmt
-                        |   matched-selection-stmt
-                        |   iteration-stmt
-                        |   return-stmt
-                        |   break-stmt
-                        ;
-
-compound-stmt           :   LBRACE local-declarations statement-list RBRACE
-                        ;
-
-local-declarations      :   local-declarations scoped-var-declaration
-                        |   
-                        ;
-
-statement-list          :   statement-list statement
-                        |
-                        ;
-
-expression-stmt         :   expression SEMI
-                        |   SEMI
-                        ;
-
-unmatched-selection-stmt:   IF LPAREN simple-expression RPAREN statement    { cout << "Line: " << yyval.tokenData->linenum << " Got inside unmatched IF" << endl; }
-                        |   IF LPAREN simple-expression RPAREN matched ELSE unmatched-selection-stmt   { cout << "Line: " << yyval.tokenData->linenum << " Got inside unmatched IF" << endl; }
-                        ;
-
-matched-selection-stmt  :   IF LPAREN simple-expression RPAREN matched ELSE matched { cout << "Line: " << yyval.tokenData->linenum << " Got inside matched IF" << endl; }
-                        ;
-
-iteration-stmt          :   WHILE LPAREN simple-expression RPAREN statement    { cout << "Line: " << yyval.tokenData->linenum << " Got inside iteration stmt" << endl; }
-                        |   FOREACH LPAREN mutable IN simple-expression RPAREN statement   { cout << "Line: " << yyval.tokenData->linenum << " Got inside iteration stmt" << endl; }
-                        ;
-
-return-stmt             :   RETURN SEMI   { cout << "Line: " << yyval.tokenData->linenum << " Got to the return statement" << endl; }
-                        |   RETURN expression SEMI   { cout << "Line: " << yyval.tokenData->linenum << " Got to the return statement" << endl; }
-                        ;
-
-break-stmt              :   BREAK SEMI   { cout << "Line: " << yyval.tokenData->linenum << " Got to break stmt" << endl; }
+declaration             :   vardeclaration                                      { $$ = $1; }
+                        |   fundeclaration                                      { $$ = $1; }
                         ;
 
 
 
 
-
-expression              :   mutable ASSIGN expression  { cout << "Line: " << yyval.tokenData->linenum << " Got inside assignment expression" << endl; }
-                        |   mutable PASSIGN expression
-                        |   mutable MASSIGN expression
-                        |   mutable INC
-                        |   mutable DEC
-                        |   simple-expression
+vardeclaration          :   typespecifier vardecllist SEMI                      { TreeNode* t = $2;
+                                                                                    while(t!=NULL)
+                                                                                    {
+                                                                                        t->expType=$1;
+                                                                                        t = t->sibling;
+                                                                                    }
+                                                                                    $$ = $2;
+                                                                                }        
                         ;
 
-simple-expression       :   simple-expression OR and-expression
-                        |   and-expression
+scopedvardeclaration    :   scopedtypespecifier vardecllist SEMI                { TreeNode* t = $2;
+                                                                                    while(t!=NULL)
+                                                                                    {
+                                                                                        t->expType=$1;
+                                                                                        t = t->sibling;
+                                                                                    }
+                                                                                    $$ = $2;
+                                                                                    $$->isStatic=true; 
+                                                                                }
                         ;
 
-and-expression          :   and-expression AND unary-rel-expression
-                        |   unary-rel-expression
+vardecllist             :   vardecllist COMMA vardeclinitialize                 { TreeNode* t = $1;
+                                                                                    if(t!=NULL)
+                                                                                    {
+                                                                                        while(t->sibling != NULL)
+                                                                                            t = t->sibling;
+                                                                                        t->sibling = $3;
+                                                                                        $$ = $1;
+                                                                                    }
+                                                                                    else
+                                                                                        $$ = $3;
+                                                                                }
+                        |   vardeclinitialize                                   { $$ = $1; }
                         ;
 
-unary-rel-expression    :   NOT unary-rel-expression
-                        |   rel-expression
+vardeclinitialize       :   vardeclid                                           { $$ = $1; }
+                        |   vardeclid COLON simpleexpression                    { $$ = $1; $$->child[0] = $3; }
                         ;
 
-rel-expression          :   sum-expression relop sum-expression
-                        |   sum-expression
+vardeclid               :   ID                                                  { $$ = newDeclNode(varK,yylval.tokenData->lineno); $$->attr.name=$1->idvalue; }
+                        |   ID LBRACKET NUMCONST RBRACKET                       { $$ = newDeclNode(varK,yylval.tokenData->lineno); $$->attr.name=$1->idvalue; $$->isArray=true; }
                         ;
 
-relop                   :   LEQ
-                        |   LESSER
-                        |   GREATER
-                        |   GEQ
-                        |   EQUIV
-                        |   NEQ
+scopedtypespecifier     :   STATIC typespecifier                                { $$ = $2; }
+                        |   typespecifier                                       { $$ = $1; }
                         ;
 
-sum-expression          :   sum-expression sumop term
-                        |   term
+typespecifier           :   INT                                                 { $$ = Int; }
+                        |   BOOL                                                { $$ = Bool; }
+                        |   CHAR                                                { $$ = Char; }
                         ;
 
-sumop                   :   PLUS
-                        |   MINUS
+
+
+fundeclaration          :   typespecifier ID LPAREN params RPAREN statement     { int lineno = $2->lineno; $$ = newDeclNode(funcK,lineno); $$->child[0]=$4; $$->child[1]=$6; $$->attr.name=$2->idvalue; $$->expType=$1; }
+                        |   ID LPAREN params RPAREN statement                   { int lineno = $1->lineno; $$ = newDeclNode(funcK,lineno); $$->child[0]=$3; $$->child[1]=$5; $$->attr.name=$1->idvalue; $$->expType=Void; }
                         ;
 
-term                    :   term mulop unary-expression
-                        |   unary-expression
+params                  :   paramlist                                           { $$ = $1; }
+                        |                                                       { $$ = NULL; }
                         ;
 
-mulop                   :   MULTI
-                        |   DIVIDE
-                        |   MOD
+paramlist               :   paramlist SEMI paramtypelist                        { TreeNode* t = $1;
+                                                                                    if(t!=NULL)
+                                                                                    {
+                                                                                        while(t->sibling != NULL)
+                                                                                            t = t->sibling;
+                                                                                        t->sibling = $3;
+                                                                                        $$ = $1;
+                                                                                    }
+                                                                                    else
+                                                                                        $$ = $3;
+                                                                                }
+                        |   paramtypelist                                       { $$ = $1; }
                         ;
 
-unary-expression        :   unaryop unary-expression
-                        |   factor
+paramtypelist           :   typespecifier paramidlist                           { TreeNode* t = $2;
+                                                                                    while(t!=NULL)
+                                                                                    {
+                                                                                        t->expType=$1;
+                                                                                        t = t->sibling;
+                                                                                    }
+                                                                                    $$ = $2;
+                                                                                } 
                         ;
 
-unaryop                 :   MINUS
-                        |   MULTI
+paramidlist             :   paramidlist COMMA paramid                           { TreeNode* t = $1;
+                                                                                    if(t!=NULL)
+                                                                                    {
+                                                                                        while(t->sibling != NULL)
+                                                                                            t = t->sibling;
+                                                                                        t->sibling = $3;
+                                                                                        $$ = $1;
+                                                                                    }
+                                                                                    else
+                                                                                        $$ = $3;
+                                                                                }
+                        |   paramid                                            
                         ;
 
-factor                  :   immutable
-                        |   mutable
+paramid                 :   ID                                                  { $$ = newDeclNode(paramK,yylval.tokenData->lineno); $$->attr.name=$1->idvalue; }
+                        |   ID LBRACKET RBRACKET                                { $$ = newDeclNode(paramK,yylval.tokenData->lineno); $$->attr.name=$1->idvalue; $$->isArray=true; }
                         ;
 
-mutable                 :   ID
-                        |   ID LBRACKET expression RBRACKET
+
+statement               :   matchedselectionstmt                                { $$ = $1; }
+                        |   unmatchedselectionstmt                              { $$ = $1; }
                         ;
 
-immutable               :   LPAREN expression RPAREN
-                        |   call
-                        |   constant
+sstatement              :   expressionstmt                                      { $$ = $1; }
+                        |   compoundstmt                                        { $$ = $1; }
+                        |   returnstmt                                          { $$ = $1; }
+                        |   breakstmt                                           { $$ = $1; }
                         ;
 
-call                    :   ID LPAREN args RPAREN
+compoundstmt            :   LBRACE localdeclarations statementlist RBRACE       { int lineno=$1->lineno; $$ = newStmtNode(compoundK,lineno); $$->child[0]=$2; $$->child[1]=$3; }
                         ;
 
-args                    :   arg-list
-                        |   
+localdeclarations       :   localdeclarations scopedvardeclaration              { TreeNode* t = $1;
+                                                                                    if(t!=NULL)
+                                                                                    {
+                                                                                        while(t->sibling != NULL)
+                                                                                            t = t->sibling;
+                                                                                        t->sibling = $2;
+                                                                                        $$ = $1;
+                                                                                    }
+                                                                                    else
+                                                                                        $$ = $2;
+                                                                                }
+                        |                                                       { $$ = NULL; }
                         ;
 
-arg-list                :   arg-list COMMA expression
-                        |   expression
+statementlist           :   statementlist statement                             { TreeNode* t = $1;
+                                                                                    if(t!=NULL)
+                                                                                    {
+                                                                                        while(t->sibling != NULL)
+                                                                                            t = t->sibling;
+                                                                                        t->sibling = $2;
+                                                                                        $$ = $1;
+                                                                                    }
+                                                                                    else
+                                                                                        $$ = $2;
+                                                                                }
+                        |                                                       { $$ = NULL; }
                         ;
 
-constant                :   NUMCONST
-                        |   CHARCONST
-                        |   STRINGCONST
-                        |   TRUE
-                        |   FALSE
+expressionstmt          :   expression SEMI                                     { $$ = $1; }
+                        |   SEMI                                                { $$ = NULL; }
+                        ;
+
+matchedselectionstmt    :   IF LPAREN simpleexpression RPAREN matchedselectionstmt ELSE matchedselectionstmt            { int lineno=$1->lineno; $$ = newStmtNode(ifK,lineno); $$->child[0]=$3; $$->child[1]=$5; $$->child[2]=$7; }
+                        |   WHILE LPAREN simpleexpression RPAREN matchedselectionstmt                                   { int lineno=$1->lineno; $$ = newStmtNode(whileK,lineno); $$->child[0]=$3; $$->child[1]=$5; }
+                        |   FOREACH LPAREN mutable IN simpleexpression RPAREN matchedselectionstmt                      { int lineno=$1->lineno; $$ = newStmtNode(foreachK,lineno); $$->child[0]=$3; $$->child[1]=$5; $$->child[2]=$7; }
+                        |   sstatement                                                                                  { $$ = $1; }
+                        ;
+
+unmatchedselectionstmt  :   IF LPAREN simpleexpression RPAREN statement                                                 { int lineno=$1->lineno; $$ = newStmtNode(ifK,lineno); $$->child[0]=$3; $$->child[1]=$5; }
+                        |   IF LPAREN simpleexpression RPAREN matchedselectionstmt ELSE unmatchedselectionstmt          { int lineno=$1->lineno; $$ = newStmtNode(ifK,lineno); $$->child[0]=$3; $$->child[1]=$5; $$->child[2]=$7; }
+                        |   WHILE LPAREN simpleexpression RPAREN unmatchedselectionstmt                                 { int lineno=$1->lineno; $$ = newStmtNode(whileK,lineno); $$->child[0]=$3; $$->child[1]=$5; }
+                        |   FOREACH LPAREN mutable IN simpleexpression RPAREN unmatchedselectionstmt                    { int lineno=$1->lineno; $$ = newStmtNode(foreachK,lineno); $$->child[0]=$3; $$->child[1]=$5; $$->child[2]=$7; }
+                        ;
+
+returnstmt              :   RETURN SEMI                                         { $$ = newStmtNode(returnK,yylval.tokenData->lineno); }
+                        |   RETURN expression SEMI                              { $$ = newStmtNode(returnK,yylval.tokenData->lineno); $$->child[0] = $2; }
+                        ;
+
+breakstmt               :   BREAK SEMI                                          { $$ = newStmtNode(breakK,yylval.tokenData->lineno); }
+                        ;
+
+
+
+
+expression              :   mutable ASSIGN expression                           { TreeNode* t = $3;
+                                                                                    if(t!=NULL)
+                                                                                    {
+                                                                                        while(t->sibling != NULL)
+                                                                                            t = t->sibling;
+                                                                                        //t->sibling = $1;
+                                                                                        $$ = newExpNode(assignK,yylval.tokenData->lineno);
+                                                                                        $$->attr.op = eqK;
+                                                                                        $$->child[0] = $1;
+                                                                                        $$->child[1] = $3;
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        $$ = newExpNode(assignK,yylval.tokenData->lineno);
+                                                                                        $$->attr.op = eqK;
+                                                                                        $$->child[0] = $1;
+                                                                                        $$->child[1] = $3;
+                                                                                    }
+                                                                                }
+                        |   mutable PASSIGN expression                          { TreeNode* t = $3;
+                                                                                    if(t!=NULL)
+                                                                                    {
+                                                                                        while(t->sibling != NULL)
+                                                                                            t = t->sibling;
+                                                                                        //t->sibling = $1;
+                                                                                        $$ = newExpNode(assignK,yylval.tokenData->lineno);
+                                                                                        $$->attr.op = peqK;
+                                                                                        $$->child[0] = $1;
+                                                                                        $$->child[1] = $3;
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        $$ = newExpNode(assignK,yylval.tokenData->lineno);
+                                                                                        $$->attr.op = peqK;
+                                                                                        $$->child[0] = $1;
+                                                                                        $$->child[1] = $3;
+                                                                                    }
+                                                                                }
+                        |   mutable MASSIGN expression                          { TreeNode* t = $3;
+                                                                                    if(t!=NULL)
+                                                                                    {
+                                                                                        while(t->sibling != NULL)
+                                                                                            t = t->sibling;
+                                                                                        //t->sibling = $1;
+                                                                                        $$ = newExpNode(assignK,yylval.tokenData->lineno);
+                                                                                        $$->attr.op = meqK;
+                                                                                        $$->child[0] = $1;
+                                                                                        $$->child[1] = $3;
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        $$ = newExpNode(assignK,yylval.tokenData->lineno);
+                                                                                        $$->attr.op = meqK;
+                                                                                        $$->child[0] = $1;
+                                                                                        $$->child[1] = $3;
+                                                                                    }
+                                                                                }
+                        |   mutable INC                                         { $$ = newExpNode(assignK,yylval.tokenData->lineno); $$->attr.op = ppK; $$->child[0] = $1; }
+                        |   mutable DEC                                         { $$ = newExpNode(assignK,yylval.tokenData->lineno); $$->attr.op = mmK; $$->child[0] = $1; }
+                        |   simpleexpression                                    { $$ = $1; }
+                        ;
+
+simpleexpression        :   simpleexpression OR andexpression                   { TreeNode* t = $1;
+                                                                                    if(t!=NULL)
+                                                                                    {
+                                                                                        while(t->sibling != NULL)
+                                                                                            t = t->sibling;
+                                                                                        $$ = newExpNode(opK,yylval.tokenData->lineno);
+                                                                                        $$->attr.op = orK;
+                                                                                        $$->child[0] = $1;
+                                                                                        $$->child[1] = $3;
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        $$ = newExpNode(opK,yylval.tokenData->lineno);
+                                                                                        $$->attr.op = orK;
+                                                                                        $$->child[0] = $1;
+                                                                                        $$->child[1] = $3;
+                                                                                    }
+                                                                                }
+                        |   andexpression                                       { $$ = $1; }
+                        ;
+
+andexpression           :   andexpression AND unaryrelexpression                { TreeNode* t = $1;
+                                                                                    if(t!=NULL)
+                                                                                    {
+                                                                                        while(t->sibling != NULL)
+                                                                                            t = t->sibling;
+                                                                                        $$ = newExpNode(opK,yylval.tokenData->lineno);
+                                                                                        $$->attr.op = andK;
+                                                                                        $$->child[0] = $1;
+                                                                                        $$->child[1] = $3;
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        $$ = newExpNode(opK,yylval.tokenData->lineno);
+                                                                                        $$->attr.op = andK;
+                                                                                        $$->child[0] = $1;
+                                                                                        $$->child[1] = $3;
+                                                                                    }
+                                                                                }
+                        |   unaryrelexpression                                  { $$ = $1; }
+                        ;
+
+unaryrelexpression      :   NOT unaryrelexpression                              { $$ = newExpNode(opK,yylval.tokenData->lineno); $$->attr.op = notK; $$->child[0]=$2; }
+                        |   relexpression                                       { $$ = $1; }
+                        ;
+
+relexpression           :   sumexpression relop sumexpression                   { $$ = $2; $$->child[0] = $1; $$->child[1] = $3; }
+                        |   sumexpression                                       { $$ = $1; }
+                        ;
+
+relop                   :   LEQ                                                 { $$ = newExpNode(opK,yylval.tokenData->lineno); $$->attr.op = lteqK; }
+                        |   LESSER                                              { $$ = newExpNode(opK,yylval.tokenData->lineno); $$->attr.op = ltK; }
+                        |   GREATER                                             { $$ = newExpNode(opK,yylval.tokenData->lineno); $$->attr.op = gtK; }
+                        |   GEQ                                                 { $$ = newExpNode(opK,yylval.tokenData->lineno); $$->attr.op = gteqK; }
+                        |   EQUIV                                               { $$ = newExpNode(opK,yylval.tokenData->lineno); $$->attr.op = equivK; }
+                        |   NEQ                                                 { $$ = newExpNode(opK,yylval.tokenData->lineno); $$->attr.op = neqK; }
+                        ;
+
+sumexpression           :   sumexpression sumop term                            { $$ = $2; $$->child[0]=$1; $$->child[1]=$3; }
+                        |   term                                                { $$ = $1; }
+                        ;
+
+sumop                   :   PLUS                                                { $$ = newExpNode(opK,yylval.tokenData->lineno); $$->attr.op = plusK; }
+                        |   MINUS                                               { $$ = newExpNode(opK,yylval.tokenData->lineno); $$->attr.op = minusK; }
+                        ;
+
+term                    :   term mulop unaryexpression                          { $$ = $2; $$->child[0] = $1; $$->child[1]=$3; }
+                        |   unaryexpression                                     { $$ = $1; }
+                        ;
+
+mulop                   :   MULTI                                               { $$ = newExpNode(opK,yylval.tokenData->lineno); $$->attr.op = multiK; }
+                        |   DIVIDE                                              { $$ = newExpNode(opK,yylval.tokenData->lineno); $$->attr.op = divideK; }
+                        |   MOD                                                 { $$ = newExpNode(opK,yylval.tokenData->lineno); $$->attr.op = modK; }
+                        ;
+
+unaryexpression         :   unaryop unaryexpression                             { $$ = $1; $$->child[0]=$2; }
+                        |   factor                                              { $$ = $1; }
+                        ;
+
+unaryop                 :   MINUS                                               { $$ = newExpNode(opK,yylval.tokenData->lineno); $$->attr.op = UminusK; }
+                        |   MULTI                                               { $$ = newExpNode(opK,yylval.tokenData->lineno); $$->attr.op = UmultiK; }
+                        ;
+
+factor                  :   immutable                                           { $$ = $1; }
+                        |   mutable                                             { $$ = $1; }
+                        ;
+
+mutable                 :   ID                                                  { $$ = newExpNode(idK,yylval.tokenData->lineno); $$->attr.name=$1->idvalue; }
+                        |   ID LBRACKET expression RBRACKET                     { $$ = newExpNode(idK,$1->lineno); $$->child[0] = $3; $$->attr.name=$1->idvalue; }
+                        ;
+
+immutable               :   LPAREN expression RPAREN                            { $$ = $2; }
+                        |   call                                                { $$ = $1; }
+                        |   constant                                            { $$ = $1; $$->isConstant = true; }
+                        ;
+
+call                    :   ID LPAREN args RPAREN                               { $$ = newExpNode(callK, yylval.tokenData->lineno); $$->child[0] = $3; $$->attr.name=$1->idvalue;  }
+                        ;
+
+args                    :   arglist                                             { $$ = $1; }
+                        |                                                       { $$ = NULL; }
+                        ;
+
+arglist                 :   arglist COMMA expression                            { TreeNode* t = $1;
+                                                                                    if(t!=NULL)
+                                                                                    {
+                                                                                        while(t->sibling != NULL)
+                                                                                            t = t->sibling;
+                                                                                        t->sibling = $3;
+                                                                                        $$ = $1;
+                                                                                    }
+                                                                                    else
+                                                                                        $$ = $3;
+                                                                                }
+                        |   expression                                          { $$ = $1; }
+                        ;
+
+constant                :   NUMCONST                                            { $$ = newExpNode(constK,yylval.tokenData->lineno); $$->attr.val = $1->numvalue; $$->expType=Int; }
+                        |   CHARCONST                                           { $$ = newExpNode(constK,yylval.tokenData->lineno); $$->attr.string = $1->tokenstr; $$->expType=Char; }
+                        |   STRINGCONST                                         { $$ = newExpNode(constK,yylval.tokenData->lineno); $$->attr.string = $1->tokenstr; $$->expType=Char; }
+                        |   TRUE                                                { $$ = newExpNode(constK,yylval.tokenData->lineno); $$->expType=True; }
+                        |   FALSE                                               { $$ = newExpNode(constK,yylval.tokenData->lineno); }
                         ;
 
 
@@ -246,11 +444,37 @@ constant                :   NUMCONST
 
 main(int argc, char* argv[])
 {
-    yyin = fopen(argv[1], "r");
+    int c;
+    extern char* optarg;
+    extern int optind;
+    char **inputfile;
+    yydebug=0;
+
+    //yyin = fopen(argv[1], "r");
     //outputfile = fopen("output.txt", "w");
+
+    while((c = getopt(argc, argv, "d:")) != -1)
+    {
+        switch(c)
+        {
+            case 'd':
+                yydebug=1;
+                printf("YYDEBUG==%d",yydebug);
+                break;
+            default:
+                printf("Unknown option(s)\n");
+                break;
+        }
+        c = getopt(argc, argv, "d:");
+     }
+     inputfile = argv + optind;
+     yyin = fopen((inputfile[0]), "r");
 
 
     yyparse();
+    //printf("finished parsing\n");
+    
+    printTree(savedTree);
 
     return 0;
 

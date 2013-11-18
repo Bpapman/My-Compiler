@@ -2,10 +2,43 @@
 <configurationDescriptor version="89">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <df root="." name="Compiler">
+      <df name="hw1">
+        <in>lex.yy.c</in>
+        <in>parser.tab.c</in>
+        <in>parser.tab.h</in>
+        <in>tokenStruct.h</in>
+      </df>
+      <df name="hw2">
+        <in>lex.yy.c</in>
+        <in>parser.tab.c</in>
+        <in>parser.tab.h</in>
+        <in>tokenStruct.h</in>
+        <in>tree.c</in>
+        <in>tree.h</in>
+      </df>
+      <df name="hw3">
+        <df name="symtab">
+          <in>symtab.cpp</in>
+          <in>symtab.h</in>
+          <in>symtabTest.cpp</in>
+          <in>symtabc.c</in>
+          <in>symtabc.h</in>
+        </df>
+      </df>
+      <df name="pas02A1Tests">
+      </df>
+      <df name="testDataA3">
+      </df>
+      <in>analyze.c</in>
       <in>lex.yy.c</in>
       <in>parser.tab.c</in>
       <in>parser.tab.h</in>
+      <in>symtab.c</in>
+      <in>symtab.cpp</in>
+      <in>symtab.h</in>
       <in>tokenStruct.h</in>
+      <in>tree.c</in>
+      <in>tree.h</in>
     </df>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>

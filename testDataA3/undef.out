@@ -1,0 +1,25 @@
+ERROR(6): Symbol 'undef' is not defined.
+ERROR(6): Initializer for variable 'x' is not a constant expression.
+ERROR(6): Symbol 'x' is already defined at line 5.
+ERROR(10): Symbol 'undef' is not defined.
+ERROR(11): '+' requires operands of type int but rhs is of type void.
+ERROR(12): Symbol 'undef' is not defined.
+ERROR(13): '+' requires operands of type int but lhs is of type void.
+ERROR(14): Symbol 'undef' is not defined.
+ERROR(14): Symbol 'undef' is not defined.
+ERROR(15): '+' requires operands of type int but lhs is of type void.
+ERROR(15): '+' requires operands of type int but rhs is of type void.
+ERROR(18): Symbol 'undef' is not defined.
+ERROR(19): '+' requires operands of type int but rhs is of type void.
+ERROR(20): Symbol 'undef' is not defined.
+ERROR(21): '+' requires operands of type int but lhs is of type void.
+ERROR(22): Symbol 'undef' is not defined.
+ERROR(22): Symbol 'undef' is not defined.
+ERROR(23): '+' requires operands of type int but lhs is of type void.
+ERROR(23): '+' requires operands of type int but rhs is of type void.
+ERROR(25): Symbol 'undef' is not defined.
+ERROR(26): Symbol 'undef' is not defined.
+ERROR(27): Symbol 'undef' is not defined.
+ERROR(28): Symbol 'undef' is not defined.
+Number of warnings: 0
+Number of errors: 23

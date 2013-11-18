@@ -92,7 +92,7 @@ typedef union YYSTYPE
 {
 
 /* Line 2068 of yacc.c  */
-#line 28 "parser.y"
+#line 143 "parser.y"
 
     ExpType type;
     TokenData *tokenData;

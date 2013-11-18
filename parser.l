@@ -6,7 +6,7 @@
     #include "tokenStruct.h"
     #include "parser.tab.h"
 
-
+    extern int numwarnings;
     int lineno = 1;
 
     char* copystring(char* s)
@@ -82,13 +82,19 @@
     }
 
 
-            
+    extern char* lasttokenscanned;
+    extern int globallineno;
     
     int setValue(int linenum, int tokenClass, char* svalue)
     {
+
+            //printf("Token: %s [line: %d]\n", svalue, linenum);
             yylval.tokenData = new TokenData;
             yylval.tokenData->tokenClass = tokenClass;
             yylval.tokenData->lineno = linenum;
+
+            lasttokenscanned = svalue;
+            globallineno = linenum;
             
             switch(tokenClass)
             {
@@ -168,11 +174,13 @@
 
 [a-zA-Z][a-zA-Z0-9_]*                   {return setValue(lineno, ID, yytext);}
 [0-9]+                                  {return setValue(lineno, NUMCONST, yytext);}
-'([^'\\\n]]|\\.|^.)'                    {return setValue(lineno, CHARCONST, yytext);}
+\'([^'\\\n]|\\.|^.)\'                   {return setValue(lineno, CHARCONST, yytext);}
 \"(\\.|[^\\"])*\"                       {return setValue(lineno, STRINGCONST, yytext);}
 
-
-
+.                                       {
+                                            printf("WARNING(%d): Invalid input character: %s, Character ignored.\n", lineno, yytext);
+                                            numwarnings++;
+                                        }
 
 
 

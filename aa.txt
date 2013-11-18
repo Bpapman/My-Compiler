@@ -1,0 +1,501 @@
+%{								%{
+    #include <iostream>						    #include <iostream>
+    #include <stdlib.h>						    #include <stdlib.h>
+    #include <stdio.h>						    #include <stdio.h>
+    #include "tokenStruct.h"					    #include "tokenStruct.h"
+    #include "tree.c"						    #include "tree.c"
+    #include "analyze.c"				      <
+
+    extern int yylex();						    extern int yylex();
+    extern int yydebug;						    extern int yydebug;
+    extern FILE* yyin;						    extern FILE* yyin;
+
+    extern SymTab* tab;					      <
+							      <
+    static TreeNode *savedTree;					    static TreeNode *savedTree;
+
+    							      <
+
+#ifndef yyerr						      |	void yyerror(const char *s)
+#define yyerr						      <
+void yyerror(const char* err)				      <
+{								{
+      printf("yyerror: %s\n", err);			      |	      printf("\nyyerror: %s\n", s);
+}								}
+#endif							      |
+							      >
+    using namespace std;					    using namespace std;
+
+
+%}								%}
+
+
+%union  							%union  
+{								{
+    ExpType type;						    ExpType type;
+    TokenData *tokenData;					    TokenData *tokenData;
+    TreeNode *tNode;						    TreeNode *tNode;
+}								}
+
+
+%token <tokenData> ID NUMCONST CHARCONST STRINGCONST		%token <tokenData> ID NUMCONST CHARCONST STRINGCONST
+%token <tokenData> AND BREAK BOOL CHAR ELSE FALSE FOREACH IF 	%token <tokenData> AND BREAK BOOL CHAR ELSE FALSE FOREACH IF 
+%token <tokenData> COMMA LBRACKET RBRACKET LPAREN RPAREN LBRA	%token <tokenData> COMMA LBRACKET RBRACKET LPAREN RPAREN LBRA
+%token <tokenData> EQUIV NEQ LEQ LESSER GEQ GREATER ASSIGN PA	%token <tokenData> EQUIV NEQ LEQ LESSER GEQ GREATER ASSIGN PA
+%token <tokenData> PLUS MINUS DIVIDE MOD MULTI			%token <tokenData> PLUS MINUS DIVIDE MOD MULTI
+
+
+%type <tNode> program declarationlist declaration		%type <tNode> program declarationlist declaration
+
+%type <tNode> vardeclaration scopedvardeclaration vardecllist	%type <tNode> vardeclaration scopedvardeclaration vardecllist
+
+%type <tNode> fundeclaration params paramlist paramtypelist p	%type <tNode> fundeclaration params paramlist paramtypelist p
+
+%type <tNode> statement sstatement compoundstmt localdeclarat	%type <tNode> statement sstatement compoundstmt localdeclarat
+%type <tNode> matchedselectionstmt unmatchedselectionstmt	%type <tNode> matchedselectionstmt unmatchedselectionstmt
+%type <tNode> returnstmt breakstmt				%type <tNode> returnstmt breakstmt
+
+%type <tNode> expression simpleexpression andexpression unary	%type <tNode> expression simpleexpression andexpression unary
+%type <tNode> relop sumexpression sumop term mulop unaryexpre	%type <tNode> relop sumexpression sumop term mulop unaryexpre
+%type <tNode> factor mutable immutable call args arglist cons	%type <tNode> factor mutable immutable call args arglist cons
+
+%type <type> typespecifier scopedtypespecifier			%type <type> typespecifier scopedtypespecifier
+%%								%%
+
+program                 :   declarationlist                  	program                 :   declarationlist                  
+                        ;					                        ;
+
+declarationlist         :   declarationlist declaration      	declarationlist         :   declarationlist declaration      
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                        |   declaration                      	                        |   declaration                      
+                        ;					                        ;
+
+declaration             :   vardeclaration                   	declaration             :   vardeclaration                   
+                        |   fundeclaration                   	                        |   fundeclaration                   
+                        ;					                        ;
+
+
+
+
+vardeclaration          :   typespecifier vardecllist SEMI   	vardeclaration          :   typespecifier vardecllist SEMI   
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                        ;					                        ;
+
+scopedvardeclaration    :   scopedtypespecifier vardecllist S	scopedvardeclaration    :   scopedtypespecifier vardecllist S
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                        ;					                        ;
+
+vardecllist             :   vardecllist COMMA vardeclinitiali	vardecllist             :   vardecllist COMMA vardeclinitiali
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                        |   vardeclinitialize                	                        |   vardeclinitialize                
+                        ;					                        ;
+
+vardeclinitialize       :   vardeclid                        	vardeclinitialize       :   vardeclid                        
+                        |   vardeclid COLON simpleexpression  |	                        |   vardeclid COLON simpleexpression 
+                        ;					                        ;
+
+vardeclid               :   ID                               	vardeclid               :   ID                               
+                        |   ID LBRACKET NUMCONST RBRACKET    	                        |   ID LBRACKET NUMCONST RBRACKET    
+                        ;					                        ;
+
+scopedtypespecifier     :   STATIC typespecifier             	scopedtypespecifier     :   STATIC typespecifier             
+                        |   typespecifier                    	                        |   typespecifier                    
+                        ;					                        ;
+
+typespecifier           :   INT                              	typespecifier           :   INT                              
+                        |   BOOL                             	                        |   BOOL                             
+                        |   CHAR                             	                        |   CHAR                             
+                        ;					                        ;
+
+
+
+fundeclaration          :   typespecifier ID LPAREN params RP	fundeclaration          :   typespecifier ID LPAREN params RP
+                        |   ID LPAREN params RPAREN statement	                        |   ID LPAREN params RPAREN statement
+                        ;					                        ;
+
+params                  :   paramlist                        	params                  :   paramlist                        
+                        |                                    	                        |                                    
+                        ;					                        ;
+
+paramlist               :   paramlist SEMI paramtypelist     	paramlist               :   paramlist SEMI paramtypelist     
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                        |   paramtypelist                    	                        |   paramtypelist                    
+                        ;					                        ;
+
+paramtypelist           :   typespecifier paramidlist        	paramtypelist           :   typespecifier paramidlist        
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                        ;					                        ;
+
+paramidlist             :   paramidlist COMMA paramid        	paramidlist             :   paramidlist COMMA paramid        
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                        |   paramid                          	                        |   paramid                          
+                        ;					                        ;
+
+paramid                 :   ID                               	paramid                 :   ID                               
+                        |   ID LBRACKET RBRACKET             	                        |   ID LBRACKET RBRACKET             
+                        ;					                        ;
+
+
+statement               :   matchedselectionstmt             	statement               :   matchedselectionstmt             
+                        |   unmatchedselectionstmt           	                        |   unmatchedselectionstmt           
+                        ;					                        ;
+
+sstatement              :   expressionstmt                   	sstatement              :   expressionstmt                   
+                        |   compoundstmt                     	                        |   compoundstmt                     
+                        |   returnstmt                       	                        |   returnstmt                       
+                        |   breakstmt                        	                        |   breakstmt                        
+                        ;					                        ;
+
+compoundstmt            :   LBRACE localdeclarations statemen	compoundstmt            :   LBRACE localdeclarations statemen
+                        ;					                        ;
+
+localdeclarations       :   localdeclarations scopedvardeclar	localdeclarations       :   localdeclarations scopedvardeclar
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                        |                                    	                        |                                    
+                        ;					                        ;
+
+statementlist           :   statementlist statement          	statementlist           :   statementlist statement          
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                        |                                    	                        |                                    
+                        ;					                        ;
+
+expressionstmt          :   expression SEMI                  	expressionstmt          :   expression SEMI                  
+                        |   SEMI                             	                        |   SEMI                             
+                        ;					                        ;
+
+matchedselectionstmt    :   IF LPAREN simpleexpression RPAREN	matchedselectionstmt    :   IF LPAREN simpleexpression RPAREN
+                        |   WHILE LPAREN simpleexpression RPA	                        |   WHILE LPAREN simpleexpression RPA
+                        |   FOREACH LPAREN mutable IN simplee	                        |   FOREACH LPAREN mutable IN simplee
+                        |   sstatement                       	                        |   sstatement                       
+                        ;					                        ;
+
+unmatchedselectionstmt  :   IF LPAREN simpleexpression RPAREN	unmatchedselectionstmt  :   IF LPAREN simpleexpression RPAREN
+                        |   IF LPAREN simpleexpression RPAREN	                        |   IF LPAREN simpleexpression RPAREN
+                        |   WHILE LPAREN simpleexpression RPA	                        |   WHILE LPAREN simpleexpression RPA
+                        |   FOREACH LPAREN mutable IN simplee	                        |   FOREACH LPAREN mutable IN simplee
+                        ;					                        ;
+
+returnstmt              :   RETURN SEMI                      	returnstmt              :   RETURN SEMI                      
+                        |   RETURN expression SEMI           	                        |   RETURN expression SEMI           
+                        ;					                        ;
+
+breakstmt               :   BREAK SEMI                       	breakstmt               :   BREAK SEMI                       
+                        ;					                        ;
+
+
+
+
+expression              :   mutable ASSIGN expression        	expression              :   mutable ASSIGN expression        
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                        |   mutable PASSIGN expression       	                        |   mutable PASSIGN expression       
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                        |   mutable MASSIGN expression       	                        |   mutable MASSIGN expression       
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                        |   mutable INC                      	                        |   mutable INC                      
+                        |   mutable DEC                      	                        |   mutable DEC                      
+                        |   simpleexpression                 	                        |   simpleexpression                 
+                        ;					                        ;
+
+simpleexpression        :   simpleexpression OR andexpression	simpleexpression        :   simpleexpression OR andexpression
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                        |   andexpression                    	                        |   andexpression                    
+                        ;					                        ;
+
+andexpression           :   andexpression AND unaryrelexpress	andexpression           :   andexpression AND unaryrelexpress
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                        |   unaryrelexpression               	                        |   unaryrelexpression               
+                        ;					                        ;
+
+unaryrelexpression      :   NOT unaryrelexpression           	unaryrelexpression      :   NOT unaryrelexpression           
+                        |   relexpression                    	                        |   relexpression                    
+                        ;					                        ;
+
+relexpression           :   sumexpression relop sumexpression	relexpression           :   sumexpression relop sumexpression
+                        |   sumexpression                    	                        |   sumexpression                    
+                        ;					                        ;
+
+relop                   :   LEQ                              	relop                   :   LEQ                              
+                        |   LESSER                           	                        |   LESSER                           
+                        |   GREATER                          	                        |   GREATER                          
+                        |   GEQ                              	                        |   GEQ                              
+                        |   EQUIV                            	                        |   EQUIV                            
+                        |   NEQ                              	                        |   NEQ                              
+                        ;					                        ;
+
+sumexpression           :   sumexpression sumop term         	sumexpression           :   sumexpression sumop term         
+                        |   term                             	                        |   term                             
+                        ;					                        ;
+
+sumop                   :   PLUS                             	sumop                   :   PLUS                             
+                        |   MINUS                            	                        |   MINUS                            
+                        ;					                        ;
+
+term                    :   term mulop unaryexpression       	term                    :   term mulop unaryexpression       
+                        |   unaryexpression                  	                        |   unaryexpression                  
+                        ;					                        ;
+
+mulop                   :   MULTI                            	mulop                   :   MULTI                            
+                        |   DIVIDE                           	                        |   DIVIDE                           
+                        |   MOD                              	                        |   MOD                              
+                        ;					                        ;
+
+unaryexpression         :   unaryop unaryexpression          	unaryexpression         :   unaryop unaryexpression          
+                        |   factor                           	                        |   factor                           
+                        ;					                        ;
+
+unaryop                 :   MINUS                            	unaryop                 :   MINUS                            
+                        |   MULTI                            	                        |   MULTI                            
+                        ;					                        ;
+
+factor                  :   immutable                        	factor                  :   immutable                        
+                        |   mutable                          	                        |   mutable                          
+                        ;					                        ;
+
+mutable                 :   ID                               	mutable                 :   ID                               
+                        |   ID LBRACKET expression RBRACKET  	                        |   ID LBRACKET expression RBRACKET  
+                        ;					                        ;
+
+immutable               :   LPAREN expression RPAREN         	immutable               :   LPAREN expression RPAREN         
+                        |   call                             	                        |   call                             
+                        |   constant                         	                        |   constant                         
+                        ;					                        ;
+
+call                    :   ID LPAREN args RPAREN            	call                    :   ID LPAREN args RPAREN            
+                        ;					                        ;
+
+args                    :   arglist                          	args                    :   arglist                          
+                        |                                    	                        |                                    
+                        ;					                        ;
+
+arglist                 :   arglist COMMA expression         	arglist                 :   arglist COMMA expression         
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                                                             	                                                             
+                        |   expression                       	                        |   expression                       
+                        ;					                        ;
+
+constant                :   NUMCONST                         	constant                :   NUMCONST                         
+                        |   CHARCONST                        	                        |   CHARCONST                        
+                        |   STRINGCONST                      	                        |   STRINGCONST                      
+                        |   TRUE                             	                        |   TRUE                             
+                        |   FALSE                            	                        |   FALSE                            
+                        ;					                        ;
+
+
+%%								%%
+
+main(int argc, char* argv[])					main(int argc, char* argv[])
+{								{
+    int c;							    int c;
+    extern char* optarg;					    extern char* optarg;
+    extern int optind;						    extern int optind;
+    char **inputfile;						    char **inputfile;
+    yydebug=0;							    yydebug=0;
+
+    int printTreeFlag = 0;				      <
+    int symbolTracing = 0;				      <
+							      <
+    //yyin = fopen(argv[1], "r");				    //yyin = fopen(argv[1], "r");
+    //outputfile = fopen("output.txt", "w");			    //outputfile = fopen("output.txt", "w");
+
+    while((c = getopt(argc, argv, "d:")) != -1)			    while((c = getopt(argc, argv, "d:")) != -1)
+    {								    {
+        switch(c)						        switch(c)
+        {							        {
+            case 'd':						            case 'd':
+                yydebug=1;					                yydebug=1;
+                printf("YYDEBUG==%d",yydebug);			                printf("YYDEBUG==%d",yydebug);
+                break;						                break;
+            case 'p':					      <
+                printTreeFlag = 1;			      <
+                break;					      <
+            case 's':					      <
+                symbolTracing = 0;			      <
+                break;					      <
+            default:						            default:
+                printf("Unknown option(s)\n");			                printf("Unknown option(s)\n");
+                break;						                break;
+        }							        }
+        c = getopt(argc, argv, "d:");				        c = getopt(argc, argv, "d:");
+     }								     }
+     inputfile = argv + optind;					     inputfile = argv + optind;
+     yyin = fopen((inputfile[0]), "r");				     yyin = fopen((inputfile[0]), "r");
+
+
+    yyparse();							    yyparse();
+							      >	    //printf("finished parsing\n");
+    								    
+    //printTree(savedTree);				      |	    printTree(savedTree);
+							      <
+    //newcheckNode(savedTree);				      <
+    checkNode(savedTree);				      <
+    //tab->print();					      <
+
+    return 0;							    return 0;
+
+}								}
+

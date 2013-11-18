@@ -1,0 +1,16 @@
+main()
+{
+    int z;
+    fred(x and y, z, z and z);
+
+    return main();
+}
+
+char fred(char z[]) {
+    int x[10];
+
+    fred("dogs", *8);
+    fred(
+     fred());
+    fred(x);
+}

@@ -2,13 +2,13 @@ BIN  = parser
 CC   = g++
 CFLAGS = -DCPLUSPLUS -g     # for use with C++ if file ext is .c
 
-SRCS = $(BIN).y $(BIN).l tree.c
-HDRS = tokenStruct.h tree.h
+SRCS = $(BIN).y $(BIN).l tree.c analyze.c symtab.cpp yyerror.cpp mystrings.cpp
+HDRS = tokenStruct.h tree.h symtab.h yyerror.h mystrings.h
 OBJS = lex.yy.o $(BIN).tab.o
 LIBS = -lfl -lm
 
 $(BIN): $(OBJS)
-	$(CC) $(CCFLAGS) $(OBJS) $(LIBS) -o c-
+	$(CC) $(CCFLAGS) $(OBJS) yyerror.cpp mystrings.cpp $(LIBS) -o c-
 
 $(BIN).tab.h $(BIN).tab.c: $(BIN).y
 	bison -v -t -d $(BIN).y  

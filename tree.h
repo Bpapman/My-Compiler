@@ -10,6 +10,7 @@ typedef enum {varK,paramK,funcK} DeclKind;
 //ExpType is used for type checking
 typedef enum {Void, Int, Bool, Char, UNDEF} ExpType;
 typedef enum {ppK,mmK,ltK,gtK,equivK,peqK,meqK,eqK,neqK,modK,UminusK,minusK,plusK,UmultiK,multiK,divideK,colonK,lteqK,gteqK,notK,orK,andK} OpKind;
+typedef enum {global, local, local_static, param} scopeType;
 #endif
 
 #define MAXCHILDREN 3
@@ -47,6 +48,11 @@ typedef struct treeNode
     bool isArray;                          // is this an array
     bool isConstant;                       // can this expression be precomputed?
     char* scopeName;
+    int location;
+    int offset;
+    int size;
+    int pnum;
+    scopeType scopeT;//alex scopetype
 
     // even more semantic stuff will go here in later assignments.
 } TreeNode;

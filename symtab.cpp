@@ -1,4 +1,5 @@
 #include "symtab.h"
+#include "stdlib.h"
 int SymTab::initMaxTable_=100;
 
 void xPrint(void *p)
@@ -12,7 +13,7 @@ SymTab::SymTab(void (* elemPrint)(void *))
 {
     maxTable_ = initMaxTable_;
     table_ = new SymTabEntry[initMaxTable_];
-    for (int i=0; i<initMaxTable_; i++) table_[i].name=(char *)"";
+    for (int i=0; i<initMaxTable_; i++) table_[i].name=NULL;
     top_ = table_;
     elemPrint_ = elemPrint;
     scopeDepth_ = 0;
@@ -34,32 +35,78 @@ void SymTab::debug(int newDebugValue)
     debug_ = newDebugValue;
 }
 
+
+void SymTab::increaseTable() {
+    int offset;
+    SymTabEntry *newt;
+
+    newt = new SymTabEntry[2*maxTable_];
+    memcpy(newt, table_, sizeof(SymTabEntry)*maxTable_);
+    delete table_;
+
+    maxTable_= 2*maxTable_;
+    printf("SYMTAB: size fault.  Increase to %d elements\n", maxTable_);
+    fflush(stdout);
+    offset = top_-table_;
+    table_ = newt;
+    top_ = newt+offset;
+}
+
+
 // push the sym and ptr on the stack
 void SymTab::push(char *sym, int scopeDepth, void *ptr)
 {
     // if you run out of memory then add some
-    if (top_>=table_+maxTable_) {
-	int offset;
-	SymTabEntry *newt;
-
-	newt = new SymTabEntry[(maxTable_*13)/8];
-	memcpy(newt, table_, sizeof(SymTabEntry)*maxTable_);
-	delete table_;
-
-        maxTable_=(maxTable_*13)/8;
-	printf("SYMTAB: size fault.  Increase to %d elements\n", maxTable_);
-	fflush(stdout);
-	offset = top_-table_;
-	table_ = newt;
-	top_ = newt+offset;
-
-    }
-    top_->name = sym;
-    top_->scope = scopeName_;
-    top_->depth = scopeDepth;  // note that this is passed in
-    top_->ptr = ptr;
+    if (top_>=table_+maxTable_) increaseTable();
+    top_->name = sym;          // record the symbol
+    top_->scope = scopeName_;  // record the scopename
+    top_->depth = scopeDepth;  // record the depth that is passed in
+    top_->ptr = ptr;           // record the data
     top_++;
 };
+
+// zzz
+// insert the sym and ptr on the stack
+bool SymTab::insertScope(char *sym, int scopeDepth, void *ptr)
+{
+    SymTabEntry *p, *pp;
+    char *newScopeName;
+
+    // if you run out of memory then add some
+    if (top_>=table_+maxTable_) increaseTable();
+    
+    // find where it goes
+    p = findScope(scopeDepth);
+    newScopeName = (p-1)->scope;
+
+    // is it already there?  Then do nothing.
+    for (pp=p-1; pp->name; pp--) {
+	if (strcmp(pp->name, sym)==0) return false;
+    }
+
+    // make room
+    for (pp=top_-1; pp>=p; pp--) {
+        *(pp+1) = *pp;
+    }
+
+    // insert it
+    p->name = sym;            // record the symbol
+    p->scope = newScopeName;  // record the scopename
+    p->depth = scopeDepth;    // record the depth that is passed in
+    p->ptr = ptr;             // record the data
+    top_++;
+};
+
+
+// insert into the global space
+bool SymTab::insertGlobal(char *sym, void *ptr) {
+    char* tmp;
+    int i = 0;
+    sprintf(tmp, "%d", i);
+    strcat(sym, tmp);
+    
+    return insertScope(sym, 1, ptr);
+}
 
 
 // prints the symbol table with each element printed using
@@ -72,7 +119,7 @@ void SymTab::print()
     printf("\nSymbol Stack:\n");
     for (p=table_; p<top_; p++) {
 	// print a regular entry
-	if (p->depth) {
+	if (p->name) {
 //debug	    printf("%10s %10s %d 0x%08x ", p->name, p->scope, p->depth, p);
 	    printf("%10s %10s %d ", p->name, p->scope, p->depth);
 	    elemPrint_(p->ptr);
@@ -80,7 +127,7 @@ void SymTab::print()
 	}
 	// print the scope divider
 	else {
-	    printf("%10s %10s ---- \n", p->name, p->scope);
+	    printf("%10s %10s ---- \n", "", p->scope);
 	}
     }
     fflush(stdout);
@@ -103,7 +150,8 @@ bool SymTab::insert(char *sym, void *ptr)
         return false;
     }
 
-    for (p=top_-1; p->depth; p--) {
+    // search this scope
+    for (p=top_-1; p->name; p--) {
 	if (strcmp(p->name, sym)==0) return false;
     }
 
@@ -132,7 +180,7 @@ void *SymTab::lookup(char *sym)
     }
 
     for (p=top_-1; p>=table_; p--) {
-	if (strcmp(p->name, sym)==0) {
+	if (p->name && strcmp(p->name, sym)==0) {
 	    if (debug_ & DEBUG_LOOKUP) {
 		printf("SymTab: looking up: %s and found data: ", sym);
 		elemPrint_(p->ptr);
@@ -158,7 +206,7 @@ SymTabEntry *SymTab::lookupSymTabEntry(char *sym)
     SymTabEntry *p;
 
     for (p=top_-1; p>=table_; p--) {
-	if (strcmp(p->name, sym)==0) {
+	if (p->name && strcmp(p->name, sym)==0) {
 	    return p;
 	}
     }
@@ -167,16 +215,8 @@ SymTabEntry *SymTab::lookupSymTabEntry(char *sym)
 
 
 
-// returns the beginning of the symbol table
-// note that this is a scope separator
-SymTabEntry *SymTab::firstSymTabEntry()
-{
-    return table_;
-}
-
-
 // returns the first SymTabEntry pointer that has scope scopeName
-// this gives you the start of a given scope
+// this gives you the *bottom* of a given scope
 SymTabEntry *SymTab::findScope(char *scopeName)
 {
     for (SymTabEntry *p=table_; p<top_; p++) {
@@ -189,6 +229,29 @@ SymTabEntry *SymTab::findScope(char *scopeName)
 }
 
 
+// find the *top* of the given scope number.
+// this is the next slot after the last entry (new top)
+// if scopeNum<1 then set to 1 (the global scope)
+SymTabEntry *SymTab::findScope(int scopeNum)
+{
+    SymTabEntry *p;
+    if (scopeNum<1) scopeNum=1;
+
+    for (p=top_-1; p>=table_; p--) {
+	if (p->depth == scopeNum) break;
+    }
+    return p+1;  // move the pointer to the space between scopes
+}
+
+
+// returns the beginning of the symbol table
+// note that this is a scope separator
+SymTabEntry *SymTab::firstSymTabEntry()
+{
+    return table_;
+}
+
+
 //gives you the next entry in the symbol table
 SymTabEntry *SymTab::nextSymTabEntry(SymTabEntry *last)
 {
@@ -197,6 +260,17 @@ SymTabEntry *SymTab::nextSymTabEntry(SymTabEntry *last)
     return NULL;
 }
 
+bool SymTab::moreSymTab(SymTabEntry *last)
+{
+    return last!=top_;
+}
+
+
+bool SymTab::moreScope(SymTabEntry *last)
+{
+    if (last==top_) return false;   // catch the special case
+    return last->name!=NULL;
+}
 
 // create a new scope on the stack
 void SymTab::enter(char *funcname)
@@ -205,7 +279,7 @@ void SymTab::enter(char *funcname)
     else scopeName_ = strdup(funcname);
     if (debug_ & DEBUG_TABLE) printf("SymTab: Entering scope %s\n", scopeName_);
     scopeDepth_++;
-    push((char *)"", 0, NULL);
+    push(NULL, scopeDepth_, scopeName_);   // push a scope divider
 };
 
 
@@ -220,7 +294,9 @@ bool SymTab::leave()
 	fflush(stdout);
     }
 
-    newTop = lookupSymTabEntry((char *)"");
+    newTop = findScope(scopeDepth_-1);
+//zzz
+//    newTop = lookupSymTabEntry((char *)"");
     if (newTop>table_) {
 	top_ = newTop;
 	scopeName_ = (top_-1)->scope;

@@ -1,14 +1,35 @@
+int dog()
+{
+	bool b;
+
+	return 6;
+}
+
+int cat(int d)
+{
+	int x;
+
+	return d;
+}
+
+int zebra(int d)
+{
+	static int z;
+
+	int x[10];
+
+	return 5;
+}
+
 int main()
 {
-	int i,j,k;
-	i=2;
-	j=3;
-	k=4;
+	int x;
+	int y;
+	
+	while(x<y)
+		x++;
 
-	i != j;
-	i < 2;
-	j > i;
-
+	x = dog(5);
 	return 0;
 }
 	

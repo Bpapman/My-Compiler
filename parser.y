@@ -7,15 +7,17 @@
     #include "analyze.c"
     #include "mystrings.h"
     #include "yyerror.h"
+    #include "codegen.cpp"
 
     extern int yylex();
     extern int yydebug;
     extern FILE* yyin;
+    FILE *code;
 
     extern SymTab* tab;
 
     static TreeNode *savedTree;
-    static TreeNode *output = (TreeNode*) malloc(sizeof(TreeNode));
+    static TreeNode *input = (TreeNode*) malloc(sizeof(TreeNode));
 
     extern int numerrors;
     extern int numwarnings;
@@ -32,14 +34,29 @@
 
     void preProcess()
     {
+
+        //input preprocess
+        //static TreeNode *input = (TreeNode*) malloc(sizeof(TreeNode));
+        //outputc->sibling=input;
+        input->attr.name=(char*)"input";
+        input->lineno=-1;
+        input->nodekind=DeclK;
+        input->kind.decl=funcK;
+        input->expType=Int;
+        input->isPre=true;
+        input->pnum=0;
+
+
         //output preprocess
-        //static TreeNode *output = (TreeNode*) malloc(sizeof(TreeNode));
+        static TreeNode *output = (TreeNode*) malloc(sizeof(TreeNode));
+        input->sibling=output;
         output->attr.name=(char*)"output";
         output->lineno=-1;
         output->nodekind=DeclK;
         output->kind.decl=funcK;
         output->expType=Void;
         output->isPre=true;
+        output->pnum=1;
         static TreeNode *outputN = (TreeNode*) malloc(sizeof(TreeNode));
         output->child[0] = outputN;
         outputN->lineno=-1;
@@ -49,15 +66,29 @@
         outputN->expType=Int;
 
 
+
+        //inputb preprocess
+        static TreeNode *inputb = (TreeNode*) malloc(sizeof(TreeNode));
+        output->sibling=inputb;
+        inputb->attr.name=(char*)"inputb";
+        inputb->lineno=-1;
+        inputb->nodekind=DeclK;
+        inputb->kind.decl=funcK;
+        inputb->expType=Bool;
+        inputb->isPre=true;
+        inputb->pnum=2;
+
+
         //outputb preprocess
         static TreeNode *outputb = (TreeNode*) malloc(sizeof(TreeNode));
-        output->sibling=outputb;
+        inputb->sibling=outputb;
         outputb->attr.name=(char*)"outputb";
         outputb->lineno=-1;
         outputb->nodekind=DeclK;
         outputb->kind.decl=funcK;
         outputb->expType=Void;
         outputb->isPre=true;
+        outputb->pnum=3;
         static TreeNode *outputbN = (TreeNode*) malloc(sizeof(TreeNode));
         outputb->child[0] = outputbN;
         outputbN->lineno=-1;
@@ -67,15 +98,28 @@
         outputbN->expType=Bool;
 
 
+        //inputc preprocess
+        static TreeNode *inputc = (TreeNode*) malloc(sizeof(TreeNode));
+        outputb->sibling=inputc;
+        inputc->attr.name=(char*)"inputc";
+        inputc->lineno=-1;
+        inputc->nodekind=DeclK;
+        inputc->kind.decl=funcK;
+        inputc->expType=Char;
+        inputc->isPre=true;
+        inputc->pnum=4;
+
+
         //outputc preprocess
         static TreeNode *outputc = (TreeNode*) malloc(sizeof(TreeNode));
-        outputb->sibling=outputc;
+        inputc->sibling=outputc;
         outputc->attr.name=(char*)"outputc";
         outputc->lineno=-1;
         outputc->nodekind=DeclK;
         outputc->kind.decl=funcK;
         outputc->expType=Void;
         outputc->isPre=true;
+        outputc->pnum=5;
         static TreeNode *outputcN = (TreeNode*) malloc(sizeof(TreeNode));
         outputc->child[0] = outputcN;
         outputcN->lineno=-1;
@@ -85,49 +129,18 @@
         outputcN->expType=Char;
 
 
-        //input preprocess
-        static TreeNode *input = (TreeNode*) malloc(sizeof(TreeNode));
-        outputc->sibling=input;
-        input->attr.name=(char*)"input";
-        input->lineno=-1;
-        input->nodekind=DeclK;
-        input->kind.decl=funcK;
-        input->expType=Int;
-        input->isPre=true;
-
-
-        //inputb preprocess
-        static TreeNode *inputb = (TreeNode*) malloc(sizeof(TreeNode));
-        input->sibling=inputb;
-        inputb->attr.name=(char*)"inputb";
-        inputb->lineno=-1;
-        inputb->nodekind=DeclK;
-        inputb->kind.decl=funcK;
-        inputb->expType=Bool;
-        inputb->isPre=true;
-
-
-        //input preprocess
-        static TreeNode *inputc = (TreeNode*) malloc(sizeof(TreeNode));
-        inputb->sibling=inputc;
-        inputc->attr.name=(char*)"inputc";
-        inputc->lineno=-1;
-        inputc->nodekind=DeclK;
-        inputc->kind.decl=funcK;
-        inputc->expType=Char;
-        inputc->isPre=true;
-
-
         //outnl preprocess
         static TreeNode *outnl = (TreeNode*) malloc(sizeof(TreeNode));
-        inputc->sibling=outnl;
+        outputc->sibling=outnl;
         outnl->attr.name=(char*)"outnl";
         outnl->lineno=-1;
         outnl->nodekind=DeclK;
         outnl->kind.decl=funcK;
         outnl->expType=Void;
         outnl->isPre=true;
+        outnl->pnum=6;
         outnl->sibling=savedTree;
+
 
     }
     #endif
@@ -249,7 +262,7 @@ vardeclinitialize       :   vardeclid                                           
                         ;
 
 vardeclid               :   ID                                                  { $$ = newDeclNode(varK,yylval.tokenData->lineno); $$->attr.name=$1->idvalue; }
-                        |   ID LBRACKET NUMCONST RBRACKET                       { $$ = newDeclNode(varK,yylval.tokenData->lineno); $$->attr.name=$1->idvalue; $$->isArray=true; }
+                        |   ID LBRACKET NUMCONST RBRACKET                       { $$ = newDeclNode(varK,yylval.tokenData->lineno); $$->attr.name=$1->idvalue; $$->isArray=true; $$->size=$3->numvalue; }
                         |   error LBRACKET NUMCONST RBRACKET                    { $$ = NULL; yyerrok; }
                         |   ID LBRACKET error                                   { $$ = NULL; }
                         ;
@@ -574,6 +587,7 @@ main(int argc, char* argv[])
     extern char* optarg;
     extern int optind;
     char **inputfile;
+    int length = 0;
     yydebug=0;
 
     int printTreeFlag = 0;
@@ -582,9 +596,9 @@ main(int argc, char* argv[])
     
 
     //yyin = fopen(argv[1], "r");
-    //outputfile = fopen("output.txt", "w");
+    //code = fopen("code.tm", "w");
 
-    while((c = getopt(argc, argv, "dps:")) != EOF)
+    while((c = getopt(argc, argv, "dps")) != EOF)
     {
         switch(c)
         {
@@ -606,7 +620,14 @@ main(int argc, char* argv[])
     }
     inputfile = argv + optind;
     yyin = fopen((inputfile[0]), "r");
-
+    length = strlen(inputfile[0]);
+    //printf("String length %d\n", length);
+    char* out = inputfile[0];
+    out[length-2] = 't';
+    out[length-1] = 'm';
+    //printf("Outstring %s\n", out);
+    code = fopen(out, "w");
+    
     initYyerror(); 
     yyparse();
     
@@ -614,24 +635,22 @@ main(int argc, char* argv[])
         printTree(savedTree);
 
     //set the preprocess to savedTree
-    //preProcess();
-    //savedTree = output;
+    preProcess();
+    savedTree = input;
 
-    //checkNode(savedTree);
+    checkNode(savedTree);
 
     if(symbolTracing)
         tab->print();
 
     printf("Number of warnings: %d\n", numwarnings);
     printf("Number of errors: %d\n", numerrors);
-  
 
-    //derpNode(savedTree);
-
-    //checkNode(savedTree);
-
-    //printf("Number of errors: %d\n", numerrors);
-    //printf("Number of warnings: %d\n", numwarnings);
+    printf("Codegen started \n");
+    emitHeader();
+    codeGen(savedTree);
+    emitEnd();
+    printf("Codegen ended \n");
 
     return 0;
 

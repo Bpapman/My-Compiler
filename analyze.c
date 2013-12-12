@@ -3,6 +3,8 @@
 
 int numerrors = 0;
 int numwarnings = 0;
+int globaloffset = 0;
+int frameoffset = -2;
 
 void errorSimpleVariable(int line, char* name)
 {
@@ -229,6 +231,9 @@ static SymTab* tab = new SymTab(xPrint);
 
 int params = 0;
 int i = 0;
+int foff = 0;
+int goff = 0;
+int goff2 = 0;
 
 bool loop = false;
 bool return_flag = false;
@@ -264,6 +269,9 @@ void checkNode(TreeNode* t)
                     temptree = (TreeNode*)tab->lookup(t->attr.name);
                     if(temptree == NULL)
                     {
+                        //type global
+                        
+                        
                         tab->insert(t->attr.name, t);
                         int line = t->lineno;
                         char* type;
@@ -278,6 +286,7 @@ void checkNode(TreeNode* t)
                             type = (char*)"bool";
                         
                         tab->enter(t->attr.name);
+                        foff = -2;
                         
                         if(t->child[1] != NULL)
                         {
@@ -303,6 +312,10 @@ void checkNode(TreeNode* t)
                         }
                         
                         tab->leave();
+                        t->scopeT = global;
+                        t->location = 0;
+                        t->size = -foff;
+                        foff = -2;
                         return_flag = false;
                     }//end temptree == null
                     else if(temptree != NULL)//temptree != null
@@ -350,7 +363,7 @@ void checkNode(TreeNode* t)
                     }//end else
                     
                     infunc = false;
-                    scope = (char*)"globals";
+                    //scope = (char*)"globals";
                     
                     break;//break funcK
                 case paramK:
@@ -358,34 +371,75 @@ void checkNode(TreeNode* t)
                     checkNode(t->child[1]);
                     checkNode(t->child[2]);
                     
-                    if(t->isPre)
+                    if(!t->isPre)
                     {
-                        temptree = (TreeNode*)tab->lookup(t->attr.name);
-                        if(temptree == NULL)
-                        {
-                            t->scopeName = scope;
-                            tab->insert(t->attr.name, t);
-                        }
-                        else//ask about this
-                        {
-                            t->scopeName = scope;
-                            tab->insert(t->attr.name, t);
-                        }
+                        tab->insert(t->attr.name, t);
+                     
                     }//end isPre
+                    t->scopeT = param;
+                    t->location = foff--;
+                    t->size = 1;
                     break;//break paramK
                 case varK:
+                    //temptree = (TreeNode*)tab->lookup(t->attr.name)
+                    //frameoffset--;
                     checkNode(t->child[0]);
                     temptree = (TreeNode*)tab->lookup(t->attr.name);
                     //redundant here drops randomly
-                    t->expType = t->expType;
+                    //t->expType = t->expType;
                     
-                    if(tab->insert(t->attr.name, t))
+                    if(temptree == NULL)
+                    {
+                        
+                            
+                            if(!t->isStatic)
+                            {
+                                if(infunc)
+                                {
+                                    t->scopeT = local;
+                                    t->location = foff--;
+                                }
+                                else
+                                {
+                                    t->scopeT = global;
+                                    t->location = goff--;
+                                }
+                                //t->location = globaloffset--;
+                                //frameoffset--;
+                                //tab->insertGlobal(t->attr.name, t);
+                                //type static global
+                            }
+                            else
+                            {
+                                t->scopeT = local_static;
+                                tab->insertGlobal(t->attr.name, t);
+                                t->location = goff--;
+                                foff--;
+                                //type local
+                            }
+                            if(!t->isArray)
+                            {
+                                //size = isize
+                                t->size = 1;
+                            }
+                            else
+                            {
+                                if(t->scopeT != local)
+                                {
+                                    goff2--;
+                                }
+                                t->size += 1;
+                                foff = foff - t->size + 1;
+                            }
+
+                    }
+                    if(true)
                     {
                         if(t->child[0] != NULL)
                         {
-                            if(t->isArray)
+                            if(!t->isArray)
                             {
-                                if(t->child[0]->isConstant)
+                                if(!t->child[0]->isConstant)
                                 {
                                     errorVarConstInit(t->lineno, t->attr.name);
                                 }
@@ -427,7 +481,7 @@ void checkNode(TreeNode* t)
                             }//end isArray
                             else
                             {
-                                if(t->child[0]->isConstant)
+                                if(!t->child[0]->isConstant)
                                 {
                                     errorVarConstInit(t->lineno, t->attr.name);
                                 }
@@ -444,17 +498,17 @@ void checkNode(TreeNode* t)
                                 if(t->isArray && (t->expType != Char || !t->child[0]->isArray))
                                 {
                                     char* type;
-                                    if(t->expType == Int)
+                                    if(t->child[0]->expType == Int)
                                         type = (char*)"int";
-                                    if(t->expType == Bool)
+                                    if(t->child[0]->expType == Bool)
                                         type = (char*)"bool";
                                     
                                     errorArrayCharInit(t->lineno, t->attr.name, type);
                                 }
                             }//end else
                         }//end child[0] != null]
-                    }//end tab insert
-                    else
+                    }//end if true
+                    if(!tab->insert(t->attr.name, t))
                     {
                         errorSymbolDefined(t->lineno, t->attr.name, temptree->lineno);
                     }                
@@ -1335,6 +1389,7 @@ void checkNode(TreeNode* t)
                             else
                                 t->isArray = false;
                         }
+                        t->location = temptree->location;
                     }
                     break;//break idK
                 case constK:
@@ -1375,7 +1430,7 @@ void checkNode(TreeNode* t)
                         {
                             temptree2 = t->child[0];
                             TreeNode* typeholder = temptree->child[0];
-                            int i;
+                            int i = 1;
                             while(typeholder != NULL && temptree2 != NULL)
                             {
                                 params++;
@@ -1404,7 +1459,7 @@ void checkNode(TreeNode* t)
                                 }
                                 if(typeholder->isArray && !temptree2->isArray)
                                     errorParamArray(t->lineno, i, t->attr.name, typeholder->lineno);
-                                if(!typeholder->isArray && !temptree2->isArray)
+                                if(!typeholder->isArray && temptree2->isArray)
                                     errorNParamArray(t->lineno, i, t->attr.name, typeholder->lineno);
                                 prevtemp = typeholder;
                                 typeholder = typeholder->sibling;

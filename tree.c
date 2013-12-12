@@ -30,6 +30,9 @@ TreeNode* newStmtNode(StmtKind kind, int lineno)
         t->kind.stmt = kind;
         t->lineno = lineno;
         t->expType = UNDEF;
+        t->location = 0;
+        t->size = 0;
+        t->offset = 0;
     }
     
     return t;
@@ -54,7 +57,11 @@ TreeNode* newExpNode(ExpKind kind, int lineno)
         t->kind.exp = kind;
         t->lineno = lineno;
         t->expType = UNDEF;
+        t->location = 0;
+        t->size = 0;
+        t->offset = 0;
     }
+    
     
     return t;
 }
@@ -78,6 +85,9 @@ TreeNode* newDeclNode(DeclKind kind, int lineno)
         t->kind.decl = kind;
         t->lineno = lineno;
         t->expType = UNDEF;
+        t->location = 0;
+        t->size = 0;
+        t->offset = 0;
     }
     
     return t;

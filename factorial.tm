@@ -1,7 +1,7 @@
-* C- Compiler version C-F10
-* Built: Dec 6, 2013
+* C- Compiler version C-F13
+* Built: Dec 12, 2013
 * Author: Brett Papineau
-* File compiled: temp.c-
+* File compiled:  factorial.tm
 * BEGIN function input
   1:     ST  3,-1(1) 	Store return address 
   2:     IN  2,2,2 	Grab int input 
@@ -81,10 +81,10 @@
 * 			Load Param 1
  57:     LD  3,-3(1) 	Load variable i
  58:     ST  3,-7(1) 	Store parameter 
-* 			Jump to  output
+* 			Jump to output
  59:    LDA  1,-5(1) 	Load address of new frame 
  60:    LDA  3,1(7) 	Return address in ac 
- 61:    LDA  7,-56(7) 	Call  output
+ 61:    LDA  7,-56(7) 	CALL output
  62:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to output
  63:     LD  3,-4(1) 	Load variable f
@@ -119,10 +119,10 @@
 * EXPRESSION STMT
 * 			Begin call to  input
  83:     ST  1,-3(1) 	Store old fp in ghost frame 
-* 			Jump to  input
+* 			Jump to input
  84:    LDA  1,-3(1) 	Load address of new frame 
  85:    LDA  3,1(7) 	Return address in ac 
- 86:    LDA  7,-86(7) 	Call  input
+ 86:    LDA  7,-86(7) 	CALL input
  87:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to input
  88:     ST  3,-2(1) 	Store variable n
@@ -131,10 +131,10 @@
 * 			Load Param 1
  90:     LD  3,-2(1) 	Load variable n
  91:     ST  3,-5(1) 	Store parameter 
-* 			Jump to  factorial
+* 			Jump to factorial
  92:    LDA  1,-3(1) 	Load address of new frame 
  93:    LDA  3,1(7) 	Return address in ac 
- 94:    LDA  7,-53(7) 	Call  factorial
+ 94:    LDA  7,-53(7) 	CALL factorial
  95:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to factorial
  96:     ST  3,-2(1) 	Store variable n
@@ -143,18 +143,18 @@
 * 			Load Param 1
  98:     LD  3,-2(1) 	Load variable n
  99:     ST  3,-5(1) 	Store parameter 
-* 			Jump to  output
+* 			Jump to output
 100:    LDA  1,-3(1) 	Load address of new frame 
 101:    LDA  3,1(7) 	Return address in ac 
-102:    LDA  7,-97(7) 	Call  output
+102:    LDA  7,-97(7) 	CALL output
 103:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to output
 * 			Begin call to  outnl
 104:     ST  1,-3(1) 	Store old fp in ghost frame 
-* 			Jump to  outnl
+* 			Jump to outnl
 105:    LDA  1,-3(1) 	Load address of new frame 
 106:    LDA  3,1(7) 	Return address in ac 
-107:    LDA  7,-71(7) 	Call  outnl
+107:    LDA  7,-71(7) 	CALL outnl
 108:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to outnl
 * END compound statement
@@ -171,7 +171,7 @@
 * END init of globals
 114:    LDA  1,0(0) 	set first frame at end of globals 
 115:     ST  1,0(1) 	store old fp (point to self) 
-116:    LDA  3,0(7) 	return address in ac 
+116:    LDA  3,1(7) 	Return address in ac 
 117:    LDA  7,-36(7) 	Jump to main 
-118:   HALT  0,0,0 	DONE 
-* END init
+118:   HALT  0,0,0 	DONE! 
+* END Init

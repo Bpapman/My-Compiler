@@ -1,7 +1,7 @@
-* C- Compiler version C-F10
-* Built: Dec 6, 2013
+* C- Compiler version C-F13
+* Built: Dec 12, 2013
 * Author: Brett Papineau
-* File compiled: temp.c-
+* File compiled:  s02e.tm
 * BEGIN function input
   1:     ST  3,-1(1) 	Store return address 
   2:     IN  2,2,2 	Grab int input 
@@ -85,100 +85,107 @@
  53:     LD  3,-2(1) 	Load variable init
  54:    JGT  3,1(7) 	Jump to then part 
 * THEN
+* EXPRESSION STMT
  56:    LDC  3,0(6) 	Load constant 
  57:     ST  3,0(0) 	Store variable runningSum
-  0:    LDA  7,57(7) 	Jump around the THEN [backpatch] 
+* ELSE
+* BUG in emitBackup
+134544570:    LDA  7,-134544512(7) 	Jump around the THEN [backpatch] 
 * ENDIF
 * RETURN
- 58:     LD  3,0(0) 	Load variable runningSum
- 59:    LDA  2,0(3) 	Copy result to rt register 
- 60:     LD  3,-1(1) 	Load return address 
- 61:     LD  1,0(1) 	Adjust fp 
- 62:    LDA  7,0(3) 	Return 
+* EXPRESSION STMT
+ 59:     LD  3,0(0) 	Load variable runningSum
+ 60:    LDA  2,0(3) 	Copy result to rt register 
+ 61:     LD  3,-1(1) 	Load return address 
+ 62:     LD  1,0(1) 	Adjust fp 
+ 63:    LDA  7,0(3) 	Return 
 * END compound statement
 * Add standard closing in case there is no return statement
- 63:    LDC  2,0(6) 	Set return value to 0 
- 64:     LD  3,-1(1) 	Load return address 
- 65:     LD  1,0(1) 	Adjust fp 
- 66:    LDA  7,0(3) 	Return 
+ 64:    LDC  2,0(6) 	Set return value to 0 
+ 65:     LD  3,-1(1) 	Load return address 
+ 66:     LD  1,0(1) 	Adjust fp 
+ 67:    LDA  7,0(3) 	Return 
 * END of function sum
 * BEGIN function main
- 67:     ST  3,-1(1) 	Store return address. 
+ 68:     ST  3,-1(1) 	Store return address. 
 * BEGIN compound statement
 * EXPRESSION STMT
 * 			Begin call to  sum
- 68:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Load Param 1
- 69:    LDC  3,1(6) 	Load constant 
- 70:     ST  3,-4(1) 	Store parameter 
- 71:    LDC  3,666(6) 	Load constant 
- 72:     ST  3,-4(1) 	Store parameter 
-* 			Load Param 1
- 73:    LDC  3,666(6) 	Load constant 
- 74:     ST  3,-5(1) 	Store parameter 
-* 			Jump to  sum
- 75:    LDA  1,-2(1) 	Load address of new frame 
- 76:    LDA  3,1(7) 	Return address in ac 
- 77:    LDA  7,-26(7) 	Call  sum
- 78:    LDA  3,0(2) 	Save the result in ac 
+ 69:     ST  1,-2(1) 	Store old fp in ghost frame 
+* 			Load param 1
+ 70:    LDC  3,1(6) 	Load constant 
+ 71:     ST  3,-4(1) 	Store parameter 
+* 			Load param 1
+* EXPRESSION STMT
+ 72:    LDC  3,666(6) 	Load constant 
+ 73:     ST  3,-5(1) 	Store parameter 
+* 			Jump to sum
+ 74:    LDA  1,-2(1) 	Load address of new frame 
+ 75:    LDA  3,1(7) 	Return address in ac 
+ 76:    LDA  7,-25(7) 	CALL sum
+ 77:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to sum
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  sum
- 79:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Load Param 1
- 80:    LDC  3,0(6) 	Load constant 
- 81:     ST  3,-4(1) 	Store parameter 
- 82:    LDC  3,3(6) 	Load constant 
- 83:     ST  3,-4(1) 	Store parameter 
-* 			Load Param 1
- 84:    LDC  3,3(6) 	Load constant 
- 85:     ST  3,-5(1) 	Store parameter 
-* 			Jump to  sum
- 86:    LDA  1,-2(1) 	Load address of new frame 
- 87:    LDA  3,1(7) 	Return address in ac 
- 88:    LDA  7,-37(7) 	Call  sum
- 89:    LDA  3,0(2) 	Save the result in ac 
+ 78:     ST  1,-2(1) 	Store old fp in ghost frame 
+* 			Load param 1
+ 79:    LDC  3,0(6) 	Load constant 
+ 80:     ST  3,-4(1) 	Store parameter 
+* 			Load param 1
+* EXPRESSION STMT
+ 81:    LDC  3,3(6) 	Load constant 
+ 82:     ST  3,-5(1) 	Store parameter 
+* 			Jump to sum
+ 83:    LDA  1,-2(1) 	Load address of new frame 
+ 84:    LDA  3,1(7) 	Return address in ac 
+ 85:    LDA  7,-34(7) 	CALL sum
+ 86:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to sum
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  output
- 90:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Load Param 1
+ 87:     ST  1,-2(1) 	Store old fp in ghost frame 
+* 			Load param 1
 * 			Begin call to  sum
- 91:     ST  1,-4(1) 	Store old fp in ghost frame 
-* 			Load Param 1
- 92:    LDC  3,0(6) 	Load constant 
- 93:     ST  3,-6(1) 	Store parameter 
- 94:    LDC  3,0(6) 	Load constant 
- 95:     ST  3,-6(1) 	Store parameter 
-* 			Load Param 1
- 96:    LDC  3,0(6) 	Load constant 
- 97:     ST  3,-7(1) 	Store parameter 
-* 			Jump to  sum
- 98:    LDA  1,-4(1) 	Load address of new frame 
- 99:    LDA  3,1(7) 	Return address in ac 
-100:    LDA  7,-49(7) 	Call  sum
-101:    LDA  3,0(2) 	Save the result in ac 
+ 88:     ST  1,-4(1) 	Store old fp in ghost frame 
+* 			Load param 1
+ 89:    LDC  3,0(6) 	Load constant 
+ 90:     ST  3,-6(1) 	Store parameter 
+* 			Load param 1
+* EXPRESSION STMT
+ 91:    LDC  3,0(6) 	Load constant 
+ 92:     ST  3,-7(1) 	Store parameter 
+* 			Jump to sum
+ 93:    LDA  1,-4(1) 	Load address of new frame 
+ 94:    LDA  3,1(7) 	Return address in ac 
+ 95:    LDA  7,-44(7) 	CALL sum
+ 96:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to sum
-102:     ST  3,-4(1) 	Store parameter 
-* 			Jump to  output
-103:    LDA  1,-2(1) 	Load address of new frame 
-104:    LDA  3,1(7) 	Return address in ac 
-105:    LDA  7,-100(7) 	Call  output
-106:    LDA  3,0(2) 	Save the result in ac 
+* EXPRESSION STMT
+ 97:     ST  3,-4(1) 	Store parameter 
+* 			Jump to output
+ 98:    LDA  1,-2(1) 	Load address of new frame 
+ 99:    LDA  3,1(7) 	Return address in ac 
+100:    LDA  7,-95(7) 	CALL output
+101:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to output
+* EXPRESSION STMT
 * END compound statement
 * Add standard closing in case there is no return statement
-107:    LDC  2,0(6) 	Set return value to 0 
-108:     LD  3,-1(1) 	Load return address 
-109:     LD  1,0(1) 	Adjust fp 
-110:    LDA  7,0(3) 	Return 
+102:    LDC  2,0(6) 	Set return value to 0 
+103:     LD  3,-1(1) 	Load return address 
+104:     LD  1,0(1) 	Adjust fp 
+105:    LDA  7,0(3) 	Return 
 * END of function main
-  0:    LDA  7,110(7) 	Jump to init [backpatch] 
+  0:    LDA  7,105(7) 	Jump to init [backpatch] 
 * BEGIN Init
-111:     LD  0,0(0) 	Set the global pointer 
+106:     LD  0,0(0) 	Set the global pointer 
 * BEGIN init of globals
 * END init of globals
-112:    LDA  1,0(0) 	set first frame at end of globals 
-113:     ST  1,0(1) 	store old fp (point to self) 
-114:    LDA  3,0(7) 	return address in ac 
-115:    LDA  7,-49(7) 	Jump to main 
-116:   HALT  0,0,0 	DONE 
-* END init
+107:    LDA  1,-2(0) 	set first frame at end of globals 
+108:     ST  1,0(1) 	store old fp (point to self) 
+109:    LDA  3,1(7) 	Return address in ac 
+110:    LDA  7,-43(7) 	Jump to main 
+111:   HALT  0,0,0 	DONE! 
+* END Init

@@ -1,7 +1,7 @@
-* C- Compiler version C-F10
-* Built: Dec 6, 2013
+* C- Compiler version C-F13
+* Built: Dec 12, 2013
 * Author: Brett Papineau
-* File compiled: temp.c-
+* File compiled:  s01.tm
 * BEGIN function input
   1:     ST  3,-1(1) 	Store return address 
   2:     IN  2,2,2 	Grab int input 
@@ -62,11 +62,13 @@
 * BEGIN compound statement
 * EXPRESSION STMT
  43:     LD  3,-4(1) 	Load variable y
- 44:     ST  3,0(1) 	Store variable x
+ 44:     ST  3,0(0) 	Store variable x
+* EXPRESSION STMT
  45:     LD  3,-2(0) 	Load variable z
  46:     ST  3,-4(1) 	Store variable y
 * RETURN
- 47:     LD  3,0(1) 	Load variable x
+* EXPRESSION STMT
+ 47:     LD  3,0(0) 	Load variable x
  48:    LDA  2,0(3) 	Copy result to rt register 
  49:     LD  3,-1(1) 	Load return address 
  50:     LD  1,0(1) 	Adjust fp 
@@ -84,68 +86,77 @@
 * EXPRESSION STMT
 * 			Begin call to  output
  57:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Load Param 1
+* 			Load param 1
 * 			Begin call to  save
  58:     ST  1,-4(1) 	Store old fp in ghost frame 
-* 			Load Param 1
+* 			Load param 1
  59:    LDC  3,1(6) 	Load constant 
  60:     ST  3,-6(1) 	Store parameter 
-* 			Jump to  save
+* 			Jump to save
  61:    LDA  1,-4(1) 	Load address of new frame 
  62:    LDA  3,1(7) 	Return address in ac 
- 63:    LDA  7,-22(7) 	Call  save
+ 63:    LDA  7,-22(7) 	CALL save
  64:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to save
+* EXPRESSION STMT
  65:     ST  3,-4(1) 	Store parameter 
-* 			Jump to  output
+* 			Jump to output
  66:    LDA  1,-2(1) 	Load address of new frame 
  67:    LDA  3,1(7) 	Return address in ac 
- 68:    LDA  7,-63(7) 	Call  output
+ 68:    LDA  7,-63(7) 	CALL output
  69:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to output
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  output
  70:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Load Param 1
+* 			Load param 1
 * 			Begin call to  save
  71:     ST  1,-4(1) 	Store old fp in ghost frame 
-* 			Load Param 1
+* 			Load param 1
  72:    LDC  3,2(6) 	Load constant 
  73:     ST  3,-6(1) 	Store parameter 
-* 			Jump to  save
+* 			Jump to save
  74:    LDA  1,-4(1) 	Load address of new frame 
  75:    LDA  3,1(7) 	Return address in ac 
- 76:    LDA  7,-35(7) 	Call  save
+ 76:    LDA  7,-35(7) 	CALL save
  77:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to save
+* EXPRESSION STMT
  78:     ST  3,-4(1) 	Store parameter 
-* 			Jump to  output
+* 			Jump to output
  79:    LDA  1,-2(1) 	Load address of new frame 
  80:    LDA  3,1(7) 	Return address in ac 
- 81:    LDA  7,-76(7) 	Call  output
+ 81:    LDA  7,-76(7) 	CALL output
  82:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to output
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  output
  83:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Load Param 1
+* 			Load param 1
 * 			Begin call to  save
  84:     ST  1,-4(1) 	Store old fp in ghost frame 
-* 			Load Param 1
+* 			Load param 1
  85:    LDC  3,3(6) 	Load constant 
  86:     ST  3,-6(1) 	Store parameter 
-* 			Jump to  save
+* 			Jump to save
  87:    LDA  1,-4(1) 	Load address of new frame 
  88:    LDA  3,1(7) 	Return address in ac 
- 89:    LDA  7,-48(7) 	Call  save
+ 89:    LDA  7,-48(7) 	CALL save
  90:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to save
+* EXPRESSION STMT
  91:     ST  3,-4(1) 	Store parameter 
-* 			Jump to  output
+* 			Jump to output
  92:    LDA  1,-2(1) 	Load address of new frame 
  93:    LDA  3,1(7) 	Return address in ac 
- 94:    LDA  7,-89(7) 	Call  output
+ 94:    LDA  7,-89(7) 	CALL output
  95:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to output
+* EXPRESSION STMT
 * RETURN
+* EXPRESSION STMT
  96:    LDC  3,0(6) 	Load constant 
  97:    LDA  2,0(3) 	Copy result to rt register 
  98:     LD  3,-1(1) 	Load return address 
@@ -163,9 +174,9 @@
 105:     LD  0,0(0) 	Set the global pointer 
 * BEGIN init of globals
 * END init of globals
-106:    LDA  1,0(0) 	set first frame at end of globals 
+106:    LDA  1,-1(0) 	set first frame at end of globals 
 107:     ST  1,0(1) 	store old fp (point to self) 
-108:    LDA  3,0(7) 	return address in ac 
+108:    LDA  3,1(7) 	Return address in ac 
 109:    LDA  7,-54(7) 	Jump to main 
-110:   HALT  0,0,0 	DONE 
-* END init
+110:   HALT  0,0,0 	DONE! 
+* END Init

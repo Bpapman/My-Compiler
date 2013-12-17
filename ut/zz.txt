@@ -1,0 +1,2673 @@
+====================================
+FILE: a001.c-
+-rw------- 1 brett brett   32 Dec  7 11:02 a001.c-
+-rw------- 1 brett brett  190 Dec 10 21:39 a001.expected
+-rw-rw-r-- 1 brett brett  190 Dec 13 17:27 a001.out
+-rw-rw-r-- 1 brett brett 2741 Dec 13 17:27 a001.tm
+a001 (Output OK)
+====================================
+FILE: a002.c-
+-rw------- 1 brett brett   35 Dec  7 11:02 a002.c-
+-rw------- 1 brett brett  190 Dec 10 21:39 a002.expected
+-rw-rw-r-- 1 brett brett  190 Dec 13 17:27 a002.out
+-rw-rw-r-- 1 brett brett 2798 Dec 13 17:27 a002.tm
+a002 (Output OK)
+====================================
+FILE: a009.c-
+-rw------- 1 brett brett   31 Dec  7 11:04 a009.c-
+-rw------- 1 brett brett  190 Dec 10 21:39 a009.expected
+-rw-rw-r-- 1 brett brett  190 Dec 13 17:27 a009.out
+-rw-rw-r-- 1 brett brett 2740 Dec 13 17:27 a009.tm
+a009 (Output OK)
+====================================
+FILE: a00.c-
+-rw------- 1 brett brett   22 Dec  7 11:02 a00.c-
+-rw------- 1 brett brett  189 Dec 10 21:39 a00.expected
+-rw-rw-r-- 1 brett brett  189 Dec 13 17:27 a00.out
+-rw-rw-r-- 1 brett brett 2684 Dec 13 17:27 a00.tm
+a00 (Output OK)
+====================================
+FILE: a01.c-
+-rw------- 1 brett brett   41 Dec  7 11:02 a01.c-
+-rw------- 1 brett brett  193 Dec 10 21:39 a01.expected
+-rw-rw-r-- 1 brett brett  193 Dec 13 17:27 a01.out
+-rw-rw-r-- 1 brett brett 3126 Dec 13 17:27 a01.tm
+a01 (Output OK)
+====================================
+FILE: a02.c-
+-rw------- 1 brett brett   55 Dec  7 11:02 a02.c-
+-rw------- 1 brett brett  194 Dec 10 21:39 a02.expected
+-rw-rw-r-- 1 brett brett  194 Dec 13 17:27 a02.out
+-rw-rw-r-- 1 brett brett 3451 Dec 13 17:27 a02.tm
+a02 (Output OK)
+====================================
+FILE: a03.c-
+-rw------- 1 brett brett   43 Dec  7 11:02 a03.c-
+-rw------- 1 brett brett  191 Dec 10 21:39 a03.expected
+-rw-rw-r-- 1 brett brett  191 Dec 13 17:27 a03.out
+-rw-rw-r-- 1 brett brett 3128 Dec 13 17:27 a03.tm
+a03 (Output OK)
+====================================
+FILE: a045.c-
+-rw------- 1 brett brett   40 Dec  7 11:02 a045.c-
+-rw------- 1 brett brett  191 Dec 10 21:39 a045.expected
+-rw-rw-r-- 1 brett brett  191 Dec 13 17:27 a045.out
+-rw-rw-r-- 1 brett brett 3130 Dec 13 17:27 a045.tm
+a045 (Output OK)
+====================================
+FILE: a04.c-
+-rw------- 1 brett brett   44 Dec  7 11:02 a04.c-
+-rw------- 1 brett brett  191 Dec 10 21:39 a04.expected
+-rw-rw-r-- 1 brett brett  191 Dec 13 17:27 a04.out
+-rw-rw-r-- 1 brett brett 3128 Dec 13 17:27 a04.tm
+a04 (Output OK)
+====================================
+FILE: a05.c-
+-rw------- 1 brett brett   66 Dec  7 11:02 a05.c-
+-rw------- 1 brett brett  193 Dec 10 21:39 a05.expected
+-rw-rw-r-- 1 brett brett  193 Dec 13 17:27 a05.out
+-rw-rw-r-- 1 brett brett 3203 Dec 13 17:27 a05.tm
+a05 (Output OK)
+====================================
+FILE: a06.c-
+-rw------- 1 brett brett   61 Dec  7 11:02 a06.c-
+-rw------- 1 brett brett  193 Dec 10 21:39 a06.expected
+-rw-rw-r-- 1 brett brett  193 Dec 13 17:27 a06.out
+-rw-rw-r-- 1 brett brett 3202 Dec 13 17:27 a06.tm
+a06 (Output OK)
+====================================
+FILE: a07.c-
+-rw------- 1 brett brett  132 Dec  7 11:02 a07.c-
+-rw------- 1 brett brett  199 Dec 10 21:39 a07.expected
+-rw-rw-r-- 1 brett brett  199 Dec 13 17:27 a07.out
+-rw-rw-r-- 1 brett brett 4353 Dec 13 17:27 a07.tm
+a07 (Output OK)
+====================================
+FILE: a08.c-
+-rw------- 1 brett brett  139 Dec  7 11:02 a08.c-
+-rw------- 1 brett brett  195 Dec 10 21:39 a08.expected
+-rw-rw-r-- 1 brett brett 1140 Dec 13 17:27 a08.out
+-rw-rw-r-- 1 brett brett 4357 Dec 13 17:27 a08.tm
+a08.out ztmp4698.txt differ: byte 184, line 9
+a08 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: a08.tm						Loading file: a08.tm
+T 								T 
+F 								F 
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+F 							   <
+T 							   <
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: a09.c-
+-rw------- 1 brett brett  134 Dec 10 21:34 a09.c-
+-rw------- 1 brett brett  193 Dec 10 21:39 a09.expected
+-rw-rw-r-- 1 brett brett  193 Dec 13 17:27 a09.out
+-rw-rw-r-- 1 brett brett 4359 Dec 13 17:27 a09.tm
+a09 (Output OK)
+====================================
+FILE: b01.c-
+-rw------- 1 brett brett   56 Dec  7 11:02 b01.c-
+-rw------- 1 brett brett  194 Dec 10 21:39 b01.expected
+-rw-rw-r-- 1 brett brett  194 Dec 13 17:27 b01.out
+-rw-rw-r-- 1 brett brett 3593 Dec 13 17:27 b01.tm
+b01.out ztmp4698.txt differ: byte 178, line 7
+b01 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: b01.tm						Loading file: b01.tm
+884 							   |	650 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: b02.c-
+-rw------- 1 brett brett   56 Dec  7 11:02 b02.c-
+-rw------- 1 brett brett  193 Dec 10 21:39 b02.expected
+-rw-rw-r-- 1 brett brett  193 Dec 13 17:27 b02.out
+-rw-rw-r-- 1 brett brett 3593 Dec 13 17:27 b02.tm
+b02.out ztmp4698.txt differ: byte 178, line 7
+b02 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: b02.tm						Loading file: b02.tm
+81 							   |	63 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: b03.c-
+-rw------- 1 brett brett   56 Dec  7 11:02 b03.c-
+-rw------- 1 brett brett  193 Dec 10 21:39 b03.expected
+-rw-rw-r-- 1 brett brett  192 Dec 13 17:27 b03.out
+-rw-rw-r-- 1 brett brett 3645 Dec 13 17:27 b03.tm
+b03.out ztmp4698.txt differ: byte 178, line 7
+b03 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: b03.tm						Loading file: b03.tm
+5 							   |	11 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: b04.c-
+-rw------- 1 brett brett   56 Dec  7 11:02 b04.c-
+-rw------- 1 brett brett  192 Dec 10 21:39 b04.expected
+-rw-rw-r-- 1 brett brett  192 Dec 13 17:27 b04.out
+-rw-rw-r-- 1 brett brett 3595 Dec 13 17:27 b04.tm
+b04.out ztmp4698.txt differ: byte 178, line 7
+b04 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: b04.tm						Loading file: b04.tm
+5 							   |	3 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: b05.c-
+-rw------- 1 brett brett   56 Dec  7 11:02 b05.c-
+-rw------- 1 brett brett  193 Dec 10 21:39 b05.expected
+-rw-rw-r-- 1 brett brett  193 Dec 13 17:27 b05.out
+-rw-rw-r-- 1 brett brett 3593 Dec 13 17:27 b05.tm
+b05.out ztmp4698.txt differ: byte 178, line 7
+b05 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: b05.tm						Loading file: b05.tm
+55 							   |	37 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: b06.c-
+-rw------- 1 brett brett   56 Dec  7 11:02 b06.c-
+-rw------- 1 brett brett  193 Dec 10 21:39 b06.expected
+-rw-rw-r-- 1 brett brett  193 Dec 13 17:27 b06.out
+-rw-rw-r-- 1 brett brett 3593 Dec 13 17:27 b06.tm
+b06.out ztmp4698.txt differ: byte 178, line 7
+b06 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: b06.tm						Loading file: b06.tm
+81 							   |	63 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: b07.c-
+-rw------- 1 brett brett   55 Dec  7 11:02 b07.c-
+-rw------- 1 brett brett  195 Dec 10 21:39 b07.expected
+-rw-rw-r-- 1 brett brett  195 Dec 13 17:27 b07.out
+-rw-rw-r-- 1 brett brett 3477 Dec 13 17:27 b07.tm
+b07 (Output OK)
+====================================
+FILE: b08.c-
+-rw------- 1 brett brett   58 Dec  7 14:48 b08.c-
+-rw------- 1 brett brett  192 Dec 10 21:39 b08.expected
+-rw-rw-r-- 1 brett brett  192 Dec 13 17:27 b08.out
+-rw-rw-r-- 1 brett brett 3520 Dec 13 17:27 b08.tm
+b08.out ztmp4698.txt differ: byte 178, line 7
+b08 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: b08.tm						Loading file: b08.tm
+T 							   |	F 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: b09.c-
+-rw------- 1 brett brett   65 Dec 10 21:34 b09.c-
+-rw------- 1 brett brett  192 Dec 10 21:40 b09.expected
+-rw-rw-r-- 1 brett brett  192 Dec 13 17:27 b09.out
+-rw-rw-r-- 1 brett brett 3628 Dec 13 17:27 b09.tm
+b09.out ztmp4698.txt differ: byte 178, line 7
+b09 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: b09.tm						Loading file: b09.tm
+F 							   |	T 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: b0a.c-
+-rw------- 1 brett brett   62 Dec 10 21:35 b0a.c-
+-rw------- 1 brett brett  192 Dec 10 21:40 b0a.expected
+-rw-rw-r-- 1 brett brett  192 Dec 13 17:27 b0a.out
+-rw-rw-r-- 1 brett brett 3627 Dec 13 17:27 b0a.tm
+b0a.out ztmp4698.txt differ: byte 178, line 7
+b0a (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: b0a.tm						Loading file: b0a.tm
+F 							   |	T 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: b0b.c-
+-rw------- 1 brett brett  324 Dec  7 11:02 b0b.c-
+-rw------- 1 brett brett  210 Dec 10 21:40 b0b.expected
+-rw-rw-r-- 1 brett brett  210 Dec 13 17:27 b0b.out
+-rw-rw-r-- 1 brett brett 8824 Dec 13 17:27 b0b.tm
+b0b.out ztmp4698.txt differ: byte 180, line 7
+b0b (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: b0b.tm						Loading file: b0b.tm
+F F F F F F F F T T 					   |	F T T T F F F T T F 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: c01.c-
+-rw------- 1 brett brett  100 Dec  7 11:02 c01.c-
+-rw------- 1 brett brett  194 Dec 10 21:40 c01.expected
+-rw-rw-r-- 1 brett brett  194 Dec 13 17:27 c01.out
+-rw-rw-r-- 1 brett brett 3747 Dec 13 17:27 c01.tm
+c01.out ztmp4698.txt differ: byte 179, line 7
+c01 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: c01.tm						Loading file: c01.tm
+211 							   |	284 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: c02.c-
+-rw------- 1 brett brett  111 Dec  7 11:02 c02.c-
+-rw------- 1 brett brett  192 Dec 10 21:40 c02.expected
+-rw-rw-r-- 1 brett brett  192 Dec 13 17:27 c02.out
+-rw-rw-r-- 1 brett brett 3781 Dec 13 17:27 c02.tm
+c02 (Output OK)
+====================================
+FILE: c03.c-
+-rw------- 1 brett brett  103 Dec  7 11:02 c03.c-
+-rw------- 1 brett brett  192 Dec 10 21:40 c03.expected
+-rw-rw-r-- 1 brett brett  192 Dec 13 17:27 c03.out
+-rw-rw-r-- 1 brett brett 3781 Dec 13 17:27 c03.tm
+c03 (Output OK)
+====================================
+FILE: c04.c-
+-rw------- 1 brett brett   92 Dec  7 11:02 c04.c-
+-rw------- 1 brett brett  194 Dec 10 21:40 c04.expected
+-rw-rw-r-- 1 brett brett  194 Dec 13 17:27 c04.out
+-rw-rw-r-- 1 brett brett 3747 Dec 13 17:27 c04.tm
+c04.out ztmp4698.txt differ: byte 180, line 7
+c04 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: c04.tm						Loading file: c04.tm
+283 							   |	284 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: c05.c-
+-rw------- 1 brett brett  110 Dec  7 11:02 c05.c-
+-rw------- 1 brett brett  194 Dec 10 21:40 c05.expected
+-rw-rw-r-- 1 brett brett  234 Dec 13 17:27 c05.out
+-rw-rw-r-- 1 brett brett 4561 Dec 13 17:27 c05.tm
+c05.out ztmp4698.txt differ: byte 178, line 7
+c05 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: c05.tm						Loading file: c05.tm
+ERROR: Line 86 (Address: 62)   Missing comma		   |	284 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: c06.c-
+-rw------- 1 brett brett  118 Dec  7 11:02 c06.c-
+-rw------- 1 brett brett  194 Dec 10 21:40 c06.expected
+-rw-rw-r-- 1 brett brett  234 Dec 13 17:27 c06.out
+-rw-rw-r-- 1 brett brett 4572 Dec 13 17:27 c06.tm
+c06.out ztmp4698.txt differ: byte 178, line 7
+c06 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: c06.tm						Loading file: c06.tm
+ERROR: Line 90 (Address: 66)   Missing comma		   |	284 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: c07.c-
+-rw------- 1 brett brett  128 Dec  7 11:02 c07.c-
+-rw------- 1 brett brett  192 Dec 10 21:40 c07.expected
+-rw-rw-r-- 1 brett brett  234 Dec 13 17:27 c07.out
+-rw-rw-r-- 1 brett brett 4605 Dec 13 17:27 c07.tm
+c07.out ztmp4698.txt differ: byte 178, line 7
+c07 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: c07.tm						Loading file: c07.tm
+ERROR: Line 90 (Address: 66)   Missing comma		   |	T 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: c08.c-
+-rw------- 1 brett brett  120 Dec  7 11:02 c08.c-
+-rw------- 1 brett brett  192 Dec 10 21:40 c08.expected
+-rw-rw-r-- 1 brett brett  234 Dec 13 17:27 c08.out
+-rw-rw-r-- 1 brett brett 4594 Dec 13 17:27 c08.tm
+c08.out ztmp4698.txt differ: byte 178, line 7
+c08 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: c08.tm						Loading file: c08.tm
+ERROR: Line 86 (Address: 62)   Missing comma		   |	T 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: c09.c-
+-rw------- 1 brett brett  130 Dec  7 11:02 c09.c-
+-rw------- 1 brett brett  200 Dec 10 21:40 c09.expected
+-rw-rw-r-- 1 brett brett  200 Dec 13 17:27 c09.out
+-rw-rw-r-- 1 brett brett 4317 Dec 13 17:27 c09.tm
+c09 (Output OK)
+====================================
+FILE: c0a.c-
+-rw------- 1 brett brett  116 Dec  7 11:02 c0a.c-
+-rw------- 1 brett brett  200 Dec 10 21:40 c0a.expected
+-rw-rw-r-- 1 brett brett  200 Dec 13 17:27 c0a.out
+-rw-rw-r-- 1 brett brett 4242 Dec 13 17:27 c0a.tm
+c0a (Output OK)
+====================================
+FILE: c0b.c-
+-rw------- 1 brett brett   95 Dec  7 11:02 c0b.c-
+-rw------- 1 brett brett  194 Dec 10 21:40 c0b.expected
+-rw-rw-r-- 1 brett brett  194 Dec 13 17:27 c0b.out
+-rw-rw-r-- 1 brett brett 3643 Dec 13 17:27 c0b.tm
+c0b (Output OK)
+====================================
+FILE: c0c2.c-
+-rw------- 1 brett brett  203 Dec  7 14:39 c0c2.c-
+-rw------- 1 brett brett  197 Dec 10 21:40 c0c2.expected
+-rw-rw-r-- 1 brett brett  197 Dec 13 17:27 c0c2.out
+-rw-rw-r-- 1 brett brett 5826 Dec 13 17:27 c0c2.tm
+c0c2 (Output OK)
+====================================
+FILE: c0c.c-
+-rw------- 1 brett brett  119 Dec  7 11:02 c0c.c-
+-rw------- 1 brett brett  194 Dec 10 21:40 c0c.expected
+-rw-rw-r-- 1 brett brett  194 Dec 13 17:27 c0c.out
+-rw-rw-r-- 1 brett brett 3683 Dec 13 17:27 c0c.tm
+c0c (Output OK)
+====================================
+FILE: c0d.c-
+-rw------- 1 brett brett  134 Dec  7 11:02 c0d.c-
+-rw------- 1 brett brett  194 Dec 10 21:40 c0d.expected
+-rw-rw-r-- 1 brett brett  194 Dec 13 17:27 c0d.out
+-rw-rw-r-- 1 brett brett 3898 Dec 13 17:27 c0d.tm
+c0d (Output OK)
+====================================
+FILE: c0e.c-
+-rw------- 1 brett brett  166 Dec  7 11:02 c0e.c-
+-rw------- 1 brett brett  213 Dec 10 21:40 c0e.expected
+-rw-rw-r-- 1 brett brett  213 Dec 13 17:27 c0e.out
+-rw-rw-r-- 1 brett brett 5948 Dec 13 17:27 c0e.tm
+c0e (Output OK)
+====================================
+FILE: c0f.c-
+-rw------- 1 brett brett  184 Dec  7 11:02 c0f.c-
+-rw------- 1 brett brett  213 Dec 10 21:40 c0f.expected
+-rw-rw-r-- 1 brett brett  177 Dec 13 17:27 c0f.out
+-rw-rw-r-- 1 brett brett 6361 Dec 13 17:27 c0f.tm
+c0f (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: c0f.tm						Loading file: c0f.tm
+							   >	1024 
+							   >	1024 
+							   >	1023 
+							   >	1023 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c0g.c-
+-rw------- 1 brett brett  179 Dec  7 11:02 c0g.c-
+-rw------- 1 brett brett  213 Dec 10 21:40 c0g.expected
+-rw-rw-r-- 1 brett brett  177 Dec 13 17:27 c0g.out
+-rw-rw-r-- 1 brett brett 6337 Dec 13 17:27 c0g.tm
+c0g (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: c0g.tm						Loading file: c0g.tm
+							   >	1024 
+							   >	1024 
+							   >	1023 
+							   >	1023 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c0h.c-
+-rw------- 1 brett brett  233 Dec  7 11:02 c0h.c-
+-rw------- 1 brett brett  218 Dec 10 21:40 c0h.expected
+-rw-rw-r-- 1 brett brett  177 Dec 13 17:27 c0h.out
+-rw-rw-r-- 1 brett brett 7581 Dec 13 17:27 c0h.tm
+c0h (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: c0h.tm						Loading file: c0h.tm
+							   >	1024 
+							   >	1024 
+							   >	1023 
+							   >	1023 
+							   >	1023 Halted
+							   >	Bye.
+====================================
+FILE: c13.c-
+-rw------- 1 brett brett   605 Dec  7 11:02 c13.c-
+-rw------- 1 brett brett   228 Dec 10 21:40 c13.expected
+-rw-rw-r-- 1 brett brett   223 Dec 13 17:27 c13.out
+-rw-rw-r-- 1 brett brett 13657 Dec 13 17:27 c13.tm
+c13.out ztmp4698.txt differ: byte 185, line 9
+c13 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: c13.tm						Loading file: c13.tm
+73 								73 
+5 								5 
+							   >	17 
+5 								5 
+							   >	17 
+5 								5 
+							   >	17 
+5 								5 
+							   >	17 
+5 								5 
+5 							   |	17 
+5 							   <
+5 							   <
+5 							   <
+5 							   <
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: c14.c-
+-rw------- 1 brett brett  159 Dec  7 11:02 c14.c-
+-rw------- 1 brett brett  194 Dec 10 21:40 c14.expected
+-rw-rw-r-- 1 brett brett  193 Dec 13 17:27 c14.out
+-rw-rw-r-- 1 brett brett 4116 Dec 13 17:27 c14.tm
+c14.out ztmp4698.txt differ: byte 178, line 7
+c14 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: c14.tm						Loading file: c14.tm
+73 							   |	284 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: c15.c-
+-rw------- 1 brett brett  152 Dec  7 11:02 c15.c-
+-rw------- 1 brett brett  194 Dec 10 21:40 c15.expected
+-rw-rw-r-- 1 brett brett  193 Dec 13 17:27 c15.out
+-rw-rw-r-- 1 brett brett 4104 Dec 13 17:27 c15.tm
+c15.out ztmp4698.txt differ: byte 178, line 7
+c15 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: c15.tm						Loading file: c15.tm
+73 							   |	284 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: c16.c-
+-rw------- 1 brett brett  168 Dec  7 11:02 c16.c-
+-rw------- 1 brett brett  194 Dec 10 21:40 c16.expected
+-rw-rw-r-- 1 brett brett  234 Dec 13 17:27 c16.out
+-rw-rw-r-- 1 brett brett 4443 Dec 13 17:27 c16.tm
+c16.out ztmp4698.txt differ: byte 178, line 7
+c16 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: c16.tm						Loading file: c16.tm
+ERROR: Line 82 (Address: 58)   Missing comma		   |	284 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: c17.c-
+-rw------- 1 brett brett  160 Dec  7 11:02 c17.c-
+-rw------- 1 brett brett  199 Dec 10 21:40 c17.expected
+-rw-rw-r-- 1 brett brett  177 Dec 13 17:27 c17.out
+-rw-rw-r-- 1 brett brett 5231 Dec 13 17:27 c17.tm
+c17 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: c17.tm						Loading file: c17.tm
+							   >	777 -333 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: c18.c-
+-rw------- 1 brett brett  168 Dec  7 11:02 c18.c-
+-rw------- 1 brett brett  199 Dec 10 21:40 c18.expected
+-rw-rw-r-- 1 brett brett  177 Dec 13 17:27 c18.out
+-rw-rw-r-- 1 brett brett 5252 Dec 13 17:27 c18.tm
+c18 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: c18.tm						Loading file: c18.tm
+							   >	777 -333 
+							   >	Halted
+							   >	Bye.
+====================================
+FILE: d015.c-
+-rw------- 1 brett brett  248 Dec  7 15:02 d015.c-
+-rw------- 1 brett brett  210 Dec 10 21:40 d015.expected
+-rw-rw-r-- 1 brett brett  243 Dec 13 17:27 d015.out
+-rw-rw-r-- 1 brett brett 9218 Dec 13 17:27 d015.tm
+d015.out ztmp4698.txt differ: byte 179, line 7
+d015 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: d015.tm						Loading file: d015.tm
+ERROR: Line 151 (Address: 103)   Illegal opcode: JTE	   |	T F F T F T T F T T Halted
+Halted							   <
+Bye.								Bye.
+====================================
+FILE: d01.c-
+-rw------- 1 brett brett   367 Dec  7 11:02 d01.c-
+-rw------- 1 brett brett   221 Dec 10 21:40 d01.expected
+-rw-rw-r-- 1 brett brett   242 Dec 13 17:27 d01.out
+-rw-rw-r-- 1 brett brett 12917 Dec 13 17:27 d01.tm
+d01.out ztmp4698.txt differ: byte 178, line 7
+d01 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: d01.tm						Loading file: d01.tm
+ERROR: Line 151 (Address: 103)   Illegal opcode: JTE	   |	T F F T F T T F T T T F F T T F Halted
+Halted							   <
+Bye.								Bye.
+====================================
+FILE: d02.c-
+-rw------- 1 brett brett  234 Dec  7 11:02 d02.c-
+-rw------- 1 brett brett  220 Dec 10 21:40 d02.expected
+-rw-rw-r-- 1 brett brett  193 Dec 13 17:27 d02.out
+-rw-rw-r-- 1 brett brett 4344 Dec 13 17:27 d02.tm
+d02.out ztmp4698.txt differ: byte 178, line 7
+d02 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: d02.tm						Loading file: d02.tm
+0 3 Halted						   |	1019 66443 664 2 66449 0 -491 
+							   >	Halted
+Bye.								Bye.
+====================================
+FILE: d03.c-
+-rw------- 1 brett brett  213 Dec  7 11:02 d03.c-
+-rw------- 1 brett brett  220 Dec 10 21:40 d03.expected
+-rw-rw-r-- 1 brett brett  193 Dec 13 17:27 d03.out
+-rw-rw-r-- 1 brett brett 4350 Dec 13 17:27 d03.tm
+d03.out ztmp4698.txt differ: byte 178, line 7
+d03 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: d03.tm						Loading file: d03.tm
+0 3 Halted						   |	1019 66443 664 2 66449 0 -491 
+							   >	Halted
+Bye.								Bye.
+====================================
+FILE: d045.c-
+-rw------- 1 brett brett   45 Dec  9 12:48 d045.c-
+-rw------- 1 brett brett  192 Dec 10 21:40 d045.expected
+-rw-rw-r-- 1 brett brett  192 Dec 13 17:27 d045.out
+-rw-rw-r-- 1 brett brett 3796 Dec 13 17:27 d045.tm
+d045 (Output OK)
+====================================
+FILE: d04.c-
+-rw------- 1 brett brett  434 Dec  7 11:02 d04.c-
+-rw------- 1 brett brett  211 Dec 10 21:40 d04.expected
+-rw-rw-r-- 1 brett brett  193 Dec 13 17:27 d04.out
+-rw-rw-r-- 1 brett brett 4485 Dec 13 17:27 d04.tm
+d04.out ztmp4698.txt differ: byte 178, line 7
+d04 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: d04.tm						Loading file: d04.tm
+F F Halted						   |	T T T F T 
+							   >	T T T F F 
+							   >	Halted
+Bye.								Bye.
+====================================
+FILE: d05.c-
+-rw------- 1 brett brett  748 Dec  7 11:02 d05.c-
+-rw------- 1 brett brett  222 Dec 10 21:40 d05.expected
+-rw-rw-r-- 1 brett brett  240 Dec 13 17:27 d05.out
+-rw-rw-r-- 1 brett brett 4443 Dec 13 17:27 d05.tm
+d05.out ztmp4698.txt differ: byte 178, line 7
+d05 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: d05.tm						Loading file: d05.tm
+ERROR: Line 98 (Address: 74)   Illegal opcode: JTE	   |	T T T T T 
+							   >	T F F F F 
+							   >	T T T F F 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: e01.c-
+-rw------- 1 brett brett   478 Dec  7 11:02 e01.c-
+-rw------- 1 brett brett   225 Dec 10 21:40 e01.expected
+-rw-rw-r-- 1 brett brett   195 Dec 13 17:27 e01.out
+-rw-rw-r-- 1 brett brett 10727 Dec 13 17:27 e01.tm
+e01.out ztmp4698.txt differ: byte 184, line 7
+e01 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: e01.tm						Loading file: e01.tm
+13 23 Halted						   |	13 23 55 987 13 451 514 55 987 1614 Halted
+Bye.								Bye.
+====================================
+FILE: e02.c-
+-rw------- 1 brett brett  180 Dec  7 11:02 e02.c-
+-rw------- 1 brett brett  209 Dec 10 21:40 e02.expected
+-rw-rw-r-- 1 brett brett  189 Dec 13 17:27 e02.out
+-rw-rw-r-- 1 brett brett 5123 Dec 13 17:27 e02.tm
+e02.out ztmp4698.txt differ: byte 178, line 7
+e02 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: e02.tm						Loading file: e02.tm
+Halted							   |	0 1 2 3 4 5 6 7 8 9 Halted
+Bye.								Bye.
+====================================
+FILE: e03.c-
+-rw------- 1 brett brett  210 Dec  7 11:02 e03.c-
+-rw------- 1 brett brett  191 Dec 10 21:40 e03.expected
+-rw-rw-r-- 1 brett brett  189 Dec 13 17:27 e03.out
+-rw-rw-r-- 1 brett brett 5123 Dec 13 17:27 e03.tm
+e03.out ztmp4698.txt differ: byte 178, line 7
+e03 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: e03.tm						Loading file: e03.tm
+Halted							   |	0 Halted
+Bye.								Bye.
+====================================
+FILE: e04.c-
+-rw------- 1 brett brett   621 Dec  7 11:02 e04.c-
+-rw------- 1 brett brett   189 Dec 10 21:40 e04.expected
+-rw-rw-r-- 1 brett brett   189 Dec 13 17:27 e04.out
+-rw-rw-r-- 1 brett brett 12712 Dec 13 17:27 e04.tm
+e04 (Output OK)
+====================================
+FILE: e05.c-
+-rw------- 1 brett brett   609 Dec  7 11:02 e05.c-
+-rw------- 1 brett brett   222 Dec 10 21:40 e05.expected
+-rw-rw-r-- 1 brett brett   192 Dec 13 17:27 e05.out
+-rw-rw-r-- 1 brett brett 12712 Dec 13 17:27 e05.tm
+e05.out ztmp4698.txt differ: byte 181, line 7
+e05 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: e05.tm						Loading file: e05.tm
+13 Halted						   |	13 55 987 13 451 514 55 987 1614 Halted
+Bye.								Bye.
+====================================
+FILE: e06.c-
+-rw------- 1 brett brett  148 Dec  7 11:02 e06.c-
+-rw------- 1 brett brett  205 Dec 10 21:40 e06.expected
+-rw-rw-r-- 1 brett brett  191 Dec 13 17:27 e06.out
+-rw-rw-r-- 1 brett brett 4732 Dec 13 17:27 e06.tm
+e06.out ztmp4698.txt differ: byte 180, line 7
+e06 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: e06.tm						Loading file: e06.tm
+0 Halted						   |	0 1 2 3 4 5 666 Halted
+Bye.								Bye.
+====================================
+FILE: e07.c-
+-rw------- 1 brett brett  153 Dec  7 11:02 e07.c-
+-rw------- 1 brett brett  205 Dec 10 21:40 e07.expected
+-rw-rw-r-- 1 brett brett  191 Dec 13 17:27 e07.out
+-rw-rw-r-- 1 brett brett 4514 Dec 13 17:27 e07.tm
+e07.out ztmp4698.txt differ: byte 180, line 7
+e07 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: e07.tm						Loading file: e07.tm
+0 Halted						   |	0 1 2 3 4 5 666 Halted
+Bye.								Bye.
+====================================
+FILE: e08.c-
+-rw------- 1 brett brett  153 Dec  7 11:02 e08.c-
+-rw------- 1 brett brett  205 Dec 10 21:40 e08.expected
+-rw-rw-r-- 1 brett brett  191 Dec 13 17:27 e08.out
+-rw-rw-r-- 1 brett brett 4632 Dec 13 17:27 e08.tm
+e08.out ztmp4698.txt differ: byte 180, line 7
+e08 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: e08.tm						Loading file: e08.tm
+0 Halted						   |	0 1 2 3 4 5 666 Halted
+Bye.								Bye.
+====================================
+FILE: e09.c-
+-rw------- 1 brett brett  138 Dec  7 11:02 e09.c-
+-rw------- 1 brett brett  213 Dec 10 21:40 e09.expected
+-rw-rw-r-- 1 brett brett  189 Dec 13 17:27 e09.out
+-rw-rw-r-- 1 brett brett 4488 Dec 13 17:27 e09.tm
+e09.out ztmp4698.txt differ: byte 178, line 7
+e09 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: e09.tm						Loading file: e09.tm
+Halted							   |	0 1 2 3 4 5 6 7 8 9 666 Halted
+Bye.								Bye.
+====================================
+FILE: e0a.c-
+-rw------- 1 brett brett  253 Dec  7 11:02 e0a.c-
+-rw------- 1 brett brett  213 Dec 10 21:40 e0a.expected
+-rw-rw-r-- 1 brett brett  189 Dec 13 17:27 e0a.out
+-rw-rw-r-- 1 brett brett 5428 Dec 13 17:27 e0a.tm
+e0a.out ztmp4698.txt differ: byte 178, line 7
+e0a (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: e0a.tm						Loading file: e0a.tm
+Halted							   |	0 1 2 3 4 5 6 7 8 9 666 Halted
+Bye.								Bye.
+====================================
+FILE: e0b.c-
+-rw------- 1 brett brett  263 Dec  7 11:02 e0b.c-
+-rw------- 1 brett brett  213 Dec 10 21:40 e0b.expected
+-rw-rw-r-- 1 brett brett  193 Dec 13 17:27 e0b.out
+-rw-rw-r-- 1 brett brett 4004 Dec 13 17:27 e0b.tm
+e0b.out ztmp4698.txt differ: byte 182, line 7
+e0b (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: e0b.tm						Loading file: e0b.tm
+666 Halted						   |	666 0 1 2 3 4 5 6 7 8 9 Halted
+Bye.								Bye.
+====================================
+FILE: e0c.c-
+-rw------- 1 brett brett  211 Dec  7 11:02 e0c.c-
+-rw------- 1 brett brett  273 Dec 10 21:40 e0c.expected
+-rw-rw-r-- 1 brett brett  189 Dec 13 17:27 e0c.out
+-rw-rw-r-- 1 brett brett 5120 Dec 13 17:27 e0c.tm
+e0c.out ztmp4698.txt differ: byte 178, line 7
+e0c (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: e0c.tm						Loading file: e0c.tm
+Halted							   |	0 1 2 3 4 5 0 0 1 2 3 4 5 1 0 1 2 3 4 5 2 0 1 2 3 4 5 3 
+Bye.								Bye.
+====================================
+FILE: e0d.c-
+-rw------- 1 brett brett  267 Dec  7 11:02 e0d.c-
+-rw------- 1 brett brett  249 Dec 10 21:40 e0d.expected
+-rw-rw-r-- 1 brett brett  249 Dec 13 17:27 e0d.out
+-rw-rw-r-- 1 brett brett 5913 Dec 13 17:27 e0d.tm
+e0d.out ztmp4698.txt differ: byte 1, line 1
+e0d (Output DIFF)
+ERROR(16): Cannot have a break statement outside of loop   <
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 1					   |	Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: e0d.tm						Loading file: e0d.tm
+0 Halted						   |	0 1 2 3 4 0 0 1 2 3 4 1 0 1 2 3 4 2 0 1 2 3 4 3 0 1 2 3 
+Bye.								Bye.
+====================================
+FILE: f01.c-
+-rw------- 1 brett brett   50 Dec  7 11:02 f01.c-
+-rw------- 1 brett brett  189 Dec 10 21:40 f01.expected
+-rw-rw-r-- 1 brett brett  189 Dec 13 17:27 f01.out
+-rw-rw-r-- 1 brett brett 3367 Dec 13 17:27 f01.tm
+f01 (Output OK)
+====================================
+FILE: f02.c-
+-rw------- 1 brett brett   67 Dec  7 11:02 f02.c-
+-rw------- 1 brett brett  192 Dec 10 21:40 f02.expected
+-rw-rw-r-- 1 brett brett  192 Dec 13 17:27 f02.out
+-rw-rw-r-- 1 brett brett 3808 Dec 13 17:27 f02.tm
+f02 (Output OK)
+====================================
+FILE: f03.c-
+-rw------- 1 brett brett   90 Dec  7 11:02 f03.c-
+-rw------- 1 brett brett  195 Dec 10 21:40 f03.expected
+-rw-rw-r-- 1 brett brett  195 Dec 13 17:27 f03.out
+-rw-rw-r-- 1 brett brett 4344 Dec 13 17:27 f03.tm
+f03 (Output OK)
+====================================
+FILE: f04.c-
+-rw------- 1 brett brett   94 Dec  7 11:02 f04.c-
+-rw------- 1 brett brett  192 Dec 10 21:40 f04.expected
+-rw-rw-r-- 1 brett brett  251 Dec 13 17:27 f04.out
+-rw-rw-r-- 1 brett brett 4047 Dec 13 17:27 f04.tm
+f04.out ztmp4698.txt differ: byte 43, line 3
+f04 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: f04.tm						Loading file: f04.tm
+42 Halted							42 Halted
+Bye.								Bye.
+====================================
+FILE: f05.c-
+-rw------- 1 brett brett   99 Dec  7 11:02 f05.c-
+-rw------- 1 brett brett  191 Dec 10 21:40 f05.expected
+-rw-rw-r-- 1 brett brett  250 Dec 13 17:27 f05.out
+-rw-rw-r-- 1 brett brett 4050 Dec 13 17:27 f05.tm
+f05.out ztmp4698.txt differ: byte 43, line 3
+f05 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: f05.tm						Loading file: f05.tm
+T Halted							T Halted
+Bye.								Bye.
+====================================
+FILE: f06.c-
+-rw------- 1 brett brett  109 Dec 10 21:36 f06.c-
+-rw------- 1 brett brett  191 Dec 10 21:40 f06.expected
+-rw-rw-r-- 1 brett brett  250 Dec 13 17:27 f06.out
+-rw-rw-r-- 1 brett brett 4224 Dec 13 17:27 f06.tm
+f06.out ztmp4698.txt differ: byte 43, line 3
+f06 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: f06.tm						Loading file: f06.tm
+F Halted							F Halted
+Bye.								Bye.
+====================================
+FILE: f07.c-
+-rw------- 1 brett brett   71 Dec  7 11:02 f07.c-
+-rw------- 1 brett brett  192 Dec 10 21:40 f07.expected
+-rw-rw-r-- 1 brett brett  251 Dec 13 17:27 f07.out
+-rw-rw-r-- 1 brett brett 3970 Dec 13 17:27 f07.tm
+f07.out ztmp4698.txt differ: byte 43, line 3
+f07 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: f07.tm						Loading file: f07.tm
+93 Halted							93 Halted
+Bye.								Bye.
+====================================
+FILE: f08.c-
+-rw------- 1 brett brett   75 Dec  7 11:02 f08.c-
+-rw------- 1 brett brett  193 Dec 10 21:40 f08.expected
+-rw-rw-r-- 1 brett brett  252 Dec 13 17:27 f08.out
+-rw-rw-r-- 1 brett brett 4114 Dec 13 17:27 f08.tm
+f08.out ztmp4698.txt differ: byte 43, line 3
+f08 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: f08.tm						Loading file: f08.tm
+170 Halted						   |	874 Halted
+Bye.								Bye.
+====================================
+FILE: f09.c-
+-rw------- 1 brett brett   77 Dec  7 11:02 f09.c-
+-rw------- 1 brett brett  193 Dec 10 21:40 f09.expected
+-rw-rw-r-- 1 brett brett  252 Dec 13 17:27 f09.out
+-rw-rw-r-- 1 brett brett 4393 Dec 13 17:27 f09.tm
+f09.out ztmp4698.txt differ: byte 43, line 3
+f09 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: f09.tm						Loading file: f09.tm
+174 Halted						   |	186 Halted
+Bye.								Bye.
+====================================
+FILE: f0a.c-
+-rw------- 1 brett brett   85 Dec  7 11:02 f0a.c-
+-rw------- 1 brett brett  195 Dec 10 21:40 f0a.expected
+-rw-rw-r-- 1 brett brett  253 Dec 13 17:27 f0a.out
+-rw-rw-r-- 1 brett brett 4816 Dec 13 17:27 f0a.tm
+f0a.out ztmp4698.txt differ: byte 43, line 3
+f0a (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: f0a.tm						Loading file: f0a.tm
+8277 Halted						   |	17298 Halted
+Bye.								Bye.
+====================================
+FILE: f0b.c-
+-rw------- 1 brett brett  110 Dec  7 11:02 f0b.c-
+-rw------- 1 brett brett  197 Dec 10 21:40 f0b.expected
+-rw-rw-r-- 1 brett brett  197 Dec 13 17:27 f0b.out
+-rw-rw-r-- 1 brett brett 4384 Dec 13 17:27 f0b.tm
+f0b (Output OK)
+====================================
+FILE: f0c.c-
+-rw------- 1 brett brett  126 Dec  7 11:02 f0c.c-
+-rw------- 1 brett brett  197 Dec 10 21:40 f0c.expected
+-rw-rw-r-- 1 brett brett  197 Dec 13 17:27 f0c.out
+-rw-rw-r-- 1 brett brett 4387 Dec 13 17:27 f0c.tm
+f0c (Output OK)
+====================================
+FILE: f0d.c-
+-rw------- 1 brett brett  134 Dec  7 11:02 f0d.c-
+-rw------- 1 brett brett  197 Dec 10 21:40 f0d.expected
+-rw-rw-r-- 1 brett brett  195 Dec 13 17:27 f0d.out
+-rw-rw-r-- 1 brett brett 4384 Dec 13 17:27 f0d.tm
+f0d.out ztmp4698.txt differ: byte 181, line 7
+f0d (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: f0d.tm						Loading file: f0d.tm
+99 99 Halted						   |	99 1001 Halted
+Bye.								Bye.
+====================================
+FILE: g00.c-
+-rw------- 1 brett brett   69 Dec  7 11:02 g00.c-
+-rw------- 1 brett brett  193 Dec 10 21:40 g00.expected
+-rw-rw-r-- 1 brett brett  193 Dec 13 17:27 g00.out
+-rw-rw-r-- 1 brett brett 3904 Dec 13 17:27 g00.tm
+g00 (Output OK)
+====================================
+FILE: g01.c-
+-rw------- 1 brett brett  134 Dec  7 11:02 g01.c-
+-rw------- 1 brett brett  201 Dec 10 21:40 g01.expected
+-rw-rw-r-- 1 brett brett  201 Dec 13 17:27 g01.out
+-rw-rw-r-- 1 brett brett 4906 Dec 13 17:27 g01.tm
+g01 (Output OK)
+====================================
+FILE: g02.c-
+-rw------- 1 brett brett  143 Dec  7 11:02 g02.c-
+-rw------- 1 brett brett  201 Dec 10 21:40 g02.expected
+-rw-rw-r-- 1 brett brett  200 Dec 13 17:27 g02.out
+-rw-rw-r-- 1 brett brett 4904 Dec 13 17:27 g02.tm
+g02.out ztmp4698.txt differ: byte 178, line 7
+g02 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: g02.tm						Loading file: g02.tm
+89 122 637 Halted					   |	637 122 637 Halted
+Bye.								Bye.
+====================================
+FILE: g03.c-
+-rw------- 1 brett brett  109 Dec  7 11:02 g03.c-
+-rw------- 1 brett brett  193 Dec 10 21:40 g03.expected
+-rw-rw-r-- 1 brett brett  251 Dec 13 17:27 g03.out
+-rw-rw-r-- 1 brett brett 4142 Dec 13 17:27 g03.tm
+g03.out ztmp4698.txt differ: byte 43, line 3
+g03 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: g03.tm						Loading file: g03.tm
+77 Halted						   |	637 Halted
+Bye.								Bye.
+====================================
+FILE: g04.c-
+-rw------- 1 brett brett  101 Dec  7 11:02 g04.c-
+-rw------- 1 brett brett  195 Dec 10 21:40 g04.expected
+-rw-rw-r-- 1 brett brett  248 Dec 13 17:27 g04.out
+-rw-rw-r-- 1 brett brett 3187 Dec 13 17:27 g04.tm
+g04.out ztmp4698.txt differ: byte 43, line 3
+g04 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: g04.tm						Loading file: g04.tm
+Halted							   |	29152 Halted
+Bye.								Bye.
+====================================
+FILE: g05.c-
+-rw------- 1 brett brett  127 Dec  7 11:02 g05.c-
+-rw------- 1 brett brett  196 Dec 10 21:40 g05.expected
+-rw-rw-r-- 1 brett brett  248 Dec 13 17:27 g05.out
+-rw-rw-r-- 1 brett brett 3186 Dec 13 17:27 g05.tm
+g05.out ztmp4698.txt differ: byte 43, line 3
+g05 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: g05.tm						Loading file: g05.tm
+Halted							   |	404484 Halted
+Bye.								Bye.
+====================================
+FILE: g06.c-
+-rw------- 1 brett brett  113 Dec  7 11:02 g06.c-
+-rw------- 1 brett brett  193 Dec 10 21:40 g06.expected
+-rw-rw-r-- 1 brett brett  270 Dec 13 17:27 g06.out
+-rw-rw-r-- 1 brett brett 4509 Dec 13 17:27 g06.tm
+g06.out ztmp4698.txt differ: byte 1, line 1
+g06 (Output DIFF)
+ERROR(4): Cannot return an array.			   <
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 1					   |	Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: g06.tm						Loading file: g06.tm
+							   >	445 Halted
+							   >	Bye.
+====================================
+FILE: g07.c-
+-rw------- 1 brett brett  119 Dec  7 11:02 g07.c-
+-rw------- 1 brett brett  193 Dec 10 21:40 g07.expected
+-rw-rw-r-- 1 brett brett  236 Dec 13 17:27 g07.out
+-rw-rw-r-- 1 brett brett 4641 Dec 13 17:27 g07.tm
+g07.out ztmp4698.txt differ: byte 43, line 3
+g07 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: g07.tm						Loading file: g07.tm
+							   >	445 Halted
+							   >	Bye.
+====================================
+FILE: g08.c-
+-rw------- 1 brett brett  127 Dec  7 11:02 g08.c-
+-rw------- 1 brett brett  196 Dec 10 21:40 g08.expected
+-rw-rw-r-- 1 brett brett  236 Dec 13 17:27 g08.out
+-rw-rw-r-- 1 brett brett 4926 Dec 13 17:27 g08.tm
+g08.out ztmp4698.txt differ: byte 43, line 3
+g08 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: g08.tm						Loading file: g08.tm
+							   >	198102 Halted
+							   >	Bye.
+====================================
+FILE: g09.c-
+-rw------- 1 brett brett  131 Dec  7 11:02 g09.c-
+-rw------- 1 brett brett  191 Dec 10 21:40 g09.expected
+-rw-rw-r-- 1 brett brett  236 Dec 13 17:27 g09.out
+-rw-rw-r-- 1 brett brett 5140 Dec 13 17:27 g09.tm
+g09.out ztmp4698.txt differ: byte 43, line 3
+g09 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: g09.tm						Loading file: g09.tm
+							   >	2 Halted
+							   >	Bye.
+====================================
+FILE: g0a.c-
+-rw------- 1 brett brett  111 Dec  7 11:02 g0a.c-
+-rw------- 1 brett brett  193 Dec 10 21:40 g0a.expected
+-rw-rw-r-- 1 brett brett  236 Dec 13 17:27 g0a.out
+-rw-rw-r-- 1 brett brett 4510 Dec 13 17:27 g0a.tm
+g0a.out ztmp4698.txt differ: byte 43, line 3
+g0a (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: g0a.tm						Loading file: g0a.tm
+							   >	445 Halted
+							   >	Bye.
+====================================
+FILE: g0b.c-
+-rw------- 1 brett brett  103 Dec  7 11:02 g0b.c-
+-rw------- 1 brett brett  193 Dec 10 21:40 g0b.expected
+-rw-rw-r-- 1 brett brett  236 Dec 13 17:27 g0b.out
+-rw-rw-r-- 1 brett brett 4458 Dec 13 17:27 g0b.tm
+g0b.out ztmp4698.txt differ: byte 43, line 3
+g0b (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: g0b.tm						Loading file: g0b.tm
+							   >	445 Halted
+							   >	Bye.
+====================================
+FILE: g0c.c-
+-rw------- 1 brett brett   71 Dec  7 11:02 g0c.c-
+-rw------- 1 brett brett  193 Dec 10 21:40 g0c.expected
+-rw-rw-r-- 1 brett brett  254 Dec 13 17:27 g0c.out
+-rw-rw-r-- 1 brett brett 4156 Dec 13 17:27 g0c.tm
+g0c.out ztmp4698.txt differ: byte 43, line 3
+g0c (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: g0c.tm						Loading file: g0c.tm
+10087 Halted						   |	176 Halted
+Bye.								Bye.
+====================================
+FILE: g0d.c-
+-rw------- 1 brett brett   71 Dec  7 11:02 g0d.c-
+-rw------- 1 brett brett  193 Dec 10 21:40 g0d.expected
+-rw-rw-r-- 1 brett brett  254 Dec 13 17:27 g0d.out
+-rw-rw-r-- 1 brett brett 4156 Dec 13 17:27 g0d.tm
+g0d.out ztmp4698.txt differ: byte 43, line 3
+g0d (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: g0d.tm						Loading file: g0d.tm
+10087 Halted						   |	176 Halted
+Bye.								Bye.
+====================================
+FILE: g0e.c-
+-rw------- 1 brett brett  112 Dec  7 11:02 g0e.c-
+-rw------- 1 brett brett  195 Dec 10 21:40 g0e.expected
+-rw-rw-r-- 1 brett brett  260 Dec 13 17:27 g0e.out
+-rw-rw-r-- 1 brett brett 5374 Dec 13 17:27 g0e.tm
+g0e.out ztmp4698.txt differ: byte 43, line 3
+g0e (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: g0e.tm						Loading file: g0e.tm
+10087 19981 Halted					   |	176 0 Halted
+Bye.								Bye.
+====================================
+FILE: g0f.c-
+-rw------- 1 brett brett   97 Dec 10 21:14 g0f.c-
+-rw------- 1 brett brett  193 Dec 10 21:40 g0f.expected
+-rw-rw-r-- 1 brett brett  248 Dec 13 17:27 g0f.out
+-rw-rw-r-- 1 brett brett 5094 Dec 13 17:27 g0f.tm
+g0f.out ztmp4698.txt differ: byte 43, line 3
+g0f (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: g0f.tm						Loading file: g0f.tm
+Halted							   |	176 Halted
+Bye.								Bye.
+====================================
+FILE: h01.c-
+-rw------- 1 brett brett  112 Dec  7 11:02 h01.c-
+-rw------- 1 brett brett  223 Dec 10 21:40 h01.expected
+-rw-rw-r-- 1 brett brett 1579 Dec 13 17:27 h01.out
+-rw-rw-r-- 1 brett brett 5289 Dec 13 17:27 h01.tm
+h01.out ztmp4698.txt differ: byte 183, line 8
+h01 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: h01.tm						Loading file: h01.tm
+10 								10 
+9998 							   |	9 
+9996 							   |	8 
+9993 							   |	7 
+9990 							   |	6 
+9987 							   |	5 
+9984 							   |	4 
+9981 							   |	3 
+9978 							   |	2 
+9975 							   |	1 
+9972 							   |	0 
+9969 							   <
+9966 							   <
+9963 							   <
+9960 							   <
+9957 							   <
+9954 							   <
+9951 							   <
+9948 							   <
+9945 							   <
+9942 							   <
+9939 							   <
+9936 							   <
+9933 							   <
+9930 							   <
+9927 							   <
+9924 							   <
+9921 							   <
+9918 							   <
+9915 							   <
+9912 							   <
+9909 							   <
+9906 							   <
+9903 							   <
+9900 							   <
+9897 							   <
+9894 							   <
+9891 							   <
+9888 							   <
+9885 							   <
+9882 							   <
+9879 							   <
+9876 							   <
+9873 							   <
+9870 							   <
+9867 							   <
+9864 							   <
+9861 							   <
+9858 							   <
+9855 							   <
+9852 							   <
+9849 							   <
+9846 							   <
+9843 							   <
+9840 							   <
+9837 							   <
+9834 							   <
+9831 							   <
+9828 							   <
+9825 							   <
+9822 							   <
+9819 							   <
+9816 							   <
+9813 							   <
+9810 							   <
+9807 							   <
+9804 							   <
+9801 							   <
+9798 							   <
+9795 							   <
+9792 							   <
+9789 							   <
+9786 							   <
+9783 							   <
+9780 							   <
+9777 							   <
+9774 							   <
+9771 							   <
+9768 							   <
+9765 							   <
+9762 							   <
+9759 							   <
+9756 							   <
+9753 							   <
+9750 							   <
+9747 							   <
+9744 							   <
+9741 							   <
+9738 							   <
+9735 							   <
+9732 							   <
+9729 							   <
+9726 							   <
+9723 							   <
+9720 							   <
+9717 							   <
+9714 							   <
+9711 							   <
+9708 							   <
+9705 							   <
+9702 							   <
+9699 							   <
+9696 							   <
+9693 							   <
+9690 							   <
+9687 							   <
+9684 							   <
+9681 							   <
+9678 							   <
+9675 							   <
+9672 							   <
+9669 							   <
+9666 							   <
+9663 							   <
+9660 							   <
+9657 							   <
+9654 							   <
+9651 							   <
+9648 							   <
+9645 							   <
+9642 							   <
+9639 							   <
+9636 							   <
+9633 							   <
+9630 							   <
+9627 							   <
+9624 							   <
+9621 							   <
+9618 							   <
+9615 							   <
+9612 							   <
+9609 							   <
+9606 							   <
+9603 							   <
+9600 							   <
+9597 							   <
+9594 							   <
+9591 							   <
+9588 							   <
+9585 							   <
+9582 							   <
+9579 							   <
+9576 							   <
+9573 							   <
+9570 							   <
+9567 							   <
+9564 							   <
+9561 							   <
+9558 							   <
+9555 							   <
+9552 							   <
+9549 							   <
+9546 							   <
+9543 							   <
+9540 							   <
+9537 							   <
+9534 							   <
+9531 							   <
+9528 							   <
+9525 							   <
+9522 							   <
+9519 							   <
+9516 							   <
+9513 							   <
+9510 							   <
+9507 							   <
+9504 							   <
+9501 							   <
+9498 							   <
+9495 							   <
+9492 							   <
+9489 							   <
+9486 							   <
+9483 							   <
+9480 							   <
+9477 							   <
+9474 							   <
+9471 							   <
+9468 							   <
+9465 							   <
+9462 							   <
+9459 							   <
+9456 							   <
+9453 							   <
+9450 							   <
+9447 							   <
+9444 							   <
+9441 							   <
+9438 							   <
+9435 							   <
+9432 							   <
+9429 							   <
+9426 							   <
+9423 							   <
+9420 							   <
+9417 							   <
+9414 							   <
+9411 							   <
+9408 							   <
+9405 							   <
+9402 							   <
+9399 							   <
+9396 							   <
+9393 							   <
+9390 							   <
+9387 							   <
+9384 							   <
+9381 							   <
+9378 							   <
+9375 							   <
+9372 							   <
+9369 							   <
+9366 							   <
+9363 							   <
+9360 							   <
+9357 							   <
+9354 							   <
+9351 							   <
+9348 							   <
+9345 							   <
+9342 							   <
+9339 							   <
+9336 							   <
+9333 							   <
+9330 							   <
+9327 							   <
+9324 							   <
+9321 							   <
+9318 							   <
+9315 							   <
+9312 							   <
+9309 							   <
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: h02.c-
+-rw------- 1 brett brett  104 Dec  7 11:02 h02.c-
+-rw------- 1 brett brett  223 Dec 10 21:40 h02.expected
+-rw-rw-r-- 1 brett brett 1579 Dec 13 17:27 h02.out
+-rw-rw-r-- 1 brett brett 5237 Dec 13 17:27 h02.tm
+h02.out ztmp4698.txt differ: byte 183, line 8
+h02 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: h02.tm						Loading file: h02.tm
+10 								10 
+9998 							   |	9 
+9996 							   |	8 
+9993 							   |	7 
+9990 							   |	6 
+9987 							   |	5 
+9984 							   |	4 
+9981 							   |	3 
+9978 							   |	2 
+9975 							   |	1 
+9972 							   |	0 
+9969 							   <
+9966 							   <
+9963 							   <
+9960 							   <
+9957 							   <
+9954 							   <
+9951 							   <
+9948 							   <
+9945 							   <
+9942 							   <
+9939 							   <
+9936 							   <
+9933 							   <
+9930 							   <
+9927 							   <
+9924 							   <
+9921 							   <
+9918 							   <
+9915 							   <
+9912 							   <
+9909 							   <
+9906 							   <
+9903 							   <
+9900 							   <
+9897 							   <
+9894 							   <
+9891 							   <
+9888 							   <
+9885 							   <
+9882 							   <
+9879 							   <
+9876 							   <
+9873 							   <
+9870 							   <
+9867 							   <
+9864 							   <
+9861 							   <
+9858 							   <
+9855 							   <
+9852 							   <
+9849 							   <
+9846 							   <
+9843 							   <
+9840 							   <
+9837 							   <
+9834 							   <
+9831 							   <
+9828 							   <
+9825 							   <
+9822 							   <
+9819 							   <
+9816 							   <
+9813 							   <
+9810 							   <
+9807 							   <
+9804 							   <
+9801 							   <
+9798 							   <
+9795 							   <
+9792 							   <
+9789 							   <
+9786 							   <
+9783 							   <
+9780 							   <
+9777 							   <
+9774 							   <
+9771 							   <
+9768 							   <
+9765 							   <
+9762 							   <
+9759 							   <
+9756 							   <
+9753 							   <
+9750 							   <
+9747 							   <
+9744 							   <
+9741 							   <
+9738 							   <
+9735 							   <
+9732 							   <
+9729 							   <
+9726 							   <
+9723 							   <
+9720 							   <
+9717 							   <
+9714 							   <
+9711 							   <
+9708 							   <
+9705 							   <
+9702 							   <
+9699 							   <
+9696 							   <
+9693 							   <
+9690 							   <
+9687 							   <
+9684 							   <
+9681 							   <
+9678 							   <
+9675 							   <
+9672 							   <
+9669 							   <
+9666 							   <
+9663 							   <
+9660 							   <
+9657 							   <
+9654 							   <
+9651 							   <
+9648 							   <
+9645 							   <
+9642 							   <
+9639 							   <
+9636 							   <
+9633 							   <
+9630 							   <
+9627 							   <
+9624 							   <
+9621 							   <
+9618 							   <
+9615 							   <
+9612 							   <
+9609 							   <
+9606 							   <
+9603 							   <
+9600 							   <
+9597 							   <
+9594 							   <
+9591 							   <
+9588 							   <
+9585 							   <
+9582 							   <
+9579 							   <
+9576 							   <
+9573 							   <
+9570 							   <
+9567 							   <
+9564 							   <
+9561 							   <
+9558 							   <
+9555 							   <
+9552 							   <
+9549 							   <
+9546 							   <
+9543 							   <
+9540 							   <
+9537 							   <
+9534 							   <
+9531 							   <
+9528 							   <
+9525 							   <
+9522 							   <
+9519 							   <
+9516 							   <
+9513 							   <
+9510 							   <
+9507 							   <
+9504 							   <
+9501 							   <
+9498 							   <
+9495 							   <
+9492 							   <
+9489 							   <
+9486 							   <
+9483 							   <
+9480 							   <
+9477 							   <
+9474 							   <
+9471 							   <
+9468 							   <
+9465 							   <
+9462 							   <
+9459 							   <
+9456 							   <
+9453 							   <
+9450 							   <
+9447 							   <
+9444 							   <
+9441 							   <
+9438 							   <
+9435 							   <
+9432 							   <
+9429 							   <
+9426 							   <
+9423 							   <
+9420 							   <
+9417 							   <
+9414 							   <
+9411 							   <
+9408 							   <
+9405 							   <
+9402 							   <
+9399 							   <
+9396 							   <
+9393 							   <
+9390 							   <
+9387 							   <
+9384 							   <
+9381 							   <
+9378 							   <
+9375 							   <
+9372 							   <
+9369 							   <
+9366 							   <
+9363 							   <
+9360 							   <
+9357 							   <
+9354 							   <
+9351 							   <
+9348 							   <
+9345 							   <
+9342 							   <
+9339 							   <
+9336 							   <
+9333 							   <
+9330 							   <
+9327 							   <
+9324 							   <
+9321 							   <
+9318 							   <
+9315 							   <
+9312 							   <
+9309 							   <
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: h03.c-
+-rw------- 1 brett brett  188 Dec  7 11:02 h03.c-
+-rw------- 1 brett brett  231 Dec 10 21:40 h03.expected
+-rw-rw-r-- 1 brett brett  234 Dec 13 17:27 h03.out
+-rw-rw-r-- 1 brett brett 6362 Dec 13 17:27 h03.tm
+h03.out ztmp4698.txt differ: byte 178, line 7
+h03 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: h03.tm						Loading file: h03.tm
+ERROR: Line 91 (Address: 58)   Missing comma		   |	12 
+							   >	11 
+							   >	10 
+							   >	9 
+							   >	8 
+							   >	7 
+							   >	6 
+							   >	5 
+							   >	4 
+							   >	3 
+							   >	2 
+							   >	1 
+							   >	0 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: h04.c-
+-rw------- 1 brett brett  185 Dec  7 11:02 h04.c-
+-rw------- 1 brett brett  231 Dec 10 21:40 h04.expected
+-rw-rw-r-- 1 brett brett  234 Dec 13 17:27 h04.out
+-rw-rw-r-- 1 brett brett 6358 Dec 13 17:27 h04.tm
+h04.out ztmp4698.txt differ: byte 178, line 7
+h04 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: h04.tm						Loading file: h04.tm
+ERROR: Line 91 (Address: 58)   Missing comma		   |	12 
+							   >	11 
+							   >	10 
+							   >	9 
+							   >	8 
+							   >	7 
+							   >	6 
+							   >	5 
+							   >	4 
+							   >	3 
+							   >	2 
+							   >	1 
+							   >	0 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: h05.c-
+-rw------- 1 brett brett  179 Dec  7 11:02 h05.c-
+-rw------- 1 brett brett  231 Dec 10 21:40 h05.expected
+-rw-rw-r-- 1 brett brett  234 Dec 13 17:27 h05.out
+-rw-rw-r-- 1 brett brett 5979 Dec 13 17:27 h05.tm
+h05.out ztmp4698.txt differ: byte 178, line 7
+h05 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: h05.tm						Loading file: h05.tm
+ERROR: Line 91 (Address: 58)   Missing comma		   |	12 
+							   >	11 
+							   >	10 
+							   >	9 
+							   >	8 
+							   >	7 
+							   >	6 
+							   >	5 
+							   >	4 
+							   >	3 
+							   >	2 
+							   >	1 
+							   >	0 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: h06.c-
+-rw------- 1 brett brett  243 Dec  7 11:02 h06.c-
+-rw------- 1 brett brett  231 Dec 10 21:40 h06.expected
+-rw-rw-r-- 1 brett brett  240 Dec 13 17:27 h06.out
+-rw-rw-r-- 1 brett brett 6722 Dec 13 17:27 h06.tm
+h06.out ztmp4698.txt differ: byte 178, line 7
+h06 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: h06.tm						Loading file: h06.tm
+ERROR: Line 71 (Address: 49)   Illegal opcode: JTE	   |	12 
+							   >	11 
+							   >	10 
+							   >	9 
+							   >	8 
+							   >	7 
+							   >	6 
+							   >	5 
+							   >	4 
+							   >	3 
+							   >	2 
+							   >	1 
+							   >	0 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: h07.c-
+-rw------- 1 brett brett  162 Dec  7 11:02 h07.c-
+-rw------- 1 brett brett  268 Dec 10 21:40 h07.expected
+-rw-rw-r-- 1 brett brett  307 Dec 13 17:27 h07.out
+-rw-rw-r-- 1 brett brett 5418 Dec 13 17:27 h07.tm
+h07.out ztmp4698.txt differ: byte 43, line 3
+h07 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: h07.tm						Loading file: h07.tm
+							   >	6 
+							   >	5 
+							   >	4 
+							   >	3 
+							   >	2 
+							   >	1 
+							   >	0 
+							   >	1 
+							   >	2 
+							   >	1 
+							   >	0 
+							   >	3 
+							   >	2 
+							   >	1 
+							   >	0 
+							   >	1 
+							   >	4 
+							   >	3 
+							   >	2 
+							   >	1 
+							   >	0 
+							   >	1 
+							   >	2 
+							   >	1 
+							   >	0 
+							   >	13 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: i00.c-
+-rw------- 1 brett brett   49 Dec  9 12:52 i00.c-
+-rw------- 1 brett brett  193 Dec 10 21:40 i00.expected
+-rw-rw-r-- 1 brett brett  191 Dec 13 17:27 i00.out
+-rw-rw-r-- 1 brett brett 3126 Dec 13 17:27 i00.tm
+i00.out ztmp4698.txt differ: byte 178, line 7
+i00 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: i00.tm						Loading file: i00.tm
+0 Halted						   |	666 Halted
+Bye.								Bye.
+====================================
+FILE: i01.c-
+-rw------- 1 brett brett   50 Dec 10 21:07 i01.c-
+-rw------- 1 brett brett  193 Dec 10 21:40 i01.expected
+-rw-rw-r-- 1 brett brett  191 Dec 13 17:27 i01.out
+-rw-rw-r-- 1 brett brett 3179 Dec 13 17:27 i01.tm
+i01.out ztmp4698.txt differ: byte 178, line 7
+i01 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: i01.tm						Loading file: i01.tm
+0 Halted						   |	111 Halted
+Bye.								Bye.
+====================================
+FILE: i02.c-
+-rw------- 1 brett brett   53 Dec 10 21:07 i02.c-
+-rw------- 1 brett brett  191 Dec 10 21:40 i02.expected
+-rw-rw-r-- 1 brett brett  191 Dec 13 17:27 i02.out
+-rw-rw-r-- 1 brett brett 3183 Dec 13 17:27 i02.tm
+i02.out ztmp4698.txt differ: byte 178, line 7
+i02 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: i02.tm						Loading file: i02.tm
+F Halted						   |	T Halted
+Bye.								Bye.
+====================================
+FILE: i03.c-
+-rw------- 1 brett brett   52 Dec 10 21:07 i03.c-
+-rw------- 1 brett brett  192 Dec 10 21:40 i03.expected
+-rw-rw-r-- 1 brett brett  191 Dec 13 17:27 i03.out
+-rw-rw-r-- 1 brett brett 3350 Dec 13 17:27 i03.tm
+i03.out ztmp4698.txt differ: byte 178, line 7
+i03 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: i03.tm						Loading file: i03.tm
+0 Halted						   |	13 Halted
+Bye.								Bye.
+====================================
+FILE: i04.c-
+-rw------- 1 brett brett   54 Dec 10 21:07 i04.c-
+-rw------- 1 brett brett  193 Dec 10 21:40 i04.expected
+-rw-rw-r-- 1 brett brett  191 Dec 13 17:27 i04.out
+-rw-rw-r-- 1 brett brett 3179 Dec 13 17:27 i04.tm
+i04.out ztmp4698.txt differ: byte 178, line 7
+i04 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: i04.tm						Loading file: i04.tm
+0 Halted						   |	666 Halted
+Bye.								Bye.
+====================================
+FILE: i05.c-
+-rw------- 1 brett brett   90 Dec 10 21:07 i05.c-
+-rw------- 1 brett brett  191 Dec 10 21:40 i05.expected
+-rw-rw-r-- 1 brett brett  191 Dec 13 17:27 i05.out
+-rw-rw-r-- 1 brett brett 3183 Dec 13 17:27 i05.tm
+i05.out ztmp4698.txt differ: byte 178, line 7
+i05 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: i05.tm						Loading file: i05.tm
+F Halted						   |	T Halted
+Bye.								Bye.
+====================================
+FILE: i06.c-
+-rw------- 1 brett brett   90 Dec 10 21:07 i06.c-
+-rw------- 1 brett brett  191 Dec 10 21:40 i06.expected
+-rw-rw-r-- 1 brett brett  191 Dec 13 17:27 i06.out
+-rw-rw-r-- 1 brett brett 3183 Dec 13 17:27 i06.tm
+i06.out ztmp4698.txt differ: byte 178, line 7
+i06 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: i06.tm						Loading file: i06.tm
+F Halted						   |	T Halted
+Bye.								Bye.
+====================================
+FILE: i07.c-
+-rw------- 1 brett brett   90 Dec 10 21:07 i07.c-
+-rw------- 1 brett brett  191 Dec 10 21:40 i07.expected
+-rw-rw-r-- 1 brett brett  191 Dec 13 17:27 i07.out
+-rw-rw-r-- 1 brett brett 3183 Dec 13 17:27 i07.tm
+i07.out ztmp4698.txt differ: byte 178, line 7
+i07 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: i07.tm						Loading file: i07.tm
+F Halted						   |	T Halted
+Bye.								Bye.
+====================================
+FILE: i08.c-
+-rw------- 1 brett brett   38 Dec 10 21:07 i08.c-
+-rw------- 1 brett brett  189 Dec 10 21:40 i08.expected
+-rw-rw-r-- 1 brett brett  189 Dec 13 17:27 i08.out
+-rw-rw-r-- 1 brett brett 2824 Dec 13 17:27 i08.tm
+i08 (Output OK)
+====================================
+FILE: i09.c-
+-rw------- 1 brett brett   66 Dec 10 21:07 i09.c-
+-rw------- 1 brett brett  192 Dec 10 21:40 i09.expected
+-rw-rw-r-- 1 brett brett  191 Dec 13 17:27 i09.out
+-rw-rw-r-- 1 brett brett 3179 Dec 13 17:27 i09.tm
+i09.out ztmp4698.txt differ: byte 178, line 7
+i09 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: i09.tm						Loading file: i09.tm
+0 Halted						   |	26 Halted
+Bye.								Bye.
+====================================
+FILE: i0a.c-
+-rw------- 1 brett brett   56 Dec 10 21:07 i0a.c-
+-rw------- 1 brett brett  190 Dec 10 21:40 i0a.expected
+-rw-rw-r-- 1 brett brett  116 Dec 13 17:27 i0a.out
+-rw-rw-r-- 1 brett brett 3183 Dec 13 17:27 i0a.tm
+i0a.out ztmp4698.txt differ: byte 80, line 4
+i0a (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+Binary file (standard input) matches			   |
+							   >	Memory Configuration: Data Addresses: 0-9999  Instructio
+							   >	Loading file: i0a.tm
+							   >	aHalted
+							   >	Bye.
+====================================
+FILE: i0b.c-
+-rw------- 1 brett brett   63 Dec 10 21:07 i0b.c-
+-rw------- 1 brett brett  192 Dec 10 21:40 i0b.expected
+-rw-rw-r-- 1 brett brett  191 Dec 13 17:27 i0b.out
+-rw-rw-r-- 1 brett brett 3351 Dec 13 17:27 i0b.tm
+i0b.out ztmp4698.txt differ: byte 178, line 7
+i0b (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: i0b.tm						Loading file: i0b.tm
+0 Halted						   |	20 Halted
+Bye.								Bye.
+====================================
+FILE: i0c.c-
+-rw------- 1 brett brett   69 Dec 10 21:07 i0c.c-
+-rw------- 1 brett brett  191 Dec 10 21:40 i0c.expected
+-rw-rw-r-- 1 brett brett  191 Dec 13 17:27 i0c.out
+-rw-rw-r-- 1 brett brett 3183 Dec 13 17:27 i0c.tm
+i0c (Output OK)
+====================================
+FILE: j00.c-
+-rw------- 1 brett brett 553 Dec 10 21:24 j00.c-
+-rw------- 1 brett brett 217 Dec 10 21:40 j00.expected
+-rw-rw-r-- 1 brett brett 147 Dec 13 17:27 j00.out
+-rw-rw-r-- 1 brett brett   0 Dec 13 17:27 j00.tm
+j00.out ztmp4698.txt differ: byte 1, line 1
+j00 (Output DIFF)
+							   >	Number of warnings: 0
+							   >	Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: j00.tm						Loading file: j00.tm
+							   >	7 7 7 
+							   >	7 7 7 
+							   >	7 7 7 
+							   >	7 7 7 
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: s00.c-
+-rw------- 1 brett brett  302 Dec  7 11:02 s00.c-
+-rw------- 1 brett brett  189 Dec 10 21:40 s00.expected
+-rw-rw-r-- 1 brett brett  248 Dec 13 17:27 s00.out
+-rw-rw-r-- 1 brett brett 3567 Dec 13 17:27 s00.tm
+s00.out ztmp4698.txt differ: byte 43, line 3
+s00 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: s00.tm						Loading file: s00.tm
+Halted								Halted
+Bye.								Bye.
+====================================
+FILE: s01.c-
+-rw------- 1 brett brett  214 Dec  7 11:02 s01.c-
+-rw------- 1 brett brett  195 Dec 10 21:40 s01.expected
+-rw-rw-r-- 1 brett brett  317 Dec 13 17:27 s01.out
+-rw-rw-r-- 1 brett brett 6022 Dec 13 17:27 s01.tm
+s01.out ztmp4698.txt differ: byte 43, line 3
+s01 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: s01.tm						Loading file: s01.tm
+0 110 110 Halted					   |	0 1 2 Halted
+Bye.								Bye.
+====================================
+FILE: s025.c-
+-rw------- 1 brett brett  479 Dec  7 14:52 s025.c-
+-rw------- 1 brett brett  204 Dec 10 21:40 s025.expected
+-rw-rw-r-- 1 brett brett  261 Dec 13 17:27 s025.out
+-rw-rw-r-- 1 brett brett 6809 Dec 13 17:27 s025.tm
+s025.out ztmp4698.txt differ: byte 43, line 3
+s025 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: s025.tm						Loading file: s025.tm
+7000 0 7000 Halted					   |	7000 669 7000 Halted
+Bye.								Bye.
+====================================
+FILE: s02.c-
+-rw------- 1 brett brett  582 Dec  7 11:02 s02.c-
+-rw------- 1 brett brett  203 Dec 10 21:40 s02.expected
+-rw-rw-r-- 1 brett brett  253 Dec 13 17:27 s02.out
+-rw-rw-r-- 1 brett brett 7432 Dec 13 17:27 s02.tm
+s02.out ztmp4698.txt differ: byte 43, line 3
+s02 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: s02.tm						Loading file: s02.tm
+7000 Halted						   |	7000 669 7000 Halted
+Bye.								Bye.
+====================================
+FILE: s02e.c-
+-rw------- 1 brett brett  473 Dec 10 21:39 s02e.c-
+-rw------- 1 brett brett  189 Dec 10 21:40 s02e.expected
+-rw-rw-r-- 1 brett brett  359 Dec 13 17:27 s02e.out
+-rw-rw-r-- 1 brett brett 6226 Dec 13 17:27 s02e.tm
+s02e.out ztmp4698.txt differ: byte 153, line 5
+s02e (Output DIFF)
+ERROR(9): Symbol 'load' is already defined at line 7.		ERROR(9): Symbol 'load' is already defined at line 7.
+ERROR(12): Symbol 'load' is already defined at line 11.		ERROR(12): Symbol 'load' is already defined at line 11.
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 2						Number of errors: 2
+ERROR(symbol table): Attempting to look up a NULL pointe   <
+------------------------------------				------------------------------------
+							   <
+Memory Configuration: Data Addresses: 0-9999  Instructio   <
+Loading file: s02e.tm					   <
+Halted							   <
+Bye.							   <
+====================================
+FILE: s03.c-
+-rw------- 1 brett brett  160 Dec  7 11:02 s03.c-
+-rw------- 1 brett brett  195 Dec 10 21:40 s03.expected
+-rw-rw-r-- 1 brett brett  193 Dec 13 17:27 s03.out
+-rw-rw-r-- 1 brett brett 3816 Dec 13 17:27 s03.tm
+s03.out ztmp4698.txt differ: byte 178, line 7
+s03 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: s03.tm						Loading file: s03.tm
+0 0 Halted						   |	10 10 Halted
+Bye.								Bye.
+====================================
+FILE: s04.c-
+-rw------- 1 brett brett  264 Dec  7 11:02 s04.c-
+-rw------- 1 brett brett  201 Dec 10 21:40 s04.expected
+-rw-rw-r-- 1 brett brett  189 Dec 13 17:27 s04.out
+-rw-rw-r-- 1 brett brett 7218 Dec 13 17:27 s04.tm
+s04.out ztmp4698.txt differ: byte 178, line 7
+s04 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: s04.tm						Loading file: s04.tm
+Halted							   |	111 222 333 Halted
+Bye.								Bye.
+====================================
+FILE: s05.c-
+-rw------- 1 brett brett   522 Dec  7 11:02 s05.c-
+-rw------- 1 brett brett   222 Dec 10 21:40 s05.expected
+-rw-rw-r-- 1 brett brett   211 Dec 13 17:27 s05.out
+-rw-rw-r-- 1 brett brett 10357 Dec 13 17:27 s05.tm
+s05.out ztmp4698.txt differ: byte 178, line 7
+s05 (Output DIFF)
+Number of warnings: 0						Number of warnings: 0
+Number of errors: 0						Number of errors: 0
+------------------------------------				------------------------------------
+
+Memory Configuration: Data Addresses: 0-9999  Instructio	Memory Configuration: Data Addresses: 0-9999  Instructio
+Loading file: s05.tm						Loading file: s05.tm
+0 0 0 0 0 0 0 0 0 0 0 Halted				   |	11 22 23 33 34 11 22 23 44 45 55 Halted
+Bye.								Bye.

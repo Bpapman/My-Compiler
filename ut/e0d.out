@@ -1,8 +1,6 @@
 ERROR(16): Cannot have a break statement outside of loop.
 Number of warnings: 0
 Number of errors: 1
-Codegen started 
-Codegen ended 
 ------------------------------------
 
 Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999

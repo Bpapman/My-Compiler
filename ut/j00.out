@@ -1,31 +1,6 @@
-ERROR(1): Cannot return an array.
-ERROR(15): Symbol 's' is not defined.
-ERROR(15): '=' requires that if one operand is an array so must the other operand.
-ERROR(15): '=' requires that if one operand is an array so must the other operand.
-ERROR(15): '=' requires that if one operand is an array so must the other operand.
-ERROR(19): Symbol 's' is not defined.
-ERROR(19): Not expecting array in parameter 1 of call to 'output' defined on line -1.
-ERROR(24): Symbol 's' is not defined.
-ERROR(24): Expecting array in parameter 1 of call to 'cat' defined on line 1.
-ERROR(29): Symbol 's' is not defined.
-ERROR(29): Expecting array in parameter 1 of call to 'dog' defined on line 3.
-ERROR(34): Symbol 's' is not defined.
-ERROR(34): Expecting array in parameter 1 of call to 'fox' defined on line 5.
-Number of warnings: 0
-Number of errors: 13
-Codegen started 
-Codegen ended 
 ------------------------------------
 
 Memory Configuration: Data Addresses: 0-9999  Instruction Addresses: 0-9999
 Loading file: j00.tm
-10 10 10 
-6 6 6 
-6 6 6 
-6 6 6 
-10 10 10 
-6 6 6 
-6 6 6 
-6 6 6 
 Halted
 Bye.

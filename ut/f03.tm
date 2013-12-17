@@ -1,7 +1,7 @@
-* C- Compiler version C-F10
-* Built: Dec 6, 2013
+* C- Compiler version C-F13
+* Built: Dec 12, 2013
 * Author: Brett Papineau
-* File compiled: temp.c-
+* File compiled:  f03.tm
 * BEGIN function input
   1:     ST  3,-1(1) 	Store return address 
   2:     IN  2,2,2 	Grab int input 
@@ -63,15 +63,16 @@
 * EXPRESSION STMT
 * 			Begin call to  output
  43:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Load Param 1
+* 			Load param 1
  44:    LDC  3,42(6) 	Load constant 
  45:     ST  3,-4(1) 	Store parameter 
-* 			Jump to  output
+* 			Jump to output
  46:    LDA  1,-2(1) 	Load address of new frame 
  47:    LDA  3,1(7) 	Return address in ac 
- 48:    LDA  7,-43(7) 	Call  output
+ 48:    LDA  7,-43(7) 	CALL output
  49:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to output
+* EXPRESSION STMT
 * RETURN
  50:     LD  3,-1(1) 	Load return address 
  51:     LD  1,0(1) 	Adjust fp 
@@ -89,23 +90,26 @@
 * EXPRESSION STMT
 * 			Begin call to  cat
  58:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Jump to  cat
+* 			Jump to cat
  59:    LDA  1,-2(1) 	Load address of new frame 
  60:    LDA  3,1(7) 	Return address in ac 
- 61:    LDA  7,-20(7) 	Call  cat
+ 61:    LDA  7,-20(7) 	CALL cat
  62:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to cat
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  output
  63:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Load Param 1
+* 			Load param 1
  64:    LDC  3,43(6) 	Load constant 
  65:     ST  3,-4(1) 	Store parameter 
-* 			Jump to  output
+* 			Jump to output
  66:    LDA  1,-2(1) 	Load address of new frame 
  67:    LDA  3,1(7) 	Return address in ac 
- 68:    LDA  7,-63(7) 	Call  output
+ 68:    LDA  7,-63(7) 	CALL output
  69:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to output
+* EXPRESSION STMT
 * END compound statement
 * Add standard closing in case there is no return statement
  70:    LDC  2,0(6) 	Set return value to 0 
@@ -120,7 +124,7 @@
 * END init of globals
  75:    LDA  1,0(0) 	set first frame at end of globals 
  76:     ST  1,0(1) 	store old fp (point to self) 
- 77:    LDA  3,0(7) 	return address in ac 
+ 77:    LDA  3,1(7) 	Return address in ac 
  78:    LDA  7,-22(7) 	Jump to main 
- 79:   HALT  0,0,0 	DONE 
-* END init
+ 79:   HALT  0,0,0 	DONE! 
+* END Init

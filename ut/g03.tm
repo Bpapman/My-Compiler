@@ -1,7 +1,7 @@
-* C- Compiler version C-F10
-* Built: Dec 6, 2013
+* C- Compiler version C-F13
+* Built: Dec 12, 2013
 * Author: Brett Papineau
-* File compiled: temp.c-
+* File compiled:  g03.tm
 * BEGIN function input
   1:     ST  3,-1(1) 	Store return address 
   2:     IN  2,2,2 	Grab int input 
@@ -80,27 +80,30 @@
 * EXPRESSION STMT
  53:    LDC  3,637(6) 	Load constant 
  54:     ST  3,0(0) 	Store variable z
+* EXPRESSION STMT
 * 			Begin call to  output
  55:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Load Param 1
+* 			Load param 1
 * 			Begin call to  cat
  56:     ST  1,-4(1) 	Store old fp in ghost frame 
-* 			Load Param 1
+* 			Load param 1
  57:     LD  3,0(0) 	Load variable z
  58:     ST  3,-6(1) 	Store parameter 
-* 			Jump to  cat
+* 			Jump to cat
  59:    LDA  1,-4(1) 	Load address of new frame 
  60:    LDA  3,1(7) 	Return address in ac 
- 61:    LDA  7,-20(7) 	Call  cat
+ 61:    LDA  7,-20(7) 	CALL cat
  62:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to cat
+* EXPRESSION STMT
  63:     ST  3,-4(1) 	Store parameter 
-* 			Jump to  output
+* 			Jump to output
  64:    LDA  1,-2(1) 	Load address of new frame 
  65:    LDA  3,1(7) 	Return address in ac 
- 66:    LDA  7,-61(7) 	Call  output
+ 66:    LDA  7,-61(7) 	CALL output
  67:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to output
+* EXPRESSION STMT
 * END compound statement
 * Add standard closing in case there is no return statement
  68:    LDC  2,0(6) 	Set return value to 0 
@@ -113,9 +116,9 @@
  72:     LD  0,0(0) 	Set the global pointer 
 * BEGIN init of globals
 * END init of globals
- 73:    LDA  1,0(0) 	set first frame at end of globals 
+ 73:    LDA  1,-1(0) 	set first frame at end of globals 
  74:     ST  1,0(1) 	store old fp (point to self) 
- 75:    LDA  3,0(7) 	return address in ac 
+ 75:    LDA  3,1(7) 	Return address in ac 
  76:    LDA  7,-25(7) 	Jump to main 
- 77:   HALT  0,0,0 	DONE 
-* END init
+ 77:   HALT  0,0,0 	DONE! 
+* END Init

@@ -1,7 +1,7 @@
-* C- Compiler version C-F10
-* Built: Dec 6, 2013
+* C- Compiler version C-F13
+* Built: Dec 12, 2013
 * Author: Brett Papineau
-* File compiled: temp.c-
+* File compiled:  g06.tm
 * BEGIN function input
   1:     ST  3,-1(1) 	Store return address 
   2:     IN  2,2,2 	Grab int input 
@@ -63,60 +63,73 @@
 * RETURN
 * EXPRESSION STMT
  43:    LDC  3,3(6) 	Load constant 
- 44:     LD  3,-2(1) 	Load variable z
- 45:    LDA  2,0(3) 	Copy result to rt register 
- 46:     LD  3,-1(1) 	Load return address 
- 47:     LD  1,0(1) 	Adjust fp 
- 48:    LDA  7,0(3) 	Return 
+ 44:    LDA  3,0(0) 	Load address of base of array z
+ 45:    SUB  3,4(3) 	Compute offset for (null)
+ 46:     LD  3,0(3) 	load the value (null)
+ 47:    LDA  2,0(3) 	Copy result to rt register 
+ 48:     LD  3,-1(1) 	Load return address 
+ 49:     LD  1,0(1) 	Adjust fp 
+ 50:    LDA  7,0(3) 	Return 
 * END compound statement
 * Add standard closing in case there is no return statement
- 49:    LDC  2,0(6) 	Set return value to 0 
- 50:     LD  3,-1(1) 	Load return address 
- 51:     LD  1,0(1) 	Adjust fp 
- 52:    LDA  7,0(3) 	Return 
+ 51:    LDC  2,0(6) 	Set return value to 0 
+ 52:     LD  3,-1(1) 	Load return address 
+ 53:     LD  1,0(1) 	Adjust fp 
+ 54:    LDA  7,0(3) 	Return 
 * END of function cat
 * BEGIN function main
- 53:     ST  3,-1(1) 	Store return address. 
+ 55:     ST  3,-1(1) 	Store return address. 
 * BEGIN compound statement
+ 56:    LDC  3,10(6) 	load size of array z
+ 57:     ST  3,-2(1) 	save size of array z
 * EXPRESSION STMT
- 54:    LDC  3,445(6) 	Load constant 
- 55:     ST  3,-2(1) 	Store variable z
+ 58:    LDC  3,3(6) 	Load constant 
+ 59:     ST  3,-13(1) 	Save index 
+* EXPRESSION STMT
+ 60:    LDC  3,445(6) 	Load constant 
+ 61:     LD  4,-13(1) 	Restore index 
+ 62:    LDA  5,-3(1) 	Load address of base of array z
+ 63:    SUB  5,5,4 	Compute offset of value 
+ 64:     ST  3,0(5) 	Store variable z
+* EXPRESSION STMT
 * 			Begin call to  output
- 56:     ST  1,-13(1) 	Store old fp in ghost frame 
-* 			Load Param 1
+ 65:     ST  1,-13(1) 	Store old fp in ghost frame 
+* 			Load param 1
 * 			Begin call to  cat
- 57:     ST  1,-15(1) 	Store old fp in ghost frame 
-* 			Load Param 1
- 58:     LD  3,-2(1) 	Load variable z
- 59:     ST  3,-17(1) 	Store parameter 
-* 			Jump to  cat
- 60:    LDA  1,-15(1) 	Load address of new frame 
- 61:    LDA  3,1(7) 	Return address in ac 
- 62:    LDA  7,-21(7) 	Call  cat
- 63:    LDA  3,0(2) 	Save the result in ac 
+ 66:     ST  1,-15(1) 	Store old fp in ghost frame 
+* 			Load param 1
+ 67:    LDA  3,-3(1) 	Load address of base of array z
+ 68:     ST  3,-17(1) 	Store parameter 
+* 			Jump to cat
+ 69:    LDA  1,-15(1) 	Load address of new frame 
+ 70:    LDA  3,1(7) 	Return address in ac 
+ 71:    LDA  7,-30(7) 	CALL cat
+ 72:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to cat
- 64:     ST  3,-15(1) 	Store parameter 
-* 			Jump to  output
- 65:    LDA  1,-13(1) 	Load address of new frame 
- 66:    LDA  3,1(7) 	Return address in ac 
- 67:    LDA  7,-62(7) 	Call  output
- 68:    LDA  3,0(2) 	Save the result in ac 
+* EXPRESSION STMT
+ 73:     ST  3,-15(1) 	Store parameter 
+* 			Jump to output
+ 74:    LDA  1,-13(1) 	Load address of new frame 
+ 75:    LDA  3,1(7) 	Return address in ac 
+ 76:    LDA  7,-71(7) 	CALL output
+ 77:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to output
+* EXPRESSION STMT
 * END compound statement
 * Add standard closing in case there is no return statement
- 69:    LDC  2,0(6) 	Set return value to 0 
- 70:     LD  3,-1(1) 	Load return address 
- 71:     LD  1,0(1) 	Adjust fp 
- 72:    LDA  7,0(3) 	Return 
+ 78:    LDC  2,0(6) 	Set return value to 0 
+ 79:     LD  3,-1(1) 	Load return address 
+ 80:     LD  1,0(1) 	Adjust fp 
+ 81:    LDA  7,0(3) 	Return 
 * END of function main
-  0:    LDA  7,72(7) 	Jump to init [backpatch] 
+  0:    LDA  7,81(7) 	Jump to init [backpatch] 
 * BEGIN Init
- 73:     LD  0,0(0) 	Set the global pointer 
+ 82:     LD  0,0(0) 	Set the global pointer 
 * BEGIN init of globals
 * END init of globals
- 74:    LDA  1,0(0) 	set first frame at end of globals 
- 75:     ST  1,0(1) 	store old fp (point to self) 
- 76:    LDA  3,0(7) 	return address in ac 
- 77:    LDA  7,-25(7) 	Jump to main 
- 78:   HALT  0,0,0 	DONE 
-* END init
+ 83:    LDA  1,0(0) 	set first frame at end of globals 
+ 84:     ST  1,0(1) 	store old fp (point to self) 
+ 85:    LDA  3,1(7) 	Return address in ac 
+ 86:    LDA  7,-32(7) 	Jump to main 
+ 87:   HALT  0,0,0 	DONE! 
+* END Init

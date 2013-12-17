@@ -1,7 +1,7 @@
-* C- Compiler version C-F10
-* Built: Dec 6, 2013
+* C- Compiler version C-F13
+* Built: Dec 12, 2013
 * Author: Brett Papineau
-* File compiled: temp.c-
+* File compiled:  i08.tm
 * BEGIN function input
   1:     ST  3,-1(1) 	Store return address 
   2:     IN  2,2,2 	Grab int input 
@@ -60,23 +60,25 @@
 * BEGIN function main
  42:     ST  3,-1(1) 	Store return address. 
 * BEGIN compound statement
+ 43:    LDC  3,10(6) 	load size of array xx
+ 44:     ST  3,-2(1) 	save size of array xx
 * BEGIN compound statement
 * END compound statement
 * END compound statement
 * Add standard closing in case there is no return statement
- 43:    LDC  2,0(6) 	Set return value to 0 
- 44:     LD  3,-1(1) 	Load return address 
- 45:     LD  1,0(1) 	Adjust fp 
- 46:    LDA  7,0(3) 	Return 
+ 45:    LDC  2,0(6) 	Set return value to 0 
+ 46:     LD  3,-1(1) 	Load return address 
+ 47:     LD  1,0(1) 	Adjust fp 
+ 48:    LDA  7,0(3) 	Return 
 * END of function main
-  0:    LDA  7,46(7) 	Jump to init [backpatch] 
+  0:    LDA  7,48(7) 	Jump to init [backpatch] 
 * BEGIN Init
- 47:     LD  0,0(0) 	Set the global pointer 
+ 49:     LD  0,0(0) 	Set the global pointer 
 * BEGIN init of globals
 * END init of globals
- 48:    LDA  1,0(0) 	set first frame at end of globals 
- 49:     ST  1,0(1) 	store old fp (point to self) 
- 50:    LDA  3,0(7) 	return address in ac 
- 51:    LDA  7,-10(7) 	Jump to main 
- 52:   HALT  0,0,0 	DONE 
-* END init
+ 50:    LDA  1,0(0) 	set first frame at end of globals 
+ 51:     ST  1,0(1) 	store old fp (point to self) 
+ 52:    LDA  3,1(7) 	Return address in ac 
+ 53:    LDA  7,-12(7) 	Jump to main 
+ 54:   HALT  0,0,0 	DONE! 
+* END Init

@@ -1,7 +1,7 @@
-* C- Compiler version C-F10
-* Built: Dec 6, 2013
+* C- Compiler version C-F13
+* Built: Dec 12, 2013
 * Author: Brett Papineau
-* File compiled: temp.c-
+* File compiled:  f01.tm
 * BEGIN function input
   1:     ST  3,-1(1) 	Store return address 
   2:     IN  2,2,2 	Grab int input 
@@ -73,12 +73,13 @@
 * EXPRESSION STMT
 * 			Begin call to  cat
  48:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Jump to  cat
+* 			Jump to cat
  49:    LDA  1,-2(1) 	Load address of new frame 
  50:    LDA  3,1(7) 	Return address in ac 
- 51:    LDA  7,-10(7) 	Call  cat
+ 51:    LDA  7,-10(7) 	CALL cat
  52:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to cat
+* EXPRESSION STMT
 * END compound statement
 * Add standard closing in case there is no return statement
  53:    LDC  2,0(6) 	Set return value to 0 
@@ -93,7 +94,7 @@
 * END init of globals
  58:    LDA  1,0(0) 	set first frame at end of globals 
  59:     ST  1,0(1) 	store old fp (point to self) 
- 60:    LDA  3,0(7) 	return address in ac 
+ 60:    LDA  3,1(7) 	Return address in ac 
  61:    LDA  7,-15(7) 	Jump to main 
- 62:   HALT  0,0,0 	DONE 
-* END init
+ 62:   HALT  0,0,0 	DONE! 
+* END Init

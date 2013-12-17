@@ -1,7 +1,7 @@
-* C- Compiler version C-F10
-* Built: Dec 6, 2013
+* C- Compiler version C-F13
+* Built: Dec 12, 2013
 * Author: Brett Papineau
-* File compiled: temp.c-
+* File compiled:  s00.tm
 * BEGIN function input
   1:     ST  3,-1(1) 	Store return address 
   2:     IN  2,2,2 	Grab int input 
@@ -57,51 +57,47 @@
  40:     LD  1,0(1) 	Adjust fp 
  41:    LDA  7,0(3) 	Return 
 * END of function outnl
- 42:    LDC  3,10(6) 	Load size of array ccc
- 43:     ST  3,-2(1) 	Load size of array ccc
- 44:    LDC  3,10(6) 	Load size of array ddd
- 45:     ST  3,-3(1) 	Load size of array ddd
 * BEGIN function main
- 46:     ST  3,-1(1) 	Store return address. 
+ 42:     ST  3,-1(1) 	Store return address. 
 * Add standard closing in case there is no return statement
- 47:    LDC  2,0(6) 	Set return value to 0 
- 48:     LD  3,-1(1) 	Load return address 
- 49:     LD  1,0(1) 	Adjust fp 
- 50:    LDA  7,0(3) 	Return 
+ 43:    LDC  2,0(6) 	Set return value to 0 
+ 44:     LD  3,-1(1) 	Load return address 
+ 45:     LD  1,0(1) 	Adjust fp 
+ 46:    LDA  7,0(3) 	Return 
 * END of function main
 * BEGIN function dogs
- 51:     ST  3,-1(1) 	Store return address. 
+ 47:     ST  3,-1(1) 	Store return address. 
 * BEGIN compound statement
- 52:    LDC  3,9(6) 	Load size of array ccc
- 53:     ST  3,0(1) 	Load size of array ccc
- 54:    LDC  3,9(6) 	Load size of array ddd
- 55:     ST  3,0(1) 	Load size of array ddd
- 56:    LDC  3,10(6) 	Load size of array sccc0
- 57:     ST  3,-6(1) 	Load size of array sccc0
- 58:    LDC  3,10(6) 	Load size of array sddd0
- 59:     ST  3,-7(1) 	Load size of array sddd0
 * RETURN
 * EXPRESSION STMT
- 60:     LD  3,0(0) 	Load variable aaa
- 61:    LDA  2,0(3) 	Copy result to rt register 
- 62:     LD  3,-1(1) 	Load return address 
- 63:     LD  1,0(1) 	Adjust fp 
- 64:    LDA  7,0(3) 	Return 
+ 48:     LD  3,0(0) 	Load variable aaa
+ 49:    LDA  2,0(3) 	Copy result to rt register 
+ 50:     LD  3,-1(1) 	Load return address 
+ 51:     LD  1,0(1) 	Adjust fp 
+ 52:    LDA  7,0(3) 	Return 
 * END compound statement
 * Add standard closing in case there is no return statement
- 65:    LDC  2,0(6) 	Set return value to 0 
- 66:     LD  3,-1(1) 	Load return address 
- 67:     LD  1,0(1) 	Adjust fp 
- 68:    LDA  7,0(3) 	Return 
+ 53:    LDC  2,0(6) 	Set return value to 0 
+ 54:     LD  3,-1(1) 	Load return address 
+ 55:     LD  1,0(1) 	Adjust fp 
+ 56:    LDA  7,0(3) 	Return 
 * END of function dogs
-  0:    LDA  7,68(7) 	Jump to init [backpatch] 
+  0:    LDA  7,56(7) 	Jump to init [backpatch] 
 * BEGIN Init
- 69:     LD  0,0(0) 	Set the global pointer 
+ 57:     LD  0,0(0) 	Set the global pointer 
 * BEGIN init of globals
+ 58:    LDC  3,10(6) 	load size of array ccc
+ 59:     ST  3,-2(0) 	saves size of array ccc
+ 60:    LDC  3,10(6) 	load size of array ccc
+ 61:     ST  3,-2(0) 	saves size of array ccc
+ 62:    LDC  3,10(6) 	load size of array ccc
+ 63:     ST  3,-2(0) 	saves size of array ccc
+ 64:    LDC  3,10(6) 	load size of array ccc
+ 65:     ST  3,-2(0) 	saves size of array ccc
 * END init of globals
- 70:    LDA  1,0(0) 	set first frame at end of globals 
- 71:     ST  1,0(1) 	store old fp (point to self) 
- 72:    LDA  3,0(7) 	return address in ac 
- 73:    LDA  7,-28(7) 	Jump to main 
- 74:   HALT  0,0,0 	DONE 
-* END init
+ 66:    LDA  1,-48(0) 	set first frame at end of globals 
+ 67:     ST  1,0(1) 	store old fp (point to self) 
+ 68:    LDA  3,1(7) 	Return address in ac 
+ 69:    LDA  7,-28(7) 	Jump to main 
+ 70:   HALT  0,0,0 	DONE! 
+* END Init

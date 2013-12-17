@@ -1,7 +1,7 @@
-* C- Compiler version C-F10
-* Built: Dec 6, 2013
+* C- Compiler version C-F13
+* Built: Dec 12, 2013
 * Author: Brett Papineau
-* File compiled: temp.c-
+* File compiled:  h04.tm
 * BEGIN function input
   1:     ST  3,-1(1) 	Store return address 
   2:     IN  2,2,2 	Grab int input 
@@ -57,110 +57,138 @@
  40:     LD  1,0(1) 	Adjust fp 
  41:    LDA  7,0(3) 	Return 
 * END of function outnl
- 42:    LDC  3,18(6) 	Load size of array x
- 43:     ST  3,0(1) 	Load size of array x
 * BEGIN function cat
- 44:     ST  3,-1(1) 	Store return address. 
+ 42:     ST  3,-1(1) 	Store return address. 
 * BEGIN compound statement
 * EXPRESSION STMT
 * 			Begin call to  output
- 45:     ST  1,-3(1) 	Store old fp in ghost frame 
-* 			Load Param 1
- 46:    LDC  3,3(6) 	Load constant 
- 47:     ST  3,-5(1) 	Store parameter 
- 48:     LD  3,-2(0) 	Load variable x
- 49:     ST  3,-5(1) 	Store parameter 
-* 			Jump to  output
- 50:    LDA  1,-3(1) 	Load address of new frame 
- 51:    LDA  3,1(7) 	Return address in ac 
- 52:    LDA  7,-47(7) 	Call  output
- 53:    LDA  3,0(2) 	Save the result in ac 
+ 43:     ST  1,-3(1) 	Store old fp in ghost frame 
+* 			Load param 1
+ 44:    LDC  3,3(6) 	Load constant 
+ 45:    LDA  4,-2(0) 	Load address of base of array x
+ 46:    SUB  3,4(3) 	Compute offset for x
+ 47:     LD  3,0(3) 	load value for x
+ 48:     ST  3,-5(1) 	Store parameter 
+* 			Jump to output
+ 49:    LDA  1,-3(1) 	Load address of new frame 
+ 50:    LDA  3,1(7) 	Return address in ac 
+ 51:    LDA  7,-46(7) 	CALL output
+ 52:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to output
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  outnl
- 54:     ST  1,-3(1) 	Store old fp in ghost frame 
-* 			Jump to  outnl
- 55:    LDA  1,-3(1) 	Load address of new frame 
- 56:    LDA  3,1(7) 	Return address in ac 
- 57:    LDA  7,-21(7) 	Call  outnl
- 58:    LDA  3,0(2) 	Save the result in ac 
+ 53:     ST  1,-3(1) 	Store old fp in ghost frame 
+* 			Jump to outnl
+ 54:    LDA  1,-3(1) 	Load address of new frame 
+ 55:    LDA  3,1(7) 	Return address in ac 
+ 56:    LDA  7,-20(7) 	CALL outnl
+ 57:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to outnl
+* EXPRESSION STMT
 * IF
- 59:    LDC  3,3(6) 	Load constant 
- 60:     LD  3,-2(0) 	Load variable x
- 61:     ST  3,-3(1) 	Save left side 
- 62:    LDC  3,0(6) 	Load constant 
- 63:     LD  4,-3(1) 	Load left into ac1 
- 64:    SUB  4,4,3 	Op < 
- 65:    LDC  3,1(6) 	True case 
- 66:    JGT  4,1(7) 	Jump if true 
- 67:    LDC  3,0(6) 	False case 
- 68:    JGT  3,1(7) 	Jump to then part 
+* EXPRESSION STMT
+ 58:    LDC  3,3(6) 	Load constant 
+ 59:    LDA  4,-2(0) 	Load address of base of array x
+ 60:    SUB  3,4(3) 	Compute offset for x
+ 61:     LD  3,0(3) 	load value for x
+ 62:     ST  3,-3(1) 	Save left side 
+* EXPRESSION STMT
+ 63:    LDC  3,0(6) 	Load constant 
+ 64:     LD  4,-3(1) 	Load left into ac1 
+ 65:    SUB  4,4,3 	Op < 
+ 66:    LDC  3,1(6) 	True case 
+ 67:    JGT  4,1(7) 	Jump if true 
+ 68:    LDC  3,0(6) 	False case 
+ 69:    JGT  3,1(7) 	Jump to then part 
 * THEN
 * BEGIN compound statement
- 70:    LDC  3,3(6) 	Load constant 
- 71:     LD  3,-2(0) 	Load variable x
- 72:     ST  3,-3(1) 	Save left side 
- 73:    LDC  3,1(6) 	Load constant 
- 74:     LD  4,-3(1) 	Load left into ac1 
- 75:    SUB  3,4,3 	Op - 
- 76:     ST  3,-2(0) 	Store variable x
+* EXPRESSION STMT
+ 71:    LDC  3,3(6) 	Load constant 
+ 72:     ST  3,-3(1) 	Save index 
+* EXPRESSION STMT
+ 73:    LDC  3,3(6) 	Load constant 
+ 74:    LDA  4,-2(0) 	Load address of base of array x
+ 75:    SUB  3,4(3) 	Compute offset for x
+ 76:     LD  3,0(3) 	load value for x
+ 77:     ST  3,-4(1) 	Save left side 
+* EXPRESSION STMT
+ 78:    LDC  3,1(6) 	Load constant 
+ 79:     LD  4,-4(1) 	Load left into ac1 
+ 80:    SUB  3,4,3 	Op - 
+ 81:     LD  4,-3(1) 	Restore index 
+ 82:    LDA  5,-2(0) 	Load address of base of array x
+ 83:    SUB  5,5,4 	Compute offset of value 
+ 84:     ST  3,0(5) 	Store variable x
+* EXPRESSION STMT
 * 			Begin call to  cat
- 77:     ST  1,-3(1) 	Store old fp in ghost frame 
-* 			Load Param 1
- 78:     LD  3,-2(0) 	Load variable x
- 79:     ST  3,-5(1) 	Store parameter 
-* 			Jump to  cat
- 80:    LDA  1,-3(1) 	Load address of new frame 
- 81:    LDA  3,1(7) 	Return address in ac 
- 82:    LDA  7,-39(7) 	Call  cat
- 83:    LDA  3,0(2) 	Save the result in ac 
+ 85:     ST  1,-3(1) 	Store old fp in ghost frame 
+* 			Load param 1
+ 86:    LDA  3,-2(0) 	Load address of base of array x
+ 87:     ST  3,-5(1) 	Store parameter 
+* 			Jump to cat
+ 88:    LDA  1,-3(1) 	Load address of new frame 
+ 89:    LDA  3,1(7) 	Return address in ac 
+ 90:    LDA  7,-49(7) 	CALL cat
+ 91:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to cat
+* EXPRESSION STMT
 * END compound statement
-  0:    LDA  7,83(7) 	Jump around the THEN [backpatch] 
+  0:    LDA  7,91(7) 	Jump around the THEN [backpatch] 
 * ENDIF
 * RETURN
- 84:     LD  3,-1(1) 	Load return address 
- 85:     LD  1,0(1) 	Adjust fp 
- 86:    LDA  7,0(3) 	Return 
+ 92:     LD  3,-1(1) 	Load return address 
+ 93:     LD  1,0(1) 	Adjust fp 
+ 94:    LDA  7,0(3) 	Return 
 * END compound statement
 * Add standard closing in case there is no return statement
- 87:    LDC  2,0(6) 	Set return value to 0 
- 88:     LD  3,-1(1) 	Load return address 
- 89:     LD  1,0(1) 	Adjust fp 
- 90:    LDA  7,0(3) 	Return 
+ 95:    LDC  2,0(6) 	Set return value to 0 
+ 96:     LD  3,-1(1) 	Load return address 
+ 97:     LD  1,0(1) 	Adjust fp 
+ 98:    LDA  7,0(3) 	Return 
 * END of function cat
 * BEGIN function main
- 91:     ST  3,-1(1) 	Store return address. 
+ 99:     ST  3,-1(1) 	Store return address. 
 * BEGIN compound statement
 * EXPRESSION STMT
- 92:    LDC  3,12(6) 	Load constant 
- 93:     ST  3,0(0) 	Store variable x
+100:    LDC  3,3(6) 	Load constant 
+101:     ST  3,-2(1) 	Save index 
+* EXPRESSION STMT
+102:    LDC  3,12(6) 	Load constant 
+103:     LD  4,-2(1) 	Restore index 
+104:    LDA  5,-1(0) 	Load address of base of array x
+105:    SUB  5,5,4 	Compute offset of value 
+106:     ST  3,0(5) 	Store variable x
+* EXPRESSION STMT
 * 			Begin call to  cat
- 94:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Load Param 1
- 95:     LD  3,0(0) 	Load variable x
- 96:     ST  3,-4(1) 	Store parameter 
-* 			Jump to  cat
- 97:    LDA  1,-2(1) 	Load address of new frame 
- 98:    LDA  3,1(7) 	Return address in ac 
- 99:    LDA  7,-56(7) 	Call  cat
-100:    LDA  3,0(2) 	Save the result in ac 
+107:     ST  1,-2(1) 	Store old fp in ghost frame 
+* 			Load param 1
+108:    LDA  3,-1(0) 	Load address of base of array x
+109:     ST  3,-4(1) 	Store parameter 
+* 			Jump to cat
+110:    LDA  1,-2(1) 	Load address of new frame 
+111:    LDA  3,1(7) 	Return address in ac 
+112:    LDA  7,-71(7) 	CALL cat
+113:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to cat
+* EXPRESSION STMT
 * END compound statement
 * Add standard closing in case there is no return statement
-101:    LDC  2,0(6) 	Set return value to 0 
-102:     LD  3,-1(1) 	Load return address 
-103:     LD  1,0(1) 	Adjust fp 
-104:    LDA  7,0(3) 	Return 
+114:    LDC  2,0(6) 	Set return value to 0 
+115:     LD  3,-1(1) 	Load return address 
+116:     LD  1,0(1) 	Adjust fp 
+117:    LDA  7,0(3) 	Return 
 * END of function main
-  0:    LDA  7,104(7) 	Jump to init [backpatch] 
+  0:    LDA  7,117(7) 	Jump to init [backpatch] 
 * BEGIN Init
-105:     LD  0,0(0) 	Set the global pointer 
+118:     LD  0,0(0) 	Set the global pointer 
 * BEGIN init of globals
+119:    LDC  3,18(6) 	load size of array x
+120:     ST  3,0(0) 	saves size of array x
 * END init of globals
-106:    LDA  1,0(0) 	set first frame at end of globals 
-107:     ST  1,0(1) 	store old fp (point to self) 
-108:    LDA  3,0(7) 	return address in ac 
-109:    LDA  7,-19(7) 	Jump to main 
-110:   HALT  0,0,0 	DONE 
-* END init
+121:    LDA  1,-19(0) 	set first frame at end of globals 
+122:     ST  1,0(1) 	store old fp (point to self) 
+123:    LDA  3,1(7) 	Return address in ac 
+124:    LDA  7,-26(7) 	Jump to main 
+125:   HALT  0,0,0 	DONE! 
+* END Init

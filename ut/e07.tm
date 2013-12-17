@@ -1,7 +1,7 @@
-* C- Compiler version C-F10
-* Built: Dec 6, 2013
+* C- Compiler version C-F13
+* Built: Dec 12, 2013
 * Author: Brett Papineau
-* File compiled: temp.c-
+* File compiled:  e07.tm
 * BEGIN function input
   1:     ST  3,-1(1) 	Store return address 
   2:     IN  2,2,2 	Grab int input 
@@ -64,8 +64,10 @@
  43:    LDC  3,0(6) 	Load constant 
  44:     ST  3,-2(1) 	Store variable x
 * WHILE
+* EXPRESSION STMT
  45:     LD  3,-2(1) 	Load variable x
  46:     ST  3,-3(1) 	Save left side 
+* EXPRESSION STMT
  47:    LDC  3,10(6) 	Load constant 
  48:     LD  4,-3(1) 	Load left into ac1 
  49:    SUB  4,4,3 	Op < 
@@ -75,20 +77,24 @@
  53:    JGT  3,1(7) 	Jump to while part 
 * DO
 * BEGIN compound statement
+* EXPRESSION STMT
 * 			Begin call to  output
  55:     ST  1,-3(1) 	Store old fp in ghost frame 
-* 			Load Param 1
+* 			Load param 1
  56:     LD  3,-2(1) 	Load variable x
  57:     ST  3,-5(1) 	Store parameter 
-* 			Jump to  output
+* 			Jump to output
  58:    LDA  1,-3(1) 	Load address of new frame 
  59:    LDA  3,1(7) 	Return address in ac 
- 60:    LDA  7,-55(7) 	Call  output
+ 60:    LDA  7,-55(7) 	CALL output
  61:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to output
+* EXPRESSION STMT
 * IF
+* EXPRESSION STMT
  62:     LD  3,-2(1) 	Load variable x
  63:     ST  3,-3(1) 	Save left side 
+* EXPRESSION STMT
  64:    LDC  3,5(6) 	Load constant 
  65:     LD  4,-3(1) 	Load left into ac1 
  66:    SUB  4,4,3 	Op == 
@@ -97,38 +103,44 @@
  69:    LDC  3,0(6) 	False case 
  70:    JGT  3,1(7) 	Jump to then part 
 * THEN
- 54:    LDA  7,17(7) 	Jump around the THEN [backpatch] 
+* BREAK
+ 72:    LDA  7,-19(7) 	break 
+* ELSE
+* BUG in emitBackup
+134544570:    LDA  7,-134544497(7) 	Jump around the THEN [backpatch] 
 * ENDIF
 * END compound statement
- 72:    LDA  7,-28(7) 	go to beginning of loop 
- 54:    LDA  7,18(7) 	No more loop 
+ 74:    LDA  7,-30(7) 	go to beginning of loop 
+ 54:    LDA  7,20(7) 	No more loop [backpatch] 
 * ENDWHILE
+* EXPRESSION STMT
 * 			Begin call to  output
- 73:     ST  1,-3(1) 	Store old fp in ghost frame 
-* 			Load Param 1
- 74:    LDC  3,666(6) 	Load constant 
- 75:     ST  3,-5(1) 	Store parameter 
-* 			Jump to  output
- 76:    LDA  1,-3(1) 	Load address of new frame 
- 77:    LDA  3,1(7) 	Return address in ac 
- 78:    LDA  7,-73(7) 	Call  output
- 79:    LDA  3,0(2) 	Save the result in ac 
+ 75:     ST  1,-3(1) 	Store old fp in ghost frame 
+* 			Load param 1
+ 76:    LDC  3,666(6) 	Load constant 
+ 77:     ST  3,-5(1) 	Store parameter 
+* 			Jump to output
+ 78:    LDA  1,-3(1) 	Load address of new frame 
+ 79:    LDA  3,1(7) 	Return address in ac 
+ 80:    LDA  7,-75(7) 	CALL output
+ 81:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to output
+* EXPRESSION STMT
 * END compound statement
 * Add standard closing in case there is no return statement
- 80:    LDC  2,0(6) 	Set return value to 0 
- 81:     LD  3,-1(1) 	Load return address 
- 82:     LD  1,0(1) 	Adjust fp 
- 83:    LDA  7,0(3) 	Return 
+ 82:    LDC  2,0(6) 	Set return value to 0 
+ 83:     LD  3,-1(1) 	Load return address 
+ 84:     LD  1,0(1) 	Adjust fp 
+ 85:    LDA  7,0(3) 	Return 
 * END of function main
-  0:    LDA  7,83(7) 	Jump to init [backpatch] 
+  0:    LDA  7,85(7) 	Jump to init [backpatch] 
 * BEGIN Init
- 84:     LD  0,0(0) 	Set the global pointer 
+ 86:     LD  0,0(0) 	Set the global pointer 
 * BEGIN init of globals
 * END init of globals
- 85:    LDA  1,0(0) 	set first frame at end of globals 
- 86:     ST  1,0(1) 	store old fp (point to self) 
- 87:    LDA  3,0(7) 	return address in ac 
- 88:    LDA  7,-47(7) 	Jump to main 
- 89:   HALT  0,0,0 	DONE 
-* END init
+ 87:    LDA  1,0(0) 	set first frame at end of globals 
+ 88:     ST  1,0(1) 	store old fp (point to self) 
+ 89:    LDA  3,1(7) 	Return address in ac 
+ 90:    LDA  7,-49(7) 	Jump to main 
+ 91:   HALT  0,0,0 	DONE! 
+* END Init

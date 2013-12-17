@@ -1,7 +1,7 @@
-* C- Compiler version C-F10
-* Built: Dec 6, 2013
+* C- Compiler version C-F13
+* Built: Dec 12, 2013
 * Author: Brett Papineau
-* File compiled: temp.c-
+* File compiled:  c0c2.tm
 * BEGIN function input
   1:     ST  3,-1(1) 	Store return address 
   2:     IN  2,2,2 	Grab int input 
@@ -61,103 +61,116 @@
  42:     ST  3,-1(1) 	Store return address. 
 * BEGIN compound statement
 * EXPRESSION STMT
- 43:    LDC  3,162686240(6) 	Load constant 
+ 43:    LDC  3,65(6) 	Load constant 
  44:     ST  3,-2(1) 	Store variable x
- 45:    LDC  3,162686728(6) 	Load constant 
+* EXPRESSION STMT
+ 45:    LDC  3,66(6) 	Load constant 
  46:     ST  3,-3(1) 	Store variable y
+* EXPRESSION STMT
 * 			Begin call to  outputc
  47:     ST  1,-5(1) 	Store old fp in ghost frame 
-* 			Load Param 1
+* 			Load param 1
  48:     LD  3,-2(1) 	Load variable x
  49:     ST  3,-7(1) 	Store parameter 
-* 			Jump to  outputc
+* 			Jump to outputc
  50:    LDA  1,-5(1) 	Load address of new frame 
  51:    LDA  3,1(7) 	Return address in ac 
- 52:    LDA  7,-23(7) 	Call  outputc
+ 52:    LDA  7,-23(7) 	CALL outputc
  53:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to outputc
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  outputc
  54:     ST  1,-5(1) 	Store old fp in ghost frame 
-* 			Load Param 1
+* 			Load param 1
  55:     LD  3,-3(1) 	Load variable y
  56:     ST  3,-7(1) 	Store parameter 
-* 			Jump to  outputc
+* 			Jump to outputc
  57:    LDA  1,-5(1) 	Load address of new frame 
  58:    LDA  3,1(7) 	Return address in ac 
- 59:    LDA  7,-30(7) 	Call  outputc
+ 59:    LDA  7,-30(7) 	CALL outputc
  60:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to outputc
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  outputc
  61:     ST  1,-5(1) 	Store old fp in ghost frame 
-* 			Load Param 1
+* 			Load param 1
  62:     LD  3,-3(1) 	Load variable y
- 63:     ST  3,-7(1) 	Store parameter 
- 64:     ST  3,-2(1) 	Store variable x
+ 63:     ST  3,-2(1) 	Store variable x
+ 64:     ST  3,-4(1) 	Store variable z
  65:     ST  3,-7(1) 	Store parameter 
- 66:     ST  3,-4(1) 	Store variable z
- 67:     ST  3,-7(1) 	Store parameter 
-* 			Jump to  outputc
- 68:    LDA  1,-5(1) 	Load address of new frame 
- 69:    LDA  3,1(7) 	Return address in ac 
- 70:    LDA  7,-41(7) 	Call  outputc
- 71:    LDA  3,0(2) 	Save the result in ac 
+* 			Jump to outputc
+ 66:    LDA  1,-5(1) 	Load address of new frame 
+ 67:    LDA  3,1(7) 	Return address in ac 
+ 68:    LDA  7,-39(7) 	CALL outputc
+ 69:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to outputc
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  outputc
- 72:     ST  1,-5(1) 	Store old fp in ghost frame 
-* 			Load Param 1
- 73:     LD  3,-2(1) 	Load variable x
- 74:     ST  3,-7(1) 	Store parameter 
-* 			Jump to  outputc
- 75:    LDA  1,-5(1) 	Load address of new frame 
- 76:    LDA  3,1(7) 	Return address in ac 
- 77:    LDA  7,-48(7) 	Call  outputc
- 78:    LDA  3,0(2) 	Save the result in ac 
+ 70:     ST  1,-5(1) 	Store old fp in ghost frame 
+* 			Load param 1
+ 71:     LD  3,-2(1) 	Load variable x
+ 72:     ST  3,-7(1) 	Store parameter 
+* 			Jump to outputc
+ 73:    LDA  1,-5(1) 	Load address of new frame 
+ 74:    LDA  3,1(7) 	Return address in ac 
+ 75:    LDA  7,-46(7) 	CALL outputc
+ 76:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to outputc
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  outputc
- 79:     ST  1,-5(1) 	Store old fp in ghost frame 
-* 			Load Param 1
- 80:     LD  3,-3(1) 	Load variable y
- 81:     ST  3,-7(1) 	Store parameter 
-* 			Jump to  outputc
- 82:    LDA  1,-5(1) 	Load address of new frame 
- 83:    LDA  3,1(7) 	Return address in ac 
- 84:    LDA  7,-55(7) 	Call  outputc
- 85:    LDA  3,0(2) 	Save the result in ac 
+ 77:     ST  1,-5(1) 	Store old fp in ghost frame 
+* 			Load param 1
+ 78:     LD  3,-3(1) 	Load variable y
+ 79:     ST  3,-7(1) 	Store parameter 
+* 			Jump to outputc
+ 80:    LDA  1,-5(1) 	Load address of new frame 
+ 81:    LDA  3,1(7) 	Return address in ac 
+ 82:    LDA  7,-53(7) 	CALL outputc
+ 83:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to outputc
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  outputc
- 86:     ST  1,-5(1) 	Store old fp in ghost frame 
-* 			Load Param 1
- 87:     LD  3,-4(1) 	Load variable z
- 88:     ST  3,-7(1) 	Store parameter 
-* 			Jump to  outputc
- 89:    LDA  1,-5(1) 	Load address of new frame 
- 90:    LDA  3,1(7) 	Return address in ac 
- 91:    LDA  7,-62(7) 	Call  outputc
- 92:    LDA  3,0(2) 	Save the result in ac 
+ 84:     ST  1,-5(1) 	Store old fp in ghost frame 
+* 			Load param 1
+ 85:     LD  3,-4(1) 	Load variable z
+ 86:     ST  3,-7(1) 	Store parameter 
+* 			Jump to outputc
+ 87:    LDA  1,-5(1) 	Load address of new frame 
+ 88:    LDA  3,1(7) 	Return address in ac 
+ 89:    LDA  7,-60(7) 	CALL outputc
+ 90:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to outputc
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  outnl
- 93:     ST  1,-5(1) 	Store old fp in ghost frame 
-* 			Jump to  outnl
- 94:    LDA  1,-5(1) 	Load address of new frame 
- 95:    LDA  3,1(7) 	Return address in ac 
- 96:    LDA  7,-60(7) 	Call  outnl
- 97:    LDA  3,0(2) 	Save the result in ac 
+ 91:     ST  1,-5(1) 	Store old fp in ghost frame 
+* 			Jump to outnl
+ 92:    LDA  1,-5(1) 	Load address of new frame 
+ 93:    LDA  3,1(7) 	Return address in ac 
+ 94:    LDA  7,-58(7) 	CALL outnl
+ 95:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to outnl
+* EXPRESSION STMT
 * END compound statement
 * Add standard closing in case there is no return statement
- 98:    LDC  2,0(6) 	Set return value to 0 
- 99:     LD  3,-1(1) 	Load return address 
-100:     LD  1,0(1) 	Adjust fp 
-101:    LDA  7,0(3) 	Return 
+ 96:    LDC  2,0(6) 	Set return value to 0 
+ 97:     LD  3,-1(1) 	Load return address 
+ 98:     LD  1,0(1) 	Adjust fp 
+ 99:    LDA  7,0(3) 	Return 
 * END of function main
-  0:    LDA  7,101(7) 	Jump to init [backpatch] 
+  0:    LDA  7,99(7) 	Jump to init [backpatch] 
 * BEGIN Init
-102:     LD  0,0(0) 	Set the global pointer 
+100:     LD  0,0(0) 	Set the global pointer 
 * BEGIN init of globals
 * END init of globals
-103:    LDA  1,0(0) 	set first frame at end of globals 
-104:     ST  1,0(1) 	store old fp (point to self) 
-105:    LDA  3,0(7) 	return address in ac 
-106:    LDA  7,-65(7) 	Jump to main 
-107:   HALT  0,0,0 	DONE 
-* END init
+101:    LDA  1,0(0) 	set first frame at end of globals 
+102:     ST  1,0(1) 	store old fp (point to self) 
+103:    LDA  3,1(7) 	Return address in ac 
+104:    LDA  7,-63(7) 	Jump to main 
+105:   HALT  0,0,0 	DONE! 
+* END Init

@@ -1,7 +1,7 @@
-* C- Compiler version C-F10
-* Built: Dec 6, 2013
+* C- Compiler version C-F13
+* Built: Dec 12, 2013
 * Author: Brett Papineau
-* File compiled: temp.c-
+* File compiled:  a009.tm
 * BEGIN function input
   1:     ST  3,-1(1) 	Store return address 
   2:     IN  2,2,2 	Grab int input 
@@ -61,7 +61,7 @@
  42:     ST  3,-1(1) 	Store return address. 
 * BEGIN compound statement
 * EXPRESSION STMT
- 43:    LDC  3,146448736(6) 	Load constant 
+ 43:    LDC  3,89(6) 	Load constant 
 * END compound statement
 * Add standard closing in case there is no return statement
  44:    LDC  2,0(6) 	Set return value to 0 
@@ -76,7 +76,7 @@
 * END init of globals
  49:    LDA  1,0(0) 	set first frame at end of globals 
  50:     ST  1,0(1) 	store old fp (point to self) 
- 51:    LDA  3,0(7) 	return address in ac 
+ 51:    LDA  3,1(7) 	Return address in ac 
  52:    LDA  7,-11(7) 	Jump to main 
- 53:   HALT  0,0,0 	DONE 
-* END init
+ 53:   HALT  0,0,0 	DONE! 
+* END Init

@@ -1,7 +1,7 @@
-* C- Compiler version C-F10
-* Built: Dec 6, 2013
+* C- Compiler version C-F13
+* Built: Dec 12, 2013
 * Author: Brett Papineau
-* File compiled: temp.c-
+* File compiled:  s05.tm
 * BEGIN function input
   1:     ST  3,-1(1) 	Store return address 
   2:     IN  2,2,2 	Grab int input 
@@ -57,227 +57,234 @@
  40:     LD  1,0(1) 	Adjust fp 
  41:    LDA  7,0(3) 	Return 
 * END of function outnl
- 42:    LDC  3,11(6) 	Load size of array h
- 43:     ST  3,-1(1) 	Load size of array h
 * BEGIN function cat
- 44:     ST  3,-1(1) 	Store return address. 
+ 42:     ST  3,-1(1) 	Store return address. 
 * BEGIN compound statement
- 45:    LDC  3,22(6) 	Load size of array b
- 46:     ST  3,-3(1) 	Load size of array b
- 47:    LDC  3,23(6) 	Load size of array bs
- 48:     ST  3,-27(1) 	Load size of array bs
 * BEGIN compound statement
- 49:    LDC  3,33(6) 	Load size of array d
- 50:     ST  3,-52(1) 	Load size of array d
- 51:    LDC  3,34(6) 	Load size of array ds
- 52:     ST  3,-87(1) 	Load size of array ds
+ 43:    LDC  3,33(6) 	load size of array d
+ 44:     ST  3,-52(1) 	save size of array d
+ 45:    LDC  3,34(6) 	load size of array ds
+ 46:     ST  3,-87(1) 	save size of array ds
 * EXPRESSION STMT
 * 			Begin call to  output
- 53:     ST  1,-123(1) 	Store old fp in ghost frame 
-* 			Load Param 1
- 54:     LD  3,-1(0) 	Load variable h
- 55:     ST  3,-125(1) 	Store parameter 
- 56:    MUL  3,4,3 	Op * 
- 57:     ST  3,-125(1) 	Store parameter 
-* 			Jump to  output
- 58:    LDA  1,-123(1) 	Load address of new frame 
- 59:    LDA  3,1(7) 	Return address in ac 
- 60:    LDA  7,-55(7) 	Call  output
- 61:    LDA  3,0(2) 	Save the result in ac 
+ 47:     ST  1,-214(1) 	Store old fp in ghost frame 
+* 			Load param 1
+ 48:    LDA  3,-2(0) 	Load address of base of array h
+ 49:    MUL  3,1,3 	Load array size 
+ 50:     ST  3,-216(1) 	Store parameter 
+* 			Jump to output
+ 51:    LDA  1,-214(1) 	Load address of new frame 
+ 52:    LDA  3,1(7) 	Return address in ac 
+ 53:    LDA  7,-48(7) 	CALL output
+ 54:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to output
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  output
- 62:     ST  1,-123(1) 	Store old fp in ghost frame 
-* 			Load Param 1
- 63:     LD  3,-3(1) 	Load variable b
- 64:     ST  3,-125(1) 	Store parameter 
- 65:    MUL  3,4,3 	Op * 
- 66:     ST  3,-125(1) 	Store parameter 
-* 			Jump to  output
- 67:    LDA  1,-123(1) 	Load address of new frame 
+ 55:     ST  1,-214(1) 	Store old fp in ghost frame 
+* 			Load param 1
+ 56:    LDA  3,-4(1) 	Load address of base of array b
+ 57:    MUL  3,1,3 	Load array size 
+ 58:     ST  3,-216(1) 	Store parameter 
+* 			Jump to output
+ 59:    LDA  1,-214(1) 	Load address of new frame 
+ 60:    LDA  3,1(7) 	Return address in ac 
+ 61:    LDA  7,-56(7) 	CALL output
+ 62:    LDA  3,0(2) 	Save the result in ac 
+* 			End call to output
+* EXPRESSION STMT
+* EXPRESSION STMT
+* 			Begin call to  output
+ 63:     ST  1,-214(1) 	Store old fp in ghost frame 
+* 			Load param 1
+ 64:    LDA  3,-28(1) 	Load address of base of array bs
+ 65:    MUL  3,1,3 	Load array size 
+ 66:     ST  3,-216(1) 	Store parameter 
+* 			Jump to output
+ 67:    LDA  1,-214(1) 	Load address of new frame 
  68:    LDA  3,1(7) 	Return address in ac 
- 69:    LDA  7,-64(7) 	Call  output
+ 69:    LDA  7,-64(7) 	CALL output
  70:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to output
-* 			Begin call to  output
- 71:     ST  1,-123(1) 	Store old fp in ghost frame 
-* 			Load Param 1
- 72:     LD  3,-27(1) 	Load variable bs
- 73:     ST  3,-125(1) 	Store parameter 
- 74:    MUL  3,4,3 	Op * 
- 75:     ST  3,-125(1) 	Store parameter 
-* 			Jump to  output
- 76:    LDA  1,-123(1) 	Load address of new frame 
- 77:    LDA  3,1(7) 	Return address in ac 
- 78:    LDA  7,-73(7) 	Call  output
- 79:    LDA  3,0(2) 	Save the result in ac 
-* 			End call to output
-* 			Begin call to  output
- 80:     ST  1,-123(1) 	Store old fp in ghost frame 
-* 			Load Param 1
- 81:     LD  3,-52(0) 	Load variable d
- 82:     ST  3,-125(1) 	Store parameter 
- 83:    MUL  3,4,3 	Op * 
- 84:     ST  3,-125(1) 	Store parameter 
-* 			Jump to  output
- 85:    LDA  1,-123(1) 	Load address of new frame 
- 86:    LDA  3,1(7) 	Return address in ac 
- 87:    LDA  7,-82(7) 	Call  output
- 88:    LDA  3,0(2) 	Save the result in ac 
-* 			End call to output
-* 			Begin call to  output
- 89:     ST  1,-123(1) 	Store old fp in ghost frame 
-* 			Load Param 1
- 90:     LD  3,-87(0) 	Load variable ds
- 91:     ST  3,-125(1) 	Store parameter 
- 92:    MUL  3,4,3 	Op * 
- 93:     ST  3,-125(1) 	Store parameter 
-* 			Jump to  output
- 94:    LDA  1,-123(1) 	Load address of new frame 
- 95:    LDA  3,1(7) 	Return address in ac 
- 96:    LDA  7,-91(7) 	Call  output
- 97:    LDA  3,0(2) 	Save the result in ac 
-* 			End call to output
-* END compound statement
-* BEGIN compound statement
- 98:    LDC  3,43(6) 	Load size of array d
- 99:     ST  3,0(1) 	Load size of array d
-100:    LDC  3,44(6) 	Load size of array ds
-101:     ST  3,0(1) 	Load size of array ds
+* EXPRESSION STMT
 * EXPRESSION STMT
 * 			Begin call to  output
-102:     ST  1,-123(1) 	Store old fp in ghost frame 
-* 			Load Param 1
-103:     LD  3,-1(0) 	Load variable h
-104:     ST  3,-125(1) 	Store parameter 
-105:    MUL  3,4,3 	Op * 
-106:     ST  3,-125(1) 	Store parameter 
-* 			Jump to  output
-107:    LDA  1,-123(1) 	Load address of new frame 
-108:    LDA  3,1(7) 	Return address in ac 
-109:    LDA  7,-104(7) 	Call  output
-110:    LDA  3,0(2) 	Save the result in ac 
+ 71:     ST  1,-214(1) 	Store old fp in ghost frame 
+* 			Load param 1
+ 72:    LDA  3,-53(1) 	Load address of base of array d
+ 73:    MUL  3,1,3 	Load array size 
+ 74:     ST  3,-216(1) 	Store parameter 
+* 			Jump to output
+ 75:    LDA  1,-214(1) 	Load address of new frame 
+ 76:    LDA  3,1(7) 	Return address in ac 
+ 77:    LDA  7,-72(7) 	CALL output
+ 78:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to output
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  output
-111:     ST  1,-123(1) 	Store old fp in ghost frame 
-* 			Load Param 1
-112:     LD  3,-3(1) 	Load variable b
-113:     ST  3,-125(1) 	Store parameter 
-114:    MUL  3,4,3 	Op * 
-115:     ST  3,-125(1) 	Store parameter 
-* 			Jump to  output
-116:    LDA  1,-123(1) 	Load address of new frame 
-117:    LDA  3,1(7) 	Return address in ac 
-118:    LDA  7,-113(7) 	Call  output
-119:    LDA  3,0(2) 	Save the result in ac 
+ 79:     ST  1,-214(1) 	Store old fp in ghost frame 
+* 			Load param 1
+ 80:    LDA  3,-88(1) 	Load address of base of array ds
+ 81:    MUL  3,1,3 	Load array size 
+ 82:     ST  3,-216(1) 	Store parameter 
+* 			Jump to output
+ 83:    LDA  1,-214(1) 	Load address of new frame 
+ 84:    LDA  3,1(7) 	Return address in ac 
+ 85:    LDA  7,-80(7) 	CALL output
+ 86:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to output
+* EXPRESSION STMT
+* END compound statement
+* BEGIN compound statement
+ 87:    LDC  3,44(6) 	load size of array d
+ 88:     ST  3,-123(1) 	save size of array d
+ 89:    LDC  3,45(6) 	load size of array ds
+ 90:     ST  3,-168(1) 	save size of array ds
+* EXPRESSION STMT
 * 			Begin call to  output
-120:     ST  1,-123(1) 	Store old fp in ghost frame 
-* 			Load Param 1
-121:     LD  3,-27(1) 	Load variable bs
-122:     ST  3,-125(1) 	Store parameter 
-123:    MUL  3,4,3 	Op * 
-124:     ST  3,-125(1) 	Store parameter 
-* 			Jump to  output
-125:    LDA  1,-123(1) 	Load address of new frame 
-126:    LDA  3,1(7) 	Return address in ac 
-127:    LDA  7,-122(7) 	Call  output
-128:    LDA  3,0(2) 	Save the result in ac 
+ 91:     ST  1,-214(1) 	Store old fp in ghost frame 
+* 			Load param 1
+ 92:    LDA  3,-2(0) 	Load address of base of array h
+ 93:    MUL  3,1,3 	Load array size 
+ 94:     ST  3,-216(1) 	Store parameter 
+* 			Jump to output
+ 95:    LDA  1,-214(1) 	Load address of new frame 
+ 96:    LDA  3,1(7) 	Return address in ac 
+ 97:    LDA  7,-92(7) 	CALL output
+ 98:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to output
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  output
-129:     ST  1,-123(1) 	Store old fp in ghost frame 
-* 			Load Param 1
-130:     LD  3,0(0) 	Load variable d
-131:     ST  3,-125(1) 	Store parameter 
-132:    MUL  3,4,3 	Op * 
-133:     ST  3,-125(1) 	Store parameter 
-* 			Jump to  output
-134:    LDA  1,-123(1) 	Load address of new frame 
-135:    LDA  3,1(7) 	Return address in ac 
-136:    LDA  7,-131(7) 	Call  output
-137:    LDA  3,0(2) 	Save the result in ac 
+ 99:     ST  1,-214(1) 	Store old fp in ghost frame 
+* 			Load param 1
+100:    LDA  3,-4(1) 	Load address of base of array b
+101:    MUL  3,1,3 	Load array size 
+102:     ST  3,-216(1) 	Store parameter 
+* 			Jump to output
+103:    LDA  1,-214(1) 	Load address of new frame 
+104:    LDA  3,1(7) 	Return address in ac 
+105:    LDA  7,-100(7) 	CALL output
+106:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to output
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  output
-138:     ST  1,-123(1) 	Store old fp in ghost frame 
-* 			Load Param 1
-139:     LD  3,0(0) 	Load variable ds
-140:     ST  3,-125(1) 	Store parameter 
-141:    MUL  3,4,3 	Op * 
-142:     ST  3,-125(1) 	Store parameter 
-* 			Jump to  output
-143:    LDA  1,-123(1) 	Load address of new frame 
-144:    LDA  3,1(7) 	Return address in ac 
-145:    LDA  7,-140(7) 	Call  output
-146:    LDA  3,0(2) 	Save the result in ac 
+107:     ST  1,-214(1) 	Store old fp in ghost frame 
+* 			Load param 1
+108:    LDA  3,-28(1) 	Load address of base of array bs
+109:    MUL  3,1,3 	Load array size 
+110:     ST  3,-216(1) 	Store parameter 
+* 			Jump to output
+111:    LDA  1,-214(1) 	Load address of new frame 
+112:    LDA  3,1(7) 	Return address in ac 
+113:    LDA  7,-108(7) 	CALL output
+114:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to output
+* EXPRESSION STMT
+* EXPRESSION STMT
+* 			Begin call to  output
+115:     ST  1,-214(1) 	Store old fp in ghost frame 
+* 			Load param 1
+116:    LDA  3,-124(1) 	Load address of base of array d
+117:    MUL  3,1,3 	Load array size 
+118:     ST  3,-216(1) 	Store parameter 
+* 			Jump to output
+119:    LDA  1,-214(1) 	Load address of new frame 
+120:    LDA  3,1(7) 	Return address in ac 
+121:    LDA  7,-116(7) 	CALL output
+122:    LDA  3,0(2) 	Save the result in ac 
+* 			End call to output
+* EXPRESSION STMT
+* EXPRESSION STMT
+* 			Begin call to  output
+123:     ST  1,-214(1) 	Store old fp in ghost frame 
+* 			Load param 1
+124:    LDA  3,-169(1) 	Load address of base of array ds
+125:    MUL  3,1,3 	Load array size 
+126:     ST  3,-216(1) 	Store parameter 
+* 			Jump to output
+127:    LDA  1,-214(1) 	Load address of new frame 
+128:    LDA  3,1(7) 	Return address in ac 
+129:    LDA  7,-124(7) 	CALL output
+130:    LDA  3,0(2) 	Save the result in ac 
+* 			End call to output
+* EXPRESSION STMT
 * END compound statement
 * END compound statement
 * Add standard closing in case there is no return statement
-147:    LDC  2,0(6) 	Set return value to 0 
-148:     LD  3,-1(1) 	Load return address 
-149:     LD  1,0(1) 	Adjust fp 
-150:    LDA  7,0(3) 	Return 
+131:    LDC  2,0(6) 	Set return value to 0 
+132:     LD  3,-1(1) 	Load return address 
+133:     LD  1,0(1) 	Adjust fp 
+134:    LDA  7,0(3) 	Return 
 * END of function cat
-151:    LDC  3,55(6) 	Load size of array j
-152:     ST  3,-6(1) 	Load size of array j
 * BEGIN function dog
-153:     ST  3,-1(1) 	Store return address. 
+135:     ST  3,-1(1) 	Store return address. 
 * BEGIN compound statement
 * EXPRESSION STMT
 * 			Begin call to  output
-154:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Load Param 1
-155:     LD  3,-6(0) 	Load variable j
-156:     ST  3,-4(1) 	Store parameter 
-157:    MUL  3,4,3 	Op * 
-158:     ST  3,-4(1) 	Store parameter 
-* 			Jump to  output
-159:    LDA  1,-2(1) 	Load address of new frame 
-160:    LDA  3,1(7) 	Return address in ac 
-161:    LDA  7,-156(7) 	Call  output
-162:    LDA  3,0(2) 	Save the result in ac 
+136:     ST  1,-2(1) 	Store old fp in ghost frame 
+* 			Load param 1
+137:    LDA  3,-17(0) 	Load address of base of array j
+138:    MUL  3,1,3 	Load array size 
+139:     ST  3,-4(1) 	Store parameter 
+* 			Jump to output
+140:    LDA  1,-2(1) 	Load address of new frame 
+141:    LDA  3,1(7) 	Return address in ac 
+142:    LDA  7,-137(7) 	CALL output
+143:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to output
+* EXPRESSION STMT
 * END compound statement
 * Add standard closing in case there is no return statement
-163:    LDC  2,0(6) 	Set return value to 0 
-164:     LD  3,-1(1) 	Load return address 
-165:     LD  1,0(1) 	Adjust fp 
-166:    LDA  7,0(3) 	Return 
+144:    LDC  2,0(6) 	Set return value to 0 
+145:     LD  3,-1(1) 	Load return address 
+146:     LD  1,0(1) 	Adjust fp 
+147:    LDA  7,0(3) 	Return 
 * END of function dog
 * BEGIN function main
-167:     ST  3,-1(1) 	Store return address. 
+148:     ST  3,-1(1) 	Store return address. 
 * BEGIN compound statement
 * EXPRESSION STMT
 * 			Begin call to  cat
-168:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Jump to  cat
-169:    LDA  1,-2(1) 	Load address of new frame 
-170:    LDA  3,1(7) 	Return address in ac 
-171:    LDA  7,-128(7) 	Call  cat
-172:    LDA  3,0(2) 	Save the result in ac 
+149:     ST  1,-2(1) 	Store old fp in ghost frame 
+* 			Jump to cat
+150:    LDA  1,-2(1) 	Load address of new frame 
+151:    LDA  3,1(7) 	Return address in ac 
+152:    LDA  7,-111(7) 	CALL cat
+153:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to cat
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  dog
-173:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Jump to  dog
-174:    LDA  1,-2(1) 	Load address of new frame 
-175:    LDA  3,1(7) 	Return address in ac 
-176:    LDA  7,-24(7) 	Call  dog
-177:    LDA  3,0(2) 	Save the result in ac 
+154:     ST  1,-2(1) 	Store old fp in ghost frame 
+* 			Jump to dog
+155:    LDA  1,-2(1) 	Load address of new frame 
+156:    LDA  3,1(7) 	Return address in ac 
+157:    LDA  7,-23(7) 	CALL dog
+158:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to dog
+* EXPRESSION STMT
 * END compound statement
 * Add standard closing in case there is no return statement
-178:    LDC  2,0(6) 	Set return value to 0 
-179:     LD  3,-1(1) 	Load return address 
-180:     LD  1,0(1) 	Adjust fp 
-181:    LDA  7,0(3) 	Return 
+159:    LDC  2,0(6) 	Set return value to 0 
+160:     LD  3,-1(1) 	Load return address 
+161:     LD  1,0(1) 	Adjust fp 
+162:    LDA  7,0(3) 	Return 
 * END of function main
-  0:    LDA  7,181(7) 	Jump to init [backpatch] 
+  0:    LDA  7,162(7) 	Jump to init [backpatch] 
 * BEGIN Init
-182:     LD  0,0(0) 	Set the global pointer 
+163:     LD  0,0(0) 	Set the global pointer 
 * BEGIN init of globals
+164:    LDC  3,11(6) 	load size of array h
+165:     ST  3,-1(0) 	saves size of array h
+166:    LDC  3,11(6) 	load size of array h
+167:     ST  3,-1(0) 	saves size of array h
 * END init of globals
-183:    LDA  1,0(0) 	set first frame at end of globals 
-184:     ST  1,0(1) 	store old fp (point to self) 
-185:    LDA  3,0(7) 	return address in ac 
-186:    LDA  7,-20(7) 	Jump to main 
-187:   HALT  0,0,0 	DONE 
-* END init
+168:    LDA  1,-72(0) 	set first frame at end of globals 
+169:     ST  1,0(1) 	store old fp (point to self) 
+170:    LDA  3,1(7) 	Return address in ac 
+171:    LDA  7,-24(7) 	Jump to main 
+172:   HALT  0,0,0 	DONE! 
+* END Init

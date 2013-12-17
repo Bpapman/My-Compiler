@@ -1,7 +1,7 @@
-* C- Compiler version C-F10
-* Built: Dec 6, 2013
+* C- Compiler version C-F13
+* Built: Dec 12, 2013
 * Author: Brett Papineau
-* File compiled: temp.c-
+* File compiled:  d015.tm
 * BEGIN function input
   1:     ST  3,-1(1) 	Store return address 
   2:     IN  2,2,2 	Grab int input 
@@ -63,213 +63,226 @@
 * EXPRESSION STMT
 * 			Begin call to  outputb
  43:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Load Param 1
- 44:    LDC  3,164561392(6) 	Load constant 
- 45:     ST  3,-4(1) 	Store parameter 
- 46:     ST  3,-2(1) 	Save left side 
- 47:    LDC  3,164561664(6) 	Load constant 
- 48:     ST  3,-5(1) 	Store parameter 
- 49:     LD  4,-2(1) 	Load left into ac1 
- 50:    SUB  4,4,3 	Op < 
- 51:    LDC  3,1(6) 	True case 
- 52:    JLT  4,1(7) 	Jump if true 
- 53:    LDC  3,0(6) 	False case 
- 54:     ST  3,-4(1) 	Store parameter 
-* 			Jump to  outputb
- 55:    LDA  1,-2(1) 	Load address of new frame 
- 56:    LDA  3,1(7) 	Return address in ac 
- 57:    LDA  7,-40(7) 	Call  outputb
- 58:    LDA  3,0(2) 	Save the result in ac 
+* 			Load param 1
+ 44:    LDC  3,88(6) 	Load constant 
+ 45:     ST  3,-4(1) 	Save left side 
+* EXPRESSION STMT
+ 46:    LDC  3,89(6) 	Load constant 
+ 47:     LD  4,-4(1) 	Load left into ac1 
+ 48:    SUB  4,4,3 	Op < 
+ 49:    LDC  3,1(6) 	True case 
+ 50:    JLT  4,1(7) 	Jump if true 
+ 51:    LDC  3,0(6) 	False case 
+ 52:     ST  3,-4(1) 	Store parameter 
+* 			Jump to outputb
+ 53:    LDA  1,-2(1) 	Load address of new frame 
+ 54:    LDA  3,1(7) 	Return address in ac 
+ 55:    LDA  7,-38(7) 	CALL outputb
+ 56:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to outputb
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  outputb
- 59:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Load Param 1
- 60:    LDC  3,164562112(6) 	Load constant 
- 61:     ST  3,-4(1) 	Store parameter 
- 62:     ST  3,-2(1) 	Save left side 
- 63:    LDC  3,164562384(6) 	Load constant 
- 64:     ST  3,-5(1) 	Store parameter 
- 65:     LD  4,-2(1) 	Load left into ac1 
- 66:    SUB  4,4,3 	Op < 
- 67:    LDC  3,1(6) 	True case 
- 68:    JGT  4,1(7) 	Jump if true 
- 69:    LDC  3,0(6) 	False case 
- 70:     ST  3,-4(1) 	Store parameter 
-* 			Jump to  outputb
- 71:    LDA  1,-2(1) 	Load address of new frame 
- 72:    LDA  3,1(7) 	Return address in ac 
- 73:    LDA  7,-56(7) 	Call  outputb
- 74:    LDA  3,0(2) 	Save the result in ac 
+ 57:     ST  1,-2(1) 	Store old fp in ghost frame 
+* 			Load param 1
+ 58:    LDC  3,88(6) 	Load constant 
+ 59:     ST  3,-4(1) 	Save left side 
+* EXPRESSION STMT
+ 60:    LDC  3,89(6) 	Load constant 
+ 61:     LD  4,-4(1) 	Load left into ac1 
+ 62:    SUB  4,4,3 	Op < 
+ 63:    LDC  3,1(6) 	True case 
+ 64:    JGT  4,1(7) 	Jump if true 
+ 65:    LDC  3,0(6) 	False case 
+ 66:     ST  3,-4(1) 	Store parameter 
+* 			Jump to outputb
+ 67:    LDA  1,-2(1) 	Load address of new frame 
+ 68:    LDA  3,1(7) 	Return address in ac 
+ 69:    LDA  7,-52(7) 	CALL outputb
+ 70:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to outputb
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  outputb
- 75:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Load Param 1
- 76:    LDC  3,164562832(6) 	Load constant 
- 77:     ST  3,-4(1) 	Store parameter 
- 78:     ST  3,-2(1) 	Save left side 
- 79:    LDC  3,164563104(6) 	Load constant 
- 80:     ST  3,-5(1) 	Store parameter 
- 81:     LD  4,-2(1) 	Load left into ac1 
- 82:    SUB  4,4,3 	Op == 
- 83:    LDC  3,1(6) 	True case 
- 84:    JEQ  4,1(7) 	Jump if true 
- 85:    LDC  3,0(6) 	False case 
- 86:     ST  3,-4(1) 	Store parameter 
-* 			Jump to  outputb
- 87:    LDA  1,-2(1) 	Load address of new frame 
- 88:    LDA  3,1(7) 	Return address in ac 
- 89:    LDA  7,-72(7) 	Call  outputb
- 90:    LDA  3,0(2) 	Save the result in ac 
+ 71:     ST  1,-2(1) 	Store old fp in ghost frame 
+* 			Load param 1
+ 72:    LDC  3,88(6) 	Load constant 
+ 73:     ST  3,-4(1) 	Save left side 
+* EXPRESSION STMT
+ 74:    LDC  3,89(6) 	Load constant 
+ 75:     LD  4,-4(1) 	Load left into ac1 
+ 76:    SUB  4,4,3 	Op == 
+ 77:    LDC  3,1(6) 	True case 
+ 78:    JEQ  4,1(7) 	Jump if true 
+ 79:    LDC  3,0(6) 	False case 
+ 80:     ST  3,-4(1) 	Store parameter 
+* 			Jump to outputb
+ 81:    LDA  1,-2(1) 	Load address of new frame 
+ 82:    LDA  3,1(7) 	Return address in ac 
+ 83:    LDA  7,-66(7) 	CALL outputb
+ 84:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to outputb
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  outputb
- 91:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Load Param 1
- 92:    LDC  3,164563552(6) 	Load constant 
+ 85:     ST  1,-2(1) 	Store old fp in ghost frame 
+* 			Load param 1
+ 86:    LDC  3,88(6) 	Load constant 
+ 87:     ST  3,-4(1) 	Save left side 
+* EXPRESSION STMT
+ 88:    LDC  3,89(6) 	Load constant 
+ 89:     LD  4,-4(1) 	Load left into ac1 
+ 90:    SUB  3,4,3 	Op != 
+ 91:    JEQ  3,1(7) 	Jump if true 
+ 92:    LDC  3,1(6) 	True case 
  93:     ST  3,-4(1) 	Store parameter 
- 94:     ST  3,-2(1) 	Save left side 
- 95:    LDC  3,164563824(6) 	Load constant 
- 96:     ST  3,-5(1) 	Store parameter 
- 97:     LD  4,-2(1) 	Load left into ac1 
- 98:    SUB  3,4,3 	Op != 
- 99:     ST  3,-4(1) 	Store parameter 
-* 			Jump to  outputb
-100:    LDA  1,-2(1) 	Load address of new frame 
-101:    LDA  3,1(7) 	Return address in ac 
-102:    LDA  7,-85(7) 	Call  outputb
-103:    LDA  3,0(2) 	Save the result in ac 
+* 			Jump to outputb
+ 94:    LDA  1,-2(1) 	Load address of new frame 
+ 95:    LDA  3,1(7) 	Return address in ac 
+ 96:    LDA  7,-79(7) 	CALL outputb
+ 97:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to outputb
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  outputb
-104:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Load Param 1
-105:    LDC  3,164564272(6) 	Load constant 
-106:     ST  3,-4(1) 	Store parameter 
-107:     ST  3,-2(1) 	Save left side 
-108:    LDC  3,164564544(6) 	Load constant 
-109:     ST  3,-5(1) 	Store parameter 
-110:     LD  4,-2(1) 	Load left into ac1 
-111:    SUB  4,4,3 	Op >= 
-112:    LDC  3,1(6) 	True case 
-113:    JTE  4,1(7) 	Jump if true 
-114:    LDC  3,0(6) 	False case 
-115:     ST  3,-4(1) 	Store parameter 
-* 			Jump to  outputb
-116:    LDA  1,-2(1) 	Load address of new frame 
-117:    LDA  3,1(7) 	Return address in ac 
-118:    LDA  7,-101(7) 	Call  outputb
-119:    LDA  3,0(2) 	Save the result in ac 
+ 98:     ST  1,-2(1) 	Store old fp in ghost frame 
+* 			Load param 1
+ 99:    LDC  3,88(6) 	Load constant 
+100:     ST  3,-4(1) 	Save left side 
+* EXPRESSION STMT
+101:    LDC  3,89(6) 	Load constant 
+102:     LD  4,-4(1) 	Load left into ac1 
+103:    SUB  4,4,3 	Op >= 
+104:    LDC  3,1(6) 	True case 
+105:    JTE  4,1(7) 	Jump if true 
+106:    LDC  3,0(6) 	False case 
+107:     ST  3,-4(1) 	Store parameter 
+* 			Jump to outputb
+108:    LDA  1,-2(1) 	Load address of new frame 
+109:    LDA  3,1(7) 	Return address in ac 
+110:    LDA  7,-93(7) 	CALL outputb
+111:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to outputb
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  outputb
-120:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Load Param 1
-121:    LDC  3,164564992(6) 	Load constant 
-122:     ST  3,-4(1) 	Store parameter 
-123:     ST  3,-2(1) 	Save left side 
-124:    LDC  3,164565264(6) 	Load constant 
-125:     ST  3,-5(1) 	Store parameter 
-126:     LD  4,-2(1) 	Load left into ac1 
-127:    SUB  4,4,3 	Op <= 
-128:    LDC  3,1(6) 	True case 
-129:    JLE  4,1(7) 	Jump if true 
-130:    LDC  3,0(6) 	False case 
-131:     ST  3,-4(1) 	Store parameter 
-* 			Jump to  outputb
-132:    LDA  1,-2(1) 	Load address of new frame 
-133:    LDA  3,1(7) 	Return address in ac 
-134:    LDA  7,-117(7) 	Call  outputb
-135:    LDA  3,0(2) 	Save the result in ac 
+112:     ST  1,-2(1) 	Store old fp in ghost frame 
+* 			Load param 1
+113:    LDC  3,88(6) 	Load constant 
+114:     ST  3,-4(1) 	Save left side 
+* EXPRESSION STMT
+115:    LDC  3,89(6) 	Load constant 
+116:     LD  4,-4(1) 	Load left into ac1 
+117:    SUB  4,4,3 	Op <= 
+118:    LDC  3,1(6) 	True case 
+119:    JLE  4,1(7) 	Jump if true 
+120:    LDC  3,0(6) 	False case 
+121:     ST  3,-4(1) 	Store parameter 
+* 			Jump to outputb
+122:    LDA  1,-2(1) 	Load address of new frame 
+123:    LDA  3,1(7) 	Return address in ac 
+124:    LDA  7,-107(7) 	CALL outputb
+125:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to outputb
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  outputb
-136:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Load Param 1
-137:    LDC  3,164565712(6) 	Load constant 
-138:     ST  3,-4(1) 	Store parameter 
-139:     ST  3,-2(1) 	Save left side 
-140:    LDC  3,164565984(6) 	Load constant 
-141:     ST  3,-5(1) 	Store parameter 
-142:     LD  4,-2(1) 	Load left into ac1 
-143:    SUB  4,4,3 	Op == 
-144:    LDC  3,1(6) 	True case 
-145:    JEQ  4,1(7) 	Jump if true 
-146:    LDC  3,0(6) 	False case 
-147:     ST  3,-4(1) 	Store parameter 
-* 			Jump to  outputb
-148:    LDA  1,-2(1) 	Load address of new frame 
-149:    LDA  3,1(7) 	Return address in ac 
-150:    LDA  7,-133(7) 	Call  outputb
-151:    LDA  3,0(2) 	Save the result in ac 
+126:     ST  1,-2(1) 	Store old fp in ghost frame 
+* 			Load param 1
+127:    LDC  3,89(6) 	Load constant 
+128:     ST  3,-4(1) 	Save left side 
+* EXPRESSION STMT
+129:    LDC  3,89(6) 	Load constant 
+130:     LD  4,-4(1) 	Load left into ac1 
+131:    SUB  4,4,3 	Op == 
+132:    LDC  3,1(6) 	True case 
+133:    JEQ  4,1(7) 	Jump if true 
+134:    LDC  3,0(6) 	False case 
+135:     ST  3,-4(1) 	Store parameter 
+* 			Jump to outputb
+136:    LDA  1,-2(1) 	Load address of new frame 
+137:    LDA  3,1(7) 	Return address in ac 
+138:    LDA  7,-121(7) 	CALL outputb
+139:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to outputb
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  outputb
-152:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Load Param 1
-153:    LDC  3,164566432(6) 	Load constant 
-154:     ST  3,-4(1) 	Store parameter 
-155:     ST  3,-2(1) 	Save left side 
-156:    LDC  3,164566704(6) 	Load constant 
-157:     ST  3,-5(1) 	Store parameter 
-158:     LD  4,-2(1) 	Load left into ac1 
-159:    SUB  3,4,3 	Op != 
-160:     ST  3,-4(1) 	Store parameter 
-* 			Jump to  outputb
-161:    LDA  1,-2(1) 	Load address of new frame 
-162:    LDA  3,1(7) 	Return address in ac 
-163:    LDA  7,-146(7) 	Call  outputb
-164:    LDA  3,0(2) 	Save the result in ac 
+140:     ST  1,-2(1) 	Store old fp in ghost frame 
+* 			Load param 1
+141:    LDC  3,89(6) 	Load constant 
+142:     ST  3,-4(1) 	Save left side 
+* EXPRESSION STMT
+143:    LDC  3,89(6) 	Load constant 
+144:     LD  4,-4(1) 	Load left into ac1 
+145:    SUB  3,4,3 	Op != 
+146:    JEQ  3,1(7) 	Jump if true 
+147:    LDC  3,1(6) 	True case 
+148:     ST  3,-4(1) 	Store parameter 
+* 			Jump to outputb
+149:    LDA  1,-2(1) 	Load address of new frame 
+150:    LDA  3,1(7) 	Return address in ac 
+151:    LDA  7,-134(7) 	CALL outputb
+152:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to outputb
+* EXPRESSION STMT
+* EXPRESSION STMT
 * 			Begin call to  outputb
-165:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Load Param 1
-166:    LDC  3,164567152(6) 	Load constant 
-167:     ST  3,-4(1) 	Store parameter 
-168:     ST  3,-2(1) 	Save left side 
-169:    LDC  3,164567424(6) 	Load constant 
-170:     ST  3,-5(1) 	Store parameter 
-171:     LD  4,-2(1) 	Load left into ac1 
-172:    SUB  4,4,3 	Op >= 
+153:     ST  1,-2(1) 	Store old fp in ghost frame 
+* 			Load param 1
+154:    LDC  3,89(6) 	Load constant 
+155:     ST  3,-4(1) 	Save left side 
+* EXPRESSION STMT
+156:    LDC  3,89(6) 	Load constant 
+157:     LD  4,-4(1) 	Load left into ac1 
+158:    SUB  4,4,3 	Op >= 
+159:    LDC  3,1(6) 	True case 
+160:    JTE  4,1(7) 	Jump if true 
+161:    LDC  3,0(6) 	False case 
+162:     ST  3,-4(1) 	Store parameter 
+* 			Jump to outputb
+163:    LDA  1,-2(1) 	Load address of new frame 
+164:    LDA  3,1(7) 	Return address in ac 
+165:    LDA  7,-148(7) 	CALL outputb
+166:    LDA  3,0(2) 	Save the result in ac 
+* 			End call to outputb
+* EXPRESSION STMT
+* EXPRESSION STMT
+* 			Begin call to  outputb
+167:     ST  1,-2(1) 	Store old fp in ghost frame 
+* 			Load param 1
+168:    LDC  3,89(6) 	Load constant 
+169:     ST  3,-4(1) 	Save left side 
+* EXPRESSION STMT
+170:    LDC  3,89(6) 	Load constant 
+171:     LD  4,-4(1) 	Load left into ac1 
+172:    SUB  4,4,3 	Op <= 
 173:    LDC  3,1(6) 	True case 
-174:    JTE  4,1(7) 	Jump if true 
+174:    JLE  4,1(7) 	Jump if true 
 175:    LDC  3,0(6) 	False case 
 176:     ST  3,-4(1) 	Store parameter 
-* 			Jump to  outputb
+* 			Jump to outputb
 177:    LDA  1,-2(1) 	Load address of new frame 
 178:    LDA  3,1(7) 	Return address in ac 
-179:    LDA  7,-162(7) 	Call  outputb
+179:    LDA  7,-162(7) 	CALL outputb
 180:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to outputb
-* 			Begin call to  outputb
-181:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Load Param 1
-182:    LDC  3,164567872(6) 	Load constant 
-183:     ST  3,-4(1) 	Store parameter 
-184:     ST  3,-2(1) 	Save left side 
-185:    LDC  3,164568144(6) 	Load constant 
-186:     ST  3,-5(1) 	Store parameter 
-187:     LD  4,-2(1) 	Load left into ac1 
-188:    SUB  4,4,3 	Op <= 
-189:    LDC  3,1(6) 	True case 
-190:    JLE  4,1(7) 	Jump if true 
-191:    LDC  3,0(6) 	False case 
-192:     ST  3,-4(1) 	Store parameter 
-* 			Jump to  outputb
-193:    LDA  1,-2(1) 	Load address of new frame 
-194:    LDA  3,1(7) 	Return address in ac 
-195:    LDA  7,-178(7) 	Call  outputb
-196:    LDA  3,0(2) 	Save the result in ac 
-* 			End call to outputb
+* EXPRESSION STMT
 * END compound statement
 * Add standard closing in case there is no return statement
-197:    LDC  2,0(6) 	Set return value to 0 
-198:     LD  3,-1(1) 	Load return address 
-199:     LD  1,0(1) 	Adjust fp 
-200:    LDA  7,0(3) 	Return 
+181:    LDC  2,0(6) 	Set return value to 0 
+182:     LD  3,-1(1) 	Load return address 
+183:     LD  1,0(1) 	Adjust fp 
+184:    LDA  7,0(3) 	Return 
 * END of function main
-  0:    LDA  7,200(7) 	Jump to init [backpatch] 
+  0:    LDA  7,184(7) 	Jump to init [backpatch] 
 * BEGIN Init
-201:     LD  0,0(0) 	Set the global pointer 
+185:     LD  0,0(0) 	Set the global pointer 
 * BEGIN init of globals
 * END init of globals
-202:    LDA  1,0(0) 	set first frame at end of globals 
-203:     ST  1,0(1) 	store old fp (point to self) 
-204:    LDA  3,0(7) 	return address in ac 
-205:    LDA  7,-164(7) 	Jump to main 
-206:   HALT  0,0,0 	DONE 
-* END init
+186:    LDA  1,0(0) 	set first frame at end of globals 
+187:     ST  1,0(1) 	store old fp (point to self) 
+188:    LDA  3,1(7) 	Return address in ac 
+189:    LDA  7,-148(7) 	Jump to main 
+190:   HALT  0,0,0 	DONE! 
+* END Init

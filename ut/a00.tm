@@ -1,7 +1,7 @@
-* C- Compiler version C-F10
-* Built: Dec 6, 2013
+* C- Compiler version C-F13
+* Built: Dec 12, 2013
 * Author: Brett Papineau
-* File compiled: temp.c-
+* File compiled:  a00.tm
 * BEGIN function input
   1:     ST  3,-1(1) 	Store return address 
   2:     IN  2,2,2 	Grab int input 
@@ -74,7 +74,7 @@
 * END init of globals
  48:    LDA  1,0(0) 	set first frame at end of globals 
  49:     ST  1,0(1) 	store old fp (point to self) 
- 50:    LDA  3,0(7) 	return address in ac 
+ 50:    LDA  3,1(7) 	Return address in ac 
  51:    LDA  7,-10(7) 	Jump to main 
- 52:   HALT  0,0,0 	DONE 
-* END init
+ 52:   HALT  0,0,0 	DONE! 
+* END Init

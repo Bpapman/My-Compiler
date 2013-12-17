@@ -1,7 +1,7 @@
-* C- Compiler version C-F10
-* Built: Dec 6, 2013
+* C- Compiler version C-F13
+* Built: Dec 12, 2013
 * Author: Brett Papineau
-* File compiled: temp.c-
+* File compiled:  f0a.tm
 * BEGIN function input
   1:     ST  3,-1(1) 	Store return address 
   2:     IN  2,2,2 	Grab int input 
@@ -80,63 +80,65 @@
 * EXPRESSION STMT
 * 			Begin call to  output
  53:     ST  1,-2(1) 	Store old fp in ghost frame 
-* 			Load Param 1
+* 			Load param 1
 * 			Begin call to  cat
  54:     ST  1,-4(1) 	Store old fp in ghost frame 
-* 			Jump to  cat
+* 			Jump to cat
  55:    LDA  1,-4(1) 	Load address of new frame 
  56:    LDA  3,1(7) 	Return address in ac 
- 57:    LDA  7,-16(7) 	Call  cat
+ 57:    LDA  7,-16(7) 	CALL cat
  58:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to cat
- 59:     ST  3,-4(1) 	Store parameter 
- 60:     ST  3,-2(1) 	Save left side 
+* EXPRESSION STMT
+ 59:     ST  3,-4(1) 	Save left side 
+* EXPRESSION STMT
 * 			Begin call to  cat
- 61:     ST  1,-5(1) 	Store old fp in ghost frame 
-* 			Jump to  cat
- 62:    LDA  1,-5(1) 	Load address of new frame 
- 63:    LDA  3,1(7) 	Return address in ac 
- 64:    LDA  7,-23(7) 	Call  cat
- 65:    LDA  3,0(2) 	Save the result in ac 
+ 60:     ST  1,-5(1) 	Store old fp in ghost frame 
+* 			Jump to cat
+ 61:    LDA  1,-5(1) 	Load address of new frame 
+ 62:    LDA  3,1(7) 	Return address in ac 
+ 63:    LDA  7,-22(7) 	CALL cat
+ 64:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to cat
- 66:     ST  3,-5(1) 	Store parameter 
- 67:     LD  4,-2(1) 	Load left into ac1 
- 68:    ADD  3,4,3 	Op + 
- 69:     ST  3,-4(1) 	Store parameter 
- 70:     ST  3,-2(1) 	Save left side 
+* EXPRESSION STMT
+ 65:     LD  4,-4(1) 	Load left into ac1 
+ 66:    ADD  3,4,3 	Op + 
+ 67:     ST  3,-4(1) 	Save left side 
+* EXPRESSION STMT
 * 			Begin call to  cat
- 71:     ST  1,-5(1) 	Store old fp in ghost frame 
-* 			Jump to  cat
- 72:    LDA  1,-5(1) 	Load address of new frame 
- 73:    LDA  3,1(7) 	Return address in ac 
- 74:    LDA  7,-33(7) 	Call  cat
- 75:    LDA  3,0(2) 	Save the result in ac 
+ 68:     ST  1,-5(1) 	Store old fp in ghost frame 
+* 			Jump to cat
+ 69:    LDA  1,-5(1) 	Load address of new frame 
+ 70:    LDA  3,1(7) 	Return address in ac 
+ 71:    LDA  7,-30(7) 	CALL cat
+ 72:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to cat
- 76:     ST  3,-5(1) 	Store parameter 
- 77:     LD  4,-2(1) 	Load left into ac1 
- 78:    MUL  3,4,3 	Op * 
- 79:     ST  3,-4(1) 	Store parameter 
-* 			Jump to  output
- 80:    LDA  1,-2(1) 	Load address of new frame 
- 81:    LDA  3,1(7) 	Return address in ac 
- 82:    LDA  7,-77(7) 	Call  output
- 83:    LDA  3,0(2) 	Save the result in ac 
+* EXPRESSION STMT
+ 73:     LD  4,-4(1) 	Load left into ac1 
+ 74:    MUL  3,4,3 	Op * 
+ 75:     ST  3,-4(1) 	Store parameter 
+* 			Jump to output
+ 76:    LDA  1,-2(1) 	Load address of new frame 
+ 77:    LDA  3,1(7) 	Return address in ac 
+ 78:    LDA  7,-73(7) 	CALL output
+ 79:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to output
+* EXPRESSION STMT
 * END compound statement
 * Add standard closing in case there is no return statement
- 84:    LDC  2,0(6) 	Set return value to 0 
- 85:     LD  3,-1(1) 	Load return address 
- 86:     LD  1,0(1) 	Adjust fp 
- 87:    LDA  7,0(3) 	Return 
+ 80:    LDC  2,0(6) 	Set return value to 0 
+ 81:     LD  3,-1(1) 	Load return address 
+ 82:     LD  1,0(1) 	Adjust fp 
+ 83:    LDA  7,0(3) 	Return 
 * END of function main
-  0:    LDA  7,87(7) 	Jump to init [backpatch] 
+  0:    LDA  7,83(7) 	Jump to init [backpatch] 
 * BEGIN Init
- 88:     LD  0,0(0) 	Set the global pointer 
+ 84:     LD  0,0(0) 	Set the global pointer 
 * BEGIN init of globals
 * END init of globals
- 89:    LDA  1,0(0) 	set first frame at end of globals 
- 90:     ST  1,0(1) 	store old fp (point to self) 
- 91:    LDA  3,0(7) 	return address in ac 
- 92:    LDA  7,-41(7) 	Jump to main 
- 93:   HALT  0,0,0 	DONE 
-* END init
+ 85:    LDA  1,0(0) 	set first frame at end of globals 
+ 86:     ST  1,0(1) 	store old fp (point to self) 
+ 87:    LDA  3,1(7) 	Return address in ac 
+ 88:    LDA  7,-37(7) 	Jump to main 
+ 89:   HALT  0,0,0 	DONE! 
+* END Init

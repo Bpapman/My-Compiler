@@ -1,6 +1,7 @@
 #include "symtab.h"
 #include "stdlib.h"
 int SymTab::initMaxTable_=100;
+int count = 0;
 
 void xPrint(void *p)
 {
@@ -100,10 +101,13 @@ bool SymTab::insertScope(char *sym, int scopeDepth, void *ptr)
 
 // insert into the global space
 bool SymTab::insertGlobal(char *sym, void *ptr) {
+    char* temp;
+    strcpy(temp, sym);
     char* tmp;
-    int i = 0;
-    sprintf(tmp, "%d", i);
-    strcat(sym, tmp);
+    strcat(temp, "-");
+    //int i = 0;
+    sprintf(tmp, "%d", count++);
+    strcat(temp, tmp);
     
     return insertScope(sym, 1, ptr);
 }

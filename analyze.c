@@ -38,7 +38,7 @@ void errorMatchArray(int line, char* node)
 
 void errorTypeCharInt(int line, char* op, char* side, char* type)
 {
-    printf("ERROR(%d): %s requires operands of type char or type but %s is of type %s.\n", line, op, side, type);
+    printf("ERROR(%d): '%s' requires operands of type char or type but %s is of type %s.\n", line, op, side, type);
     numerrors++;
 }
 void errorCharInit(int line, char* name, char* type)
@@ -427,8 +427,10 @@ void checkNode(TreeNode* t)
                                 if(t->scopeT != local)
                                 {
                                     goff2--;
+                                    goff = goff - t->size;
                                 }
                                 t->size += 1;
+                                t->location -= 1;
                                 foff = foff - t->size + 1;
                             }
 
@@ -552,7 +554,7 @@ void checkNode(TreeNode* t)
                         
                         errorNonBool(t->lineno, (char*)"while", type);
                     }
-                    if(t->child[0]->isArray == true)
+                    if(t->child[0]->isArray == true && t->child[0]->child[0] == NULL)
                     {
                         errorArrayStatement(t->lineno, (char*)"while");
                     }
@@ -641,7 +643,7 @@ void checkNode(TreeNode* t)
                     
                     if(t->child[0] != NULL)
                     {
-                        if(t->child[0]->isArray == true)
+                        if(t->child[0]->isArray == true && t->child[0]->child[1] == NULL)
                         {
                             errorArrayReturn(t->lineno);
                         }
@@ -707,6 +709,7 @@ void checkNode(TreeNode* t)
                         case eqK:
                             checkNode(t->child[0]);
                             checkNode(t->child[1]);
+                            //if(t->child[0]->isArray == true && t->child[0]->isArray == false)
                             if(t->child[0]->expType != t->child[1]->expType && t->child[0]->expType != UNDEF && t->child[1]->expType != UNDEF)
                             {
                                 char* ltype;
@@ -726,11 +729,11 @@ void checkNode(TreeNode* t)
                                 
                                 errorTypeCompare(t->lineno, (char*)"=", ltype, rtype);
                             }
-                            if(t->child[0]->isArray == true && t->child[1]->isArray == false)
+                            if(t->child[0]->isArray && t->child[0]->child[1] != NULL && !t->child[1]->isArray && (t->child[0]->expType != UNDEF && t->child[1]->expType != UNDEF))
                             {
                                 errorMatchArray(t->lineno, (char*)"=");
                             }
-                            if(t->child[0]->isArray == false && t->child[1]->isArray == true)
+                            if(!t->child[0]->isArray && t->child[1]->isArray && t->child[1]->child[1] != NULL && (t->child[0]->expType != UNDEF && t->child[1]->expType != UNDEF))
                             {
                                 errorMatchArray(t->lineno, (char*)"=");
                             }
@@ -824,9 +827,9 @@ void checkNode(TreeNode* t)
                                 if(t->child[0]->expType == Char)
                                     type = (char*)"char";
                                 
-                                errorUnaryOp(t->lineno, (char*)"++", (char*)"bool", type);
+                                errorUnaryOp(t->lineno, (char*)"++", (char*)"int", type);
                             }
-                            if(t->child[0]->isArray)
+                            if(t->child[0]->isArray && t->child[0]->child[0] == NULL)
                             {
                                 errorNArrayOp(t->lineno, (char*)"++");
                             }
@@ -842,9 +845,9 @@ void checkNode(TreeNode* t)
                                 if(t->child[0]->expType == Char)
                                     type = (char*)"char";
                                 
-                                errorUnaryOp(t->lineno, (char*)"--", (char*)"bool", type);
+                                errorUnaryOp(t->lineno, (char*)"--", (char*)"int", type);
                             }
-                            if(t->child[0]->isArray)
+                            if(t->child[0]->isArray && t->child[0]->child[0] != NULL)
                             {
                                 errorNArrayOp(t->lineno, (char*)"--");
                             }
@@ -862,7 +865,7 @@ void checkNode(TreeNode* t)
                         case plusK:
                             checkNode(t->child[0]);
                             checkNode(t->child[1]);
-                            if(t->child[0]->isArray || t->child[1]->isArray)
+                            if((t->child[0]->isArray && t->child[0]->child[0] == NULL) || (t->child[1]->isArray && t->child[1]->child[0] == NULL))
                             {
                                 errorNArrayOp(t->lineno, (char*)"+");
                             }
@@ -906,7 +909,7 @@ void checkNode(TreeNode* t)
                         case minusK:
                             checkNode(t->child[0]);
                             checkNode(t->child[1]);
-                            if(t->child[0]->isArray || t->child[1]->isArray)
+                            if((t->child[0]->isArray && t->child[0]->child[1] != NULL) || (t->child[1]->isArray && t->child[1]->child[1] != NULL))
                             {
                                 errorNArrayOp(t->lineno, (char*)"-");
                             }
@@ -1002,7 +1005,7 @@ void checkNode(TreeNode* t)
                                 errorTypeCharInt(t->lineno, (char*)">", (char*)"lhs", (char*)"bool");
                             if(t->child[1]->expType == Bool)
                                 errorTypeCharInt(t->lineno, (char*)">", (char*)"rhs", (char*)"bool");
-                            if(t->child[0]->isArray || t->child[1]->isArray)
+                            if((t->child[0]->isArray && t->child[0]->child[0] == NULL) || (t->child[1]->isArray && t->child[1]->child[0] == NULL))
                                 errorNArrayOp(t->lineno, (char*)">");
                             t->expType = Bool;
                             break;//break gtK
@@ -1013,7 +1016,7 @@ void checkNode(TreeNode* t)
                                 errorTypeCharInt(t->lineno, (char*)"<", (char*)"lhs", (char*)"bool");
                             if(t->child[1]->expType == Bool)
                                 errorTypeCharInt(t->lineno, (char*)"<", (char*)"rhs", (char*)"bool");
-                            if(t->child[0]->isArray || t->child[1]->isArray)
+                            if((t->child[0]->isArray && t->child[0]->child[0] == NULL) || (t->child[1]->isArray && t->child[1]->child[0] == NULL))
                                 errorNArrayOp(t->lineno, (char*)"<");
                             t->expType = Bool;
                             break;//break ltK
@@ -1024,7 +1027,7 @@ void checkNode(TreeNode* t)
                                 errorTypeCharInt(t->lineno, (char*)">=", (char*)"lhs", (char*)"bool");
                             if(t->child[1]->expType == Bool)
                                 errorTypeCharInt(t->lineno, (char*)">=", (char*)"rhs", (char*)"bool");
-                            if(t->child[0]->isArray || t->child[1]->isArray)
+                            if((t->child[0]->isArray && t->child[0]->child[0] == NULL) || (t->child[1]->isArray && t->child[1]->child[0] == NULL))
                                 errorNArrayOp(t->lineno, (char*)">=");
                             t->expType = Bool;
                             break;//break gteqK
@@ -1035,7 +1038,7 @@ void checkNode(TreeNode* t)
                                 errorTypeCharInt(t->lineno, (char*)"<=", (char*)"lhs", (char*)"bool");
                             if(t->child[1]->expType == Bool)
                                 errorTypeCharInt(t->lineno, (char*)"<=", (char*)"rhs", (char*)"bool");
-                            if(t->child[0]->isArray || t->child[1]->isArray)
+                            if((t->child[0]->isArray && t->child[0]->child[0] == NULL) || (t->child[1]->isArray && t->child[1]->child[0] == NULL))
                                 errorNArrayOp(t->lineno, (char*)"<=");
                             t->expType = Bool;
                             break;//break lteqK
@@ -1102,7 +1105,7 @@ void checkNode(TreeNode* t)
                                 
                                 errorRHS(t->lineno, (char*)"*", (char*)"int", type);
                             }
-                            if(t->child[0]->isArray || t->child[1]->isArray)
+                            if((t->child[0]->isArray && t->child[0]->child[1] != NULL) || (t->child[1]->isArray && t->child[1]->child[1] != NULL))
                                 errorNArrayOp(t->lineno, (char*)"*");
                             t->expType = Int;
                             break;//break multiK
@@ -1268,7 +1271,7 @@ void checkNode(TreeNode* t)
                                 
                                 errorUnaryOp(t->lineno, (char*)"not", (char*)"bool", type);
                             }
-                            if(t->child[0]->isArray)
+                            if(t->child[0]->isArray && t->child[0]->child[0] == NULL)
                                 errorNArrayOp(t->lineno, (char*)"not");
                             t->expType = Bool;
                             break;//break notK
@@ -1295,7 +1298,7 @@ void checkNode(TreeNode* t)
                                 
                                 errorRHS(t->lineno, (char*)"and", (char*)"bool", type);
                             }
-                            if(t->child[0]->isArray || t->child[1]->isArray)
+                            if((t->child[0]->isArray && t->child[0]->child[0] == NULL) || (t->child[1]->isArray && t->child[1]->child[0] == NULL))
                             {
                                 errorNArrayOp(t->lineno, (char*)"and");
                             }
@@ -1324,7 +1327,7 @@ void checkNode(TreeNode* t)
                                 
                                 errorRHS(t->lineno, (char*)"or", (char*)"bool", type);
                             }
-                            if(t->child[0]->isArray || t->child[1]->isArray)
+                            if((t->child[0]->isArray && t->child[0]->child[1] == NULL) || (t->child[1]->isArray && t->child[0]->child[0] == NULL))
                             {
                                 errorNArrayOp(t->lineno, (char*)"or");
                             }
@@ -1332,7 +1335,7 @@ void checkNode(TreeNode* t)
                             break;//break orK
                         case UminusK:
                             checkNode(t->child[0]);
-                            if(t->child[0]->isArray)
+                            if(t->child[0]->isArray && t->child[0]->child[1] != NULL)
                                 errorNArrayOp(t->lineno, (char*)"-");
                             if(t->child[0]->expType != Int && t->child[0]->expType != UNDEF)
                             {
@@ -1342,7 +1345,7 @@ void checkNode(TreeNode* t)
                                 if(t->child[0]->expType == Char)
                                     type = (char*)"char";
                                 
-                                errorUnaryOp(t->lineno, (char*)"-", (char*)"bool", type);
+                                errorUnaryOp(t->lineno, (char*)"-", (char*)"int", type);
                             }
                             
                             break;//break UminusK
@@ -1350,6 +1353,16 @@ void checkNode(TreeNode* t)
                             checkNode(t->child[0]);
                             if(!t->child[0]->isArray)
                                 errorArrayOp(t->lineno, (char*)"*");
+                            if(t->child[0]->expType != Int && t->child[0]->expType != UNDEF)
+                            {
+                                char* type;
+                                if(t->child[0]->expType == Bool)
+                                    type = (char*)"bool";
+                                if(t->child[0]->expType == Char)
+                                    type = (char*)"char";
+                                
+                                errorUnaryOp(t->lineno, (char*)"*", (char*)"int", type);
+                            }
                             break;//break UmultiK
                     }//end switch attr.op
                     break;//break opK
@@ -1374,21 +1387,15 @@ void checkNode(TreeNode* t)
                             
                             errorArrayIndex(t->lineno, t->attr.name, type);
                         }
-                        if(!t->isArray && t->child[0] != NULL)
+                        if(t->isArray && t->child[0] == NULL)
                             errorUnindexed(t->lineno, t->attr.name);
-                        if(t->isArray && t->child[0]->isArray)
+                        if(t->isArray && t->child[0]->isArray  && t->child[0]->child[0] == NULL)
                             errorUnindexed(t->lineno, t->attr.name);
                     }
                     if(temptree != NULL)
                     {
                         t->expType = temptree->expType;
-                        if(temptree->isArray)
-                        {
-                            if(t->child[0] == NULL)
-                                t->isArray = true;
-                            else
-                                t->isArray = false;
-                        }
+                        t->isArray = temptree->isArray;
                         t->location = temptree->location;
                     }
                     break;//break idK
@@ -1404,6 +1411,7 @@ void checkNode(TreeNode* t)
                     if(temptree == NULL)
                     {
                         errorSymbolNDefined(t->lineno, t->attr.name);
+                        t->expType = UNDEF;
                         params++;
                         while(temptree2 != NULL)
                         {
@@ -1429,23 +1437,23 @@ void checkNode(TreeNode* t)
                         else
                         {
                             temptree2 = t->child[0];
-                            TreeNode* typeholder = temptree->child[0];
+                            TreeNode* typeholder2 = temptree->child[0];
                             int i = 1;
-                            while(typeholder != NULL && temptree2 != NULL)
+                            while(typeholder2 != NULL && temptree2 != NULL)
                             {
                                 params++;
                                 checkNode(temptree2);
                                 params--;
-                                if(typeholder->expType != temptree2->expType && typeholder->expType != UNDEF && temptree2->expType != UNDEF)
+                                if(typeholder2->expType != temptree2->expType && typeholder2->expType != UNDEF && temptree2->expType != UNDEF)
                                 {
                                     char* ltype;
                                     char* rtype;
                                     
-                                    if(typeholder->expType == Int)
+                                    if(typeholder2->expType == Int)
                                         ltype = (char*)"int";
-                                    if(typeholder->expType == Bool)
+                                    if(typeholder2->expType == Bool)
                                         ltype = (char*)"bool";
-                                    if(typeholder->expType == Char)
+                                    if(typeholder2->expType == Char)
                                         ltype = (char*)"char";
                                     
                                     if(temptree2->expType == Int)
@@ -1455,21 +1463,21 @@ void checkNode(TreeNode* t)
                                     if(temptree2->expType == Char)
                                         rtype = (char*)"char";
                                     
-                                    errorParam(t->lineno, ltype, i, typeholder->attr.name, typeholder->lineno, rtype);
+                                    errorParam(t->lineno, ltype, i, typeholder2->attr.name, typeholder2->lineno, rtype);
                                 }
-                                if(typeholder->isArray && !temptree2->isArray)
-                                    errorParamArray(t->lineno, i, t->attr.name, typeholder->lineno);
-                                if(!typeholder->isArray && temptree2->isArray)
-                                    errorNParamArray(t->lineno, i, t->attr.name, typeholder->lineno);
-                                prevtemp = typeholder;
-                                typeholder = typeholder->sibling;
+                                if(typeholder2->isArray && !temptree2->isArray && typeholder2->child[0] == NULL)
+                                    errorParamArray(t->lineno, i, t->attr.name, typeholder2->lineno);
+                                if(!typeholder2->isArray && temptree2->isArray && temptree2->child[0] == NULL)
+                                    errorNParamArray(t->lineno, i, t->attr.name, typeholder2->lineno);
+                                prevtemp = typeholder2;
+                                typeholder2 = typeholder2->sibling;
                                 prevtree = temptree2;
                                 temptree2 = temptree2->sibling;
                                 i++;
                             }//end while
-                            if(typeholder != NULL && temptree2 == NULL)
+                            if(typeholder2 != NULL && temptree2 == NULL)
                                 errorFewParam(t->lineno, t->attr.name, typeholder->lineno);
-                            if(typeholder == NULL && temptree2 != NULL)
+                            if(typeholder2 == NULL && temptree2 != NULL)
                             {
                                 errorManyParam(t->lineno, t->attr.name, prevtemp->lineno);
                                 params++;

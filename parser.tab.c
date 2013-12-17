@@ -82,6 +82,7 @@
     extern int yydebug;
     extern FILE* yyin;
     FILE *code;
+    char* out;
 
     extern SymTab* tab;
 
@@ -221,7 +222,7 @@
 
 
 /* Line 268 of yacc.c  */
-#line 225 "parser.tab.c"
+#line 226 "parser.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -303,7 +304,7 @@ typedef union YYSTYPE
 {
 
 /* Line 293 of yacc.c  */
-#line 156 "parser.y"
+#line 157 "parser.y"
 
     ExpType type;
     TokenData *tokenData;
@@ -312,7 +313,7 @@ typedef union YYSTYPE
 
 
 /* Line 293 of yacc.c  */
-#line 316 "parser.tab.c"
+#line 317 "parser.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -324,7 +325,7 @@ typedef union YYSTYPE
 
 
 /* Line 343 of yacc.c  */
-#line 328 "parser.tab.c"
+#line 329 "parser.tab.c"
 
 #ifdef short
 # undef short
@@ -684,23 +685,23 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,   187,   187,   190,   202,   203,   206,   207,   213,   222,
-     225,   239,   242,   254,   255,   258,   259,   260,   261,   264,
-     265,   266,   267,   270,   271,   274,   275,   276,   281,   282,
-     283,   284,   285,   286,   289,   290,   293,   305,   306,   309,
-     317,   320,   332,   333,   334,   337,   338,   339,   340,   344,
-     345,   346,   347,   350,   351,   352,   353,   356,   357,   358,
-     361,   372,   375,   386,   387,   390,   391,   392,   395,   396,
-     397,   398,   399,   400,   401,   402,   405,   406,   407,   408,
-     409,   410,   411,   412,   413,   416,   417,   418,   421,   427,
-     433,   439,   445,   446,   447,   448,   449,   450,   451,   452,
-     453,   454,   455,   456,   459,   467,   468,   469,   472,   480,
-     481,   482,   485,   486,   487,   490,   491,   492,   493,   496,
-     497,   498,   499,   500,   501,   504,   505,   508,   509,   512,
-     513,   514,   515,   518,   519,   520,   523,   524,   525,   528,
-     529,   532,   533,   536,   537,   538,   539,   542,   543,   544,
-     545,   546,   549,   550,   551,   554,   555,   558,   570,   571,
-     574,   575,   576,   577,   578
+       0,   188,   188,   191,   203,   204,   207,   208,   214,   223,
+     226,   240,   243,   255,   256,   259,   260,   261,   262,   265,
+     266,   267,   268,   271,   272,   275,   276,   277,   282,   283,
+     284,   285,   286,   287,   290,   291,   294,   306,   307,   310,
+     318,   321,   333,   334,   335,   338,   339,   340,   341,   345,
+     346,   347,   348,   351,   352,   353,   354,   357,   358,   359,
+     362,   373,   376,   387,   388,   391,   392,   393,   396,   397,
+     398,   399,   400,   401,   402,   403,   406,   407,   408,   409,
+     410,   411,   412,   413,   414,   417,   418,   419,   422,   428,
+     434,   440,   446,   447,   448,   449,   450,   451,   452,   453,
+     454,   455,   456,   457,   460,   468,   469,   470,   473,   481,
+     482,   483,   486,   487,   488,   491,   492,   493,   494,   497,
+     498,   499,   500,   501,   502,   505,   506,   509,   510,   513,
+     514,   515,   516,   519,   520,   521,   524,   525,   526,   529,
+     530,   533,   534,   537,   538,   539,   540,   543,   544,   545,
+     546,   547,   550,   551,   552,   555,   556,   559,   571,   572,
+     575,   576,   577,   578,   579
 };
 #endif
 
@@ -2115,14 +2116,14 @@ yyreduce:
         case 2:
 
 /* Line 1806 of yacc.c  */
-#line 187 "parser.y"
+#line 188 "parser.y"
     { savedTree = (yyvsp[(1) - (1)].tNode); }
     break;
 
   case 3:
 
 /* Line 1806 of yacc.c  */
-#line 190 "parser.y"
+#line 191 "parser.y"
     { TreeNode* t = (yyvsp[(1) - (2)].tNode);
                                                                                     if(t!=NULL)
                                                                                     {
@@ -2139,35 +2140,35 @@ yyreduce:
   case 4:
 
 /* Line 1806 of yacc.c  */
-#line 202 "parser.y"
+#line 203 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); }
     break;
 
   case 5:
 
 /* Line 1806 of yacc.c  */
-#line 203 "parser.y"
+#line 204 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 6:
 
 /* Line 1806 of yacc.c  */
-#line 206 "parser.y"
+#line 207 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); }
     break;
 
   case 7:
 
 /* Line 1806 of yacc.c  */
-#line 207 "parser.y"
+#line 208 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); }
     break;
 
   case 8:
 
 /* Line 1806 of yacc.c  */
-#line 213 "parser.y"
+#line 214 "parser.y"
     { TreeNode* t = (yyvsp[(2) - (3)].tNode);
                                                                                     while(t!=NULL)
                                                                                     {
@@ -2182,14 +2183,14 @@ yyreduce:
   case 9:
 
 /* Line 1806 of yacc.c  */
-#line 222 "parser.y"
+#line 223 "parser.y"
     { (yyval.tNode)=NULL; yyerrok; }
     break;
 
   case 10:
 
 /* Line 1806 of yacc.c  */
-#line 225 "parser.y"
+#line 226 "parser.y"
     { TreeNode* t = (yyvsp[(2) - (3)].tNode);
                                                                                     while(t!=NULL)
                                                                                     {
@@ -2209,14 +2210,14 @@ yyreduce:
   case 11:
 
 /* Line 1806 of yacc.c  */
-#line 239 "parser.y"
+#line 240 "parser.y"
     { (yyval.tNode)=NULL; yyerrok; }
     break;
 
   case 12:
 
 /* Line 1806 of yacc.c  */
-#line 242 "parser.y"
+#line 243 "parser.y"
     { TreeNode* t = (yyvsp[(1) - (3)].tNode);
                                                                                     if(t!=NULL)
                                                                                     {
@@ -2234,168 +2235,168 @@ yyreduce:
   case 13:
 
 /* Line 1806 of yacc.c  */
-#line 254 "parser.y"
+#line 255 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); }
     break;
 
   case 14:
 
 /* Line 1806 of yacc.c  */
-#line 255 "parser.y"
+#line 256 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 15:
 
 /* Line 1806 of yacc.c  */
-#line 258 "parser.y"
+#line 259 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); }
     break;
 
   case 16:
 
 /* Line 1806 of yacc.c  */
-#line 259 "parser.y"
+#line 260 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (3)].tNode); (yyval.tNode)->child[0] = (yyvsp[(3) - (3)].tNode); (yyval.tNode)->expType=(yyvsp[(3) - (3)].tNode)->expType; }
     break;
 
   case 17:
 
 /* Line 1806 of yacc.c  */
-#line 260 "parser.y"
+#line 261 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 18:
 
 /* Line 1806 of yacc.c  */
-#line 261 "parser.y"
+#line 262 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 19:
 
 /* Line 1806 of yacc.c  */
-#line 264 "parser.y"
+#line 265 "parser.y"
     { (yyval.tNode) = newDeclNode(varK,yylval.tokenData->lineno); (yyval.tNode)->attr.name=(yyvsp[(1) - (1)].tokenData)->idvalue; }
     break;
 
   case 20:
 
 /* Line 1806 of yacc.c  */
-#line 265 "parser.y"
+#line 266 "parser.y"
     { (yyval.tNode) = newDeclNode(varK,yylval.tokenData->lineno); (yyval.tNode)->attr.name=(yyvsp[(1) - (4)].tokenData)->idvalue; (yyval.tNode)->isArray=true; (yyval.tNode)->size=(yyvsp[(3) - (4)].tokenData)->numvalue; }
     break;
 
   case 21:
 
 /* Line 1806 of yacc.c  */
-#line 266 "parser.y"
+#line 267 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 22:
 
 /* Line 1806 of yacc.c  */
-#line 267 "parser.y"
+#line 268 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 23:
 
 /* Line 1806 of yacc.c  */
-#line 270 "parser.y"
+#line 271 "parser.y"
     { (yyval.type) = (yyvsp[(2) - (2)].type); stat = true; }
     break;
 
   case 24:
 
 /* Line 1806 of yacc.c  */
-#line 271 "parser.y"
+#line 272 "parser.y"
     { (yyval.type) = (yyvsp[(1) - (1)].type); }
     break;
 
   case 25:
 
 /* Line 1806 of yacc.c  */
-#line 274 "parser.y"
+#line 275 "parser.y"
     { (yyval.type) = Int; }
     break;
 
   case 26:
 
 /* Line 1806 of yacc.c  */
-#line 275 "parser.y"
+#line 276 "parser.y"
     { (yyval.type) = Bool; }
     break;
 
   case 27:
 
 /* Line 1806 of yacc.c  */
-#line 276 "parser.y"
+#line 277 "parser.y"
     { (yyval.type) = Char; }
     break;
 
   case 28:
 
 /* Line 1806 of yacc.c  */
-#line 281 "parser.y"
+#line 282 "parser.y"
     { int lineno = (yyvsp[(2) - (6)].tokenData)->lineno; (yyval.tNode) = newDeclNode(funcK,lineno); (yyval.tNode)->child[0]=(yyvsp[(4) - (6)].tNode); (yyval.tNode)->child[1]=(yyvsp[(6) - (6)].tNode); (yyval.tNode)->attr.name=(yyvsp[(2) - (6)].tokenData)->idvalue; (yyval.tNode)->expType=(yyvsp[(1) - (6)].type); }
     break;
 
   case 29:
 
 /* Line 1806 of yacc.c  */
-#line 282 "parser.y"
+#line 283 "parser.y"
     { int lineno = (yyvsp[(1) - (5)].tokenData)->lineno; (yyval.tNode) = newDeclNode(funcK,lineno); (yyval.tNode)->child[0]=(yyvsp[(3) - (5)].tNode); (yyval.tNode)->child[1]=(yyvsp[(5) - (5)].tNode); (yyval.tNode)->attr.name=(yyvsp[(1) - (5)].tokenData)->idvalue; (yyval.tNode)->expType=Void; }
     break;
 
   case 30:
 
 /* Line 1806 of yacc.c  */
-#line 283 "parser.y"
+#line 284 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 31:
 
 /* Line 1806 of yacc.c  */
-#line 284 "parser.y"
+#line 285 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 32:
 
 /* Line 1806 of yacc.c  */
-#line 285 "parser.y"
+#line 286 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 33:
 
 /* Line 1806 of yacc.c  */
-#line 286 "parser.y"
+#line 287 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 34:
 
 /* Line 1806 of yacc.c  */
-#line 289 "parser.y"
+#line 290 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); }
     break;
 
   case 35:
 
 /* Line 1806 of yacc.c  */
-#line 290 "parser.y"
+#line 291 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 36:
 
 /* Line 1806 of yacc.c  */
-#line 293 "parser.y"
+#line 294 "parser.y"
     { TreeNode* t = (yyvsp[(1) - (3)].tNode);
                                                                                     if(t!=NULL)
                                                                                     {
@@ -2413,21 +2414,21 @@ yyreduce:
   case 37:
 
 /* Line 1806 of yacc.c  */
-#line 305 "parser.y"
+#line 306 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); }
     break;
 
   case 38:
 
 /* Line 1806 of yacc.c  */
-#line 306 "parser.y"
+#line 307 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 39:
 
 /* Line 1806 of yacc.c  */
-#line 309 "parser.y"
+#line 310 "parser.y"
     { TreeNode* t = (yyvsp[(2) - (2)].tNode);
                                                                                     while(t!=NULL)
                                                                                     {
@@ -2441,14 +2442,14 @@ yyreduce:
   case 40:
 
 /* Line 1806 of yacc.c  */
-#line 317 "parser.y"
+#line 318 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 41:
 
 /* Line 1806 of yacc.c  */
-#line 320 "parser.y"
+#line 321 "parser.y"
     { TreeNode* t = (yyvsp[(1) - (3)].tNode);
                                                                                     if(t!=NULL)
                                                                                     {
@@ -2466,133 +2467,133 @@ yyreduce:
   case 42:
 
 /* Line 1806 of yacc.c  */
-#line 332 "parser.y"
+#line 333 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); }
     break;
 
   case 43:
 
 /* Line 1806 of yacc.c  */
-#line 333 "parser.y"
+#line 334 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 44:
 
 /* Line 1806 of yacc.c  */
-#line 334 "parser.y"
+#line 335 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 45:
 
 /* Line 1806 of yacc.c  */
-#line 337 "parser.y"
+#line 338 "parser.y"
     { (yyval.tNode) = newDeclNode(paramK,yylval.tokenData->lineno); (yyval.tNode)->attr.name=(yyvsp[(1) - (1)].tokenData)->idvalue; }
     break;
 
   case 46:
 
 /* Line 1806 of yacc.c  */
-#line 338 "parser.y"
+#line 339 "parser.y"
     { (yyval.tNode) = newDeclNode(paramK,yylval.tokenData->lineno); (yyval.tNode)->attr.name=(yyvsp[(1) - (3)].tokenData)->idvalue; (yyval.tNode)->isArray=true; }
     break;
 
   case 47:
 
 /* Line 1806 of yacc.c  */
-#line 339 "parser.y"
+#line 340 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 48:
 
 /* Line 1806 of yacc.c  */
-#line 340 "parser.y"
+#line 341 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 49:
 
 /* Line 1806 of yacc.c  */
-#line 344 "parser.y"
+#line 345 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); }
     break;
 
   case 50:
 
 /* Line 1806 of yacc.c  */
-#line 345 "parser.y"
+#line 346 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); }
     break;
 
   case 51:
 
 /* Line 1806 of yacc.c  */
-#line 346 "parser.y"
+#line 347 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (2)].tNode); }
     break;
 
   case 52:
 
 /* Line 1806 of yacc.c  */
-#line 347 "parser.y"
+#line 348 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (2)].tNode); }
     break;
 
   case 53:
 
 /* Line 1806 of yacc.c  */
-#line 350 "parser.y"
+#line 351 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); }
     break;
 
   case 54:
 
 /* Line 1806 of yacc.c  */
-#line 351 "parser.y"
+#line 352 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); }
     break;
 
   case 55:
 
 /* Line 1806 of yacc.c  */
-#line 352 "parser.y"
+#line 353 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); }
     break;
 
   case 56:
 
 /* Line 1806 of yacc.c  */
-#line 353 "parser.y"
+#line 354 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); }
     break;
 
   case 57:
 
 /* Line 1806 of yacc.c  */
-#line 356 "parser.y"
+#line 357 "parser.y"
     { yyerrok; int lineno=(yyvsp[(1) - (4)].tokenData)->lineno; (yyval.tNode) = newStmtNode(compoundK,lineno); (yyval.tNode)->child[0]=(yyvsp[(2) - (4)].tNode); (yyval.tNode)->child[1]=(yyvsp[(3) - (4)].tNode); }
     break;
 
   case 58:
 
 /* Line 1806 of yacc.c  */
-#line 357 "parser.y"
+#line 358 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 59:
 
 /* Line 1806 of yacc.c  */
-#line 358 "parser.y"
+#line 359 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 60:
 
 /* Line 1806 of yacc.c  */
-#line 361 "parser.y"
+#line 362 "parser.y"
     { TreeNode* t = (yyvsp[(1) - (2)].tNode);
                                                                                     if(t!=NULL)
                                                                                     {
@@ -2609,14 +2610,14 @@ yyreduce:
   case 61:
 
 /* Line 1806 of yacc.c  */
-#line 372 "parser.y"
+#line 373 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 62:
 
 /* Line 1806 of yacc.c  */
-#line 375 "parser.y"
+#line 376 "parser.y"
     { TreeNode* t = (yyvsp[(1) - (2)].tNode);
                                                                                     if(t!=NULL)
                                                                                     {
@@ -2633,189 +2634,189 @@ yyreduce:
   case 63:
 
 /* Line 1806 of yacc.c  */
-#line 386 "parser.y"
+#line 387 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 64:
 
 /* Line 1806 of yacc.c  */
-#line 387 "parser.y"
+#line 388 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 65:
 
 /* Line 1806 of yacc.c  */
-#line 390 "parser.y"
+#line 391 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (2)].tNode); yyerrok; }
     break;
 
   case 66:
 
 /* Line 1806 of yacc.c  */
-#line 391 "parser.y"
+#line 392 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 67:
 
 /* Line 1806 of yacc.c  */
-#line 392 "parser.y"
+#line 393 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 68:
 
 /* Line 1806 of yacc.c  */
-#line 395 "parser.y"
+#line 396 "parser.y"
     { int lineno=(yyvsp[(1) - (7)].tokenData)->lineno; (yyval.tNode) = newStmtNode(ifK,lineno); (yyval.tNode)->child[0]=(yyvsp[(3) - (7)].tNode); (yyval.tNode)->child[1]=(yyvsp[(5) - (7)].tNode); (yyval.tNode)->child[2]=(yyvsp[(7) - (7)].tNode); }
     break;
 
   case 69:
 
 /* Line 1806 of yacc.c  */
-#line 396 "parser.y"
+#line 397 "parser.y"
     { int lineno=(yyvsp[(1) - (5)].tokenData)->lineno; (yyval.tNode) = newStmtNode(whileK,lineno); (yyval.tNode)->child[0]=(yyvsp[(3) - (5)].tNode); (yyval.tNode)->child[1]=(yyvsp[(5) - (5)].tNode); }
     break;
 
   case 70:
 
 /* Line 1806 of yacc.c  */
-#line 397 "parser.y"
+#line 398 "parser.y"
     { int lineno=(yyvsp[(1) - (7)].tokenData)->lineno; (yyval.tNode) = newStmtNode(foreachK,lineno); (yyval.tNode)->child[0]=(yyvsp[(3) - (7)].tNode); (yyval.tNode)->child[1]=(yyvsp[(5) - (7)].tNode); (yyval.tNode)->child[2]=(yyvsp[(7) - (7)].tNode); }
     break;
 
   case 71:
 
 /* Line 1806 of yacc.c  */
-#line 398 "parser.y"
+#line 399 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); }
     break;
 
   case 72:
 
 /* Line 1806 of yacc.c  */
-#line 399 "parser.y"
+#line 400 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 73:
 
 /* Line 1806 of yacc.c  */
-#line 400 "parser.y"
+#line 401 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 74:
 
 /* Line 1806 of yacc.c  */
-#line 401 "parser.y"
+#line 402 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 75:
 
 /* Line 1806 of yacc.c  */
-#line 402 "parser.y"
+#line 403 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 76:
 
 /* Line 1806 of yacc.c  */
-#line 405 "parser.y"
+#line 406 "parser.y"
     { int lineno=(yyvsp[(1) - (5)].tokenData)->lineno; (yyval.tNode) = newStmtNode(ifK,lineno); (yyval.tNode)->child[0]=(yyvsp[(3) - (5)].tNode); (yyval.tNode)->child[1]=(yyvsp[(5) - (5)].tNode); }
     break;
 
   case 77:
 
 /* Line 1806 of yacc.c  */
-#line 406 "parser.y"
+#line 407 "parser.y"
     { int lineno=(yyvsp[(1) - (7)].tokenData)->lineno; (yyval.tNode) = newStmtNode(ifK,lineno); (yyval.tNode)->child[0]=(yyvsp[(3) - (7)].tNode); (yyval.tNode)->child[1]=(yyvsp[(5) - (7)].tNode); (yyval.tNode)->child[2]=(yyvsp[(7) - (7)].tNode); }
     break;
 
   case 78:
 
 /* Line 1806 of yacc.c  */
-#line 407 "parser.y"
+#line 408 "parser.y"
     { int lineno=(yyvsp[(1) - (5)].tokenData)->lineno; (yyval.tNode) = newStmtNode(whileK,lineno); (yyval.tNode)->child[0]=(yyvsp[(3) - (5)].tNode); (yyval.tNode)->child[1]=(yyvsp[(5) - (5)].tNode); }
     break;
 
   case 79:
 
 /* Line 1806 of yacc.c  */
-#line 408 "parser.y"
+#line 409 "parser.y"
     { int lineno=(yyvsp[(1) - (7)].tokenData)->lineno; (yyval.tNode) = newStmtNode(foreachK,lineno); (yyval.tNode)->child[0]=(yyvsp[(3) - (7)].tNode); (yyval.tNode)->child[1]=(yyvsp[(5) - (7)].tNode); (yyval.tNode)->child[2]=(yyvsp[(7) - (7)].tNode); }
     break;
 
   case 80:
 
 /* Line 1806 of yacc.c  */
-#line 409 "parser.y"
+#line 410 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 81:
 
 /* Line 1806 of yacc.c  */
-#line 410 "parser.y"
+#line 411 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 82:
 
 /* Line 1806 of yacc.c  */
-#line 411 "parser.y"
+#line 412 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 83:
 
 /* Line 1806 of yacc.c  */
-#line 412 "parser.y"
+#line 413 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 84:
 
 /* Line 1806 of yacc.c  */
-#line 413 "parser.y"
+#line 414 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 85:
 
 /* Line 1806 of yacc.c  */
-#line 416 "parser.y"
+#line 417 "parser.y"
     { (yyval.tNode) = newStmtNode(returnK,yylval.tokenData->lineno); yyerrok; }
     break;
 
   case 86:
 
 /* Line 1806 of yacc.c  */
-#line 417 "parser.y"
+#line 418 "parser.y"
     { (yyval.tNode) = newStmtNode(returnK,yylval.tokenData->lineno); (yyval.tNode)->child[0] = (yyvsp[(2) - (3)].tNode); yyerrok; }
     break;
 
   case 87:
 
 /* Line 1806 of yacc.c  */
-#line 418 "parser.y"
+#line 419 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 88:
 
 /* Line 1806 of yacc.c  */
-#line 421 "parser.y"
+#line 422 "parser.y"
     { (yyval.tNode) = newStmtNode(breakK,yylval.tokenData->lineno); }
     break;
 
   case 89:
 
 /* Line 1806 of yacc.c  */
-#line 427 "parser.y"
+#line 428 "parser.y"
     {
                                                                                     (yyval.tNode) = newExpNode(assignK,yylval.tokenData->lineno);
                                                                                     (yyval.tNode)->attr.op = eqK;
@@ -2827,7 +2828,7 @@ yyreduce:
   case 90:
 
 /* Line 1806 of yacc.c  */
-#line 433 "parser.y"
+#line 434 "parser.y"
     {
                                                                                     (yyval.tNode) = newExpNode(assignK,yylval.tokenData->lineno);
                                                                                     (yyval.tNode)->attr.op = peqK;
@@ -2839,7 +2840,7 @@ yyreduce:
   case 91:
 
 /* Line 1806 of yacc.c  */
-#line 439 "parser.y"
+#line 440 "parser.y"
     {
                                                                                     (yyval.tNode) = newExpNode(assignK,yylval.tokenData->lineno);
                                                                                     (yyval.tNode)->attr.op = meqK;
@@ -2851,91 +2852,91 @@ yyreduce:
   case 92:
 
 /* Line 1806 of yacc.c  */
-#line 445 "parser.y"
+#line 446 "parser.y"
     { (yyval.tNode) = newExpNode(assignK,yylval.tokenData->lineno); (yyval.tNode)->attr.op = ppK; (yyval.tNode)->child[0] = (yyvsp[(1) - (2)].tNode); }
     break;
 
   case 93:
 
 /* Line 1806 of yacc.c  */
-#line 446 "parser.y"
+#line 447 "parser.y"
     { (yyval.tNode) = newExpNode(assignK,yylval.tokenData->lineno); (yyval.tNode)->attr.op = mmK; (yyval.tNode)->child[0] = (yyvsp[(1) - (2)].tNode); }
     break;
 
   case 94:
 
 /* Line 1806 of yacc.c  */
-#line 447 "parser.y"
+#line 448 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); }
     break;
 
   case 95:
 
 /* Line 1806 of yacc.c  */
-#line 448 "parser.y"
+#line 449 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 96:
 
 /* Line 1806 of yacc.c  */
-#line 449 "parser.y"
+#line 450 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 97:
 
 /* Line 1806 of yacc.c  */
-#line 450 "parser.y"
+#line 451 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 98:
 
 /* Line 1806 of yacc.c  */
-#line 451 "parser.y"
+#line 452 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 99:
 
 /* Line 1806 of yacc.c  */
-#line 452 "parser.y"
+#line 453 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 100:
 
 /* Line 1806 of yacc.c  */
-#line 453 "parser.y"
+#line 454 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 101:
 
 /* Line 1806 of yacc.c  */
-#line 454 "parser.y"
+#line 455 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 102:
 
 /* Line 1806 of yacc.c  */
-#line 455 "parser.y"
+#line 456 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 103:
 
 /* Line 1806 of yacc.c  */
-#line 456 "parser.y"
+#line 457 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 104:
 
 /* Line 1806 of yacc.c  */
-#line 459 "parser.y"
+#line 460 "parser.y"
     {
                                                                                     (yyval.tNode) = newExpNode(opK,yylval.tokenData->lineno);
                                                                                     (yyval.tNode)->attr.op = orK;
@@ -2949,28 +2950,28 @@ yyreduce:
   case 105:
 
 /* Line 1806 of yacc.c  */
-#line 467 "parser.y"
+#line 468 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); if((yyvsp[(1) - (1)].tNode) != NULL) (yyval.tNode)->isConstant = (yyvsp[(1) - (1)].tNode)->isConstant; }
     break;
 
   case 106:
 
 /* Line 1806 of yacc.c  */
-#line 468 "parser.y"
+#line 469 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 107:
 
 /* Line 1806 of yacc.c  */
-#line 469 "parser.y"
+#line 470 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 108:
 
 /* Line 1806 of yacc.c  */
-#line 472 "parser.y"
+#line 473 "parser.y"
     {
                                                                                     (yyval.tNode) = newExpNode(opK,yylval.tokenData->lineno);
                                                                                     (yyval.tNode)->attr.op = andK;
@@ -2984,343 +2985,343 @@ yyreduce:
   case 109:
 
 /* Line 1806 of yacc.c  */
-#line 480 "parser.y"
+#line 481 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); if((yyvsp[(1) - (1)].tNode) != NULL) (yyval.tNode)->isConstant = (yyvsp[(1) - (1)].tNode)->isConstant; }
     break;
 
   case 110:
 
 /* Line 1806 of yacc.c  */
-#line 481 "parser.y"
+#line 482 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 111:
 
 /* Line 1806 of yacc.c  */
-#line 482 "parser.y"
+#line 483 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 112:
 
 /* Line 1806 of yacc.c  */
-#line 485 "parser.y"
+#line 486 "parser.y"
     { (yyval.tNode) = newExpNode(opK,yylval.tokenData->lineno); (yyval.tNode)->attr.op = notK; (yyval.tNode)->child[0]=(yyvsp[(2) - (2)].tNode); if((yyvsp[(2) - (2)].tNode) != NULL) (yyval.tNode)->isConstant = (yyvsp[(2) - (2)].tNode)->isConstant; }
     break;
 
   case 113:
 
 /* Line 1806 of yacc.c  */
-#line 486 "parser.y"
+#line 487 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); if((yyvsp[(1) - (1)].tNode) != NULL) (yyval.tNode)->isConstant = (yyvsp[(1) - (1)].tNode)->isConstant; }
     break;
 
   case 114:
 
 /* Line 1806 of yacc.c  */
-#line 487 "parser.y"
+#line 488 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 115:
 
 /* Line 1806 of yacc.c  */
-#line 490 "parser.y"
+#line 491 "parser.y"
     { (yyval.tNode) = (yyvsp[(2) - (3)].tNode); (yyval.tNode)->child[0] = (yyvsp[(1) - (3)].tNode); (yyval.tNode)->child[1] = (yyvsp[(3) - (3)].tNode); if((yyvsp[(1) - (3)].tNode) != NULL && (yyvsp[(3) - (3)].tNode) != NULL) (yyval.tNode)->isConstant = (yyvsp[(1) - (3)].tNode)->isConstant & (yyvsp[(3) - (3)].tNode)->isConstant; }
     break;
 
   case 116:
 
 /* Line 1806 of yacc.c  */
-#line 491 "parser.y"
+#line 492 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); if((yyvsp[(1) - (1)].tNode) != NULL) (yyval.tNode)->isConstant = (yyvsp[(1) - (1)].tNode)->isConstant; }
     break;
 
   case 117:
 
 /* Line 1806 of yacc.c  */
-#line 492 "parser.y"
+#line 493 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 118:
 
 /* Line 1806 of yacc.c  */
-#line 493 "parser.y"
+#line 494 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 119:
 
 /* Line 1806 of yacc.c  */
-#line 496 "parser.y"
+#line 497 "parser.y"
     { (yyval.tNode) = newExpNode(opK,yylval.tokenData->lineno); (yyval.tNode)->attr.op = lteqK; }
     break;
 
   case 120:
 
 /* Line 1806 of yacc.c  */
-#line 497 "parser.y"
+#line 498 "parser.y"
     { (yyval.tNode) = newExpNode(opK,yylval.tokenData->lineno); (yyval.tNode)->attr.op = ltK; }
     break;
 
   case 121:
 
 /* Line 1806 of yacc.c  */
-#line 498 "parser.y"
+#line 499 "parser.y"
     { (yyval.tNode) = newExpNode(opK,yylval.tokenData->lineno); (yyval.tNode)->attr.op = gtK; }
     break;
 
   case 122:
 
 /* Line 1806 of yacc.c  */
-#line 499 "parser.y"
+#line 500 "parser.y"
     { (yyval.tNode) = newExpNode(opK,yylval.tokenData->lineno); (yyval.tNode)->attr.op = gteqK; }
     break;
 
   case 123:
 
 /* Line 1806 of yacc.c  */
-#line 500 "parser.y"
+#line 501 "parser.y"
     { (yyval.tNode) = newExpNode(opK,yylval.tokenData->lineno); (yyval.tNode)->attr.op = equivK; }
     break;
 
   case 124:
 
 /* Line 1806 of yacc.c  */
-#line 501 "parser.y"
+#line 502 "parser.y"
     { (yyval.tNode) = newExpNode(opK,yylval.tokenData->lineno); (yyval.tNode)->attr.op = neqK; }
     break;
 
   case 125:
 
 /* Line 1806 of yacc.c  */
-#line 504 "parser.y"
+#line 505 "parser.y"
     { (yyval.tNode) = (yyvsp[(2) - (3)].tNode); (yyval.tNode)->child[0]=(yyvsp[(1) - (3)].tNode); (yyval.tNode)->child[1]=(yyvsp[(3) - (3)].tNode); if((yyvsp[(1) - (3)].tNode) != NULL && (yyvsp[(3) - (3)].tNode) != NULL) (yyval.tNode)->isConstant = (yyvsp[(1) - (3)].tNode)->isConstant & (yyvsp[(3) - (3)].tNode)->isConstant; }
     break;
 
   case 126:
 
 /* Line 1806 of yacc.c  */
-#line 505 "parser.y"
+#line 506 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); if((yyvsp[(1) - (1)].tNode) != NULL) (yyval.tNode)->isConstant=(yyvsp[(1) - (1)].tNode)->isConstant; }
     break;
 
   case 127:
 
 /* Line 1806 of yacc.c  */
-#line 508 "parser.y"
+#line 509 "parser.y"
     { (yyval.tNode) = newExpNode(opK,yylval.tokenData->lineno); (yyval.tNode)->attr.op = plusK; }
     break;
 
   case 128:
 
 /* Line 1806 of yacc.c  */
-#line 509 "parser.y"
+#line 510 "parser.y"
     { (yyval.tNode) = newExpNode(opK,yylval.tokenData->lineno); (yyval.tNode)->attr.op = minusK; }
     break;
 
   case 129:
 
 /* Line 1806 of yacc.c  */
-#line 512 "parser.y"
+#line 513 "parser.y"
     { (yyval.tNode) = (yyvsp[(2) - (3)].tNode); (yyval.tNode)->child[0] = (yyvsp[(1) - (3)].tNode); (yyval.tNode)->child[1]=(yyvsp[(3) - (3)].tNode); (yyval.tNode)->isConstant = (yyvsp[(1) - (3)].tNode)->isConstant & (yyvsp[(3) - (3)].tNode)->isConstant; }
     break;
 
   case 130:
 
 /* Line 1806 of yacc.c  */
-#line 513 "parser.y"
+#line 514 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); if((yyvsp[(1) - (1)].tNode) != NULL) (yyval.tNode)->isConstant = (yyvsp[(1) - (1)].tNode)->isConstant; }
     break;
 
   case 131:
 
 /* Line 1806 of yacc.c  */
-#line 514 "parser.y"
+#line 515 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 132:
 
 /* Line 1806 of yacc.c  */
-#line 515 "parser.y"
+#line 516 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 133:
 
 /* Line 1806 of yacc.c  */
-#line 518 "parser.y"
+#line 519 "parser.y"
     { (yyval.tNode) = newExpNode(opK,yylval.tokenData->lineno); (yyval.tNode)->attr.op = multiK; }
     break;
 
   case 134:
 
 /* Line 1806 of yacc.c  */
-#line 519 "parser.y"
+#line 520 "parser.y"
     { (yyval.tNode) = newExpNode(opK,yylval.tokenData->lineno); (yyval.tNode)->attr.op = divideK; }
     break;
 
   case 135:
 
 /* Line 1806 of yacc.c  */
-#line 520 "parser.y"
+#line 521 "parser.y"
     { (yyval.tNode) = newExpNode(opK,yylval.tokenData->lineno); (yyval.tNode)->attr.op = modK; }
     break;
 
   case 136:
 
 /* Line 1806 of yacc.c  */
-#line 523 "parser.y"
+#line 524 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (2)].tNode); (yyval.tNode)->child[0]=(yyvsp[(2) - (2)].tNode); if((yyvsp[(2) - (2)].tNode) != NULL) (yyval.tNode)->isConstant = (yyvsp[(2) - (2)].tNode)->isConstant; }
     break;
 
   case 137:
 
 /* Line 1806 of yacc.c  */
-#line 524 "parser.y"
+#line 525 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); }
     break;
 
   case 138:
 
 /* Line 1806 of yacc.c  */
-#line 525 "parser.y"
+#line 526 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 139:
 
 /* Line 1806 of yacc.c  */
-#line 528 "parser.y"
+#line 529 "parser.y"
     { (yyval.tNode) = newExpNode(opK,yylval.tokenData->lineno); (yyval.tNode)->attr.op = UminusK; }
     break;
 
   case 140:
 
 /* Line 1806 of yacc.c  */
-#line 529 "parser.y"
+#line 530 "parser.y"
     { (yyval.tNode) = newExpNode(opK,yylval.tokenData->lineno); (yyval.tNode)->attr.op = UmultiK; }
     break;
 
   case 141:
 
 /* Line 1806 of yacc.c  */
-#line 532 "parser.y"
+#line 533 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); }
     break;
 
   case 142:
 
 /* Line 1806 of yacc.c  */
-#line 533 "parser.y"
+#line 534 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); }
     break;
 
   case 143:
 
 /* Line 1806 of yacc.c  */
-#line 536 "parser.y"
+#line 537 "parser.y"
     { (yyval.tNode) = newExpNode(idK,yylval.tokenData->lineno); (yyval.tNode)->attr.name=(yyvsp[(1) - (1)].tokenData)->idvalue; }
     break;
 
   case 144:
 
 /* Line 1806 of yacc.c  */
-#line 537 "parser.y"
+#line 538 "parser.y"
     { (yyval.tNode) = newExpNode(idK,(yyvsp[(1) - (4)].tokenData)->lineno); (yyval.tNode)->child[0] = (yyvsp[(3) - (4)].tNode); (yyval.tNode)->attr.name=(yyvsp[(1) - (4)].tokenData)->idvalue; (yyval.tNode)->isArray=true; }
     break;
 
   case 145:
 
 /* Line 1806 of yacc.c  */
-#line 538 "parser.y"
+#line 539 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 146:
 
 /* Line 1806 of yacc.c  */
-#line 539 "parser.y"
+#line 540 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 147:
 
 /* Line 1806 of yacc.c  */
-#line 542 "parser.y"
+#line 543 "parser.y"
     { (yyval.tNode) = (yyvsp[(2) - (3)].tNode); yyerrok; }
     break;
 
   case 148:
 
 /* Line 1806 of yacc.c  */
-#line 543 "parser.y"
+#line 544 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); }
     break;
 
   case 149:
 
 /* Line 1806 of yacc.c  */
-#line 544 "parser.y"
+#line 545 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); (yyval.tNode)->isConstant = true; }
     break;
 
   case 150:
 
 /* Line 1806 of yacc.c  */
-#line 545 "parser.y"
+#line 546 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 151:
 
 /* Line 1806 of yacc.c  */
-#line 546 "parser.y"
+#line 547 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 152:
 
 /* Line 1806 of yacc.c  */
-#line 549 "parser.y"
+#line 550 "parser.y"
     { (yyval.tNode) = newExpNode(callK, yylval.tokenData->lineno); (yyval.tNode)->child[0] = (yyvsp[(3) - (4)].tNode); (yyval.tNode)->attr.name=(yyvsp[(1) - (4)].tokenData)->idvalue; yyerrok; }
     break;
 
   case 153:
 
 /* Line 1806 of yacc.c  */
-#line 550 "parser.y"
+#line 551 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 154:
 
 /* Line 1806 of yacc.c  */
-#line 551 "parser.y"
+#line 552 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 155:
 
 /* Line 1806 of yacc.c  */
-#line 554 "parser.y"
+#line 555 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); }
     break;
 
   case 156:
 
 /* Line 1806 of yacc.c  */
-#line 555 "parser.y"
+#line 556 "parser.y"
     { (yyval.tNode) = NULL; }
     break;
 
   case 157:
 
 /* Line 1806 of yacc.c  */
-#line 558 "parser.y"
+#line 559 "parser.y"
     { TreeNode* t = (yyvsp[(1) - (3)].tNode);
                                                                                     if(t!=NULL)
                                                                                     {
@@ -3338,56 +3339,56 @@ yyreduce:
   case 158:
 
 /* Line 1806 of yacc.c  */
-#line 570 "parser.y"
+#line 571 "parser.y"
     { (yyval.tNode) = (yyvsp[(1) - (1)].tNode); }
     break;
 
   case 159:
 
 /* Line 1806 of yacc.c  */
-#line 571 "parser.y"
+#line 572 "parser.y"
     { (yyval.tNode) = NULL; yyerrok; }
     break;
 
   case 160:
 
 /* Line 1806 of yacc.c  */
-#line 574 "parser.y"
+#line 575 "parser.y"
     { (yyval.tNode) = newExpNode(constK,yylval.tokenData->lineno); (yyval.tNode)->attr.val = (yyvsp[(1) - (1)].tokenData)->numvalue; (yyval.tNode)->expType=Int; (yyval.tNode)->isConstant=true; }
     break;
 
   case 161:
 
 /* Line 1806 of yacc.c  */
-#line 575 "parser.y"
+#line 576 "parser.y"
     { (yyval.tNode) = newExpNode(constK,yylval.tokenData->lineno); (yyval.tNode)->attr.string = (yyvsp[(1) - (1)].tokenData)->tokenstr; (yyval.tNode)->expType=Char; (yyval.tNode)->isConstant=true; }
     break;
 
   case 162:
 
 /* Line 1806 of yacc.c  */
-#line 576 "parser.y"
+#line 577 "parser.y"
     { (yyval.tNode) = newExpNode(constK,yylval.tokenData->lineno); (yyval.tNode)->attr.string = (yyvsp[(1) - (1)].tokenData)->tokenstr; (yyval.tNode)->expType=Char; (yyval.tNode)->isConstant=true; }
     break;
 
   case 163:
 
 /* Line 1806 of yacc.c  */
-#line 577 "parser.y"
+#line 578 "parser.y"
     { (yyval.tNode) = newExpNode(constK,yylval.tokenData->lineno); (yyval.tNode)->expType=Bool; (yyval.tNode)->attr.bval=true; (yyval.tNode)->isConstant=true; }
     break;
 
   case 164:
 
 /* Line 1806 of yacc.c  */
-#line 578 "parser.y"
+#line 579 "parser.y"
     { (yyval.tNode) = newExpNode(constK,yylval.tokenData->lineno); (yyval.tNode)->expType=Bool; (yyval.tNode)->attr.bval=false; (yyval.tNode)->isConstant=true; }
     break;
 
 
 
 /* Line 1806 of yacc.c  */
-#line 3391 "parser.tab.c"
+#line 3392 "parser.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -3618,7 +3619,7 @@ yyreturn:
 
 
 /* Line 2067 of yacc.c  */
-#line 582 "parser.y"
+#line 583 "parser.y"
 
 
 main(int argc, char* argv[])
@@ -3659,38 +3660,52 @@ main(int argc, char* argv[])
         c = getopt(argc, argv, "d:p:s");
     }
     inputfile = argv + optind;
+    
     yyin = fopen((inputfile[0]), "r");
     length = strlen(inputfile[0]);
     //printf("String length %d\n", length);
-    char* out = inputfile[0];
+    out = inputfile[0];
     out[length-2] = 't';
     out[length-1] = 'm';
     //printf("Outstring %s\n", out);
-    code = fopen(out, "w");
     
     initYyerror(); 
     yyparse();
     
-    if(printTreeFlag)
-        printTree(savedTree);
+    if(numerrors == 0)
+    {
+        if(printTreeFlag)
+            printTree(savedTree);
 
-    //set the preprocess to savedTree
-    preProcess();
-    savedTree = input;
+        //set the preprocess to savedTree
+        preProcess();
+        savedTree = input;
 
-    checkNode(savedTree);
+        checkNode(savedTree);
 
-    if(symbolTracing)
-        tab->print();
+        if(symbolTracing)
+            tab->print();
+
+        TreeNode *temp = (TreeNode*)tab->lookup((char*)"main");
+        if(temp == NULL)
+        {
+            printf("ERROR(LINKER): Procedure main is not defined.\n");
+            numerrors++;
+        }
+    }
+
 
     printf("Number of warnings: %d\n", numwarnings);
     printf("Number of errors: %d\n", numerrors);
 
-    printf("Codegen started \n");
-    emitHeader();
-    codeGen(savedTree);
-    emitEnd();
-    printf("Codegen ended \n");
+    //printf("Codegen started \n");
+    if(numerrors == 0)
+    {
+        code = fopen(out, "w");
+        emitHeader();
+        codeGen(savedTree);
+        emitEnd();
+    }
 
     return 0;
 

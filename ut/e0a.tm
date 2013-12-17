@@ -1,7 +1,7 @@
-* C- Compiler version C-F10
-* Built: Dec 6, 2013
+* C- Compiler version C-F13
+* Built: Dec 12, 2013
 * Author: Brett Papineau
-* File compiled: temp.c-
+* File compiled:  e0a.tm
 * BEGIN function input
   1:     ST  3,-1(1) 	Store return address 
   2:     IN  2,2,2 	Grab int input 
@@ -64,12 +64,15 @@
  43:    LDC  3,0(6) 	Load constant 
  44:     ST  3,-2(1) 	Store variable x
 * IF
+* EXPRESSION STMT
  45:    LDC  3,1(6) 	Load constant 
  46:    JGT  3,1(7) 	Jump to then part 
 * THEN
 * WHILE
+* EXPRESSION STMT
  48:     LD  3,-2(1) 	Load variable x
  49:     ST  3,-3(1) 	Save left side 
+* EXPRESSION STMT
  50:    LDC  3,10(6) 	Load constant 
  51:     LD  4,-3(1) 	Load left into ac1 
  52:    SUB  4,4,3 	Op < 
@@ -79,85 +82,100 @@
  56:    JGT  3,1(7) 	Jump to while part 
 * DO
 * BEGIN compound statement
+* EXPRESSION STMT
 * 			Begin call to  output
  58:     ST  1,-3(1) 	Store old fp in ghost frame 
-* 			Load Param 1
+* 			Load param 1
  59:     LD  3,-2(1) 	Load variable x
  60:     ST  3,-5(1) 	Store parameter 
-* 			Jump to  output
+* 			Jump to output
  61:    LDA  1,-3(1) 	Load address of new frame 
  62:    LDA  3,1(7) 	Return address in ac 
- 63:    LDA  7,-58(7) 	Call  output
+ 63:    LDA  7,-58(7) 	CALL output
  64:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to output
+* EXPRESSION STMT
+* EXPRESSION STMT
  65:     LD  3,-2(1) 	Load variable x
  66:     ST  3,-3(1) 	Save left side 
+* EXPRESSION STMT
  67:    LDC  3,1(6) 	Load constant 
  68:     LD  4,-3(1) 	Load left into ac1 
  69:    ADD  3,4,3 	Op + 
  70:     ST  3,-2(1) 	Store variable x
 * END compound statement
  71:    LDA  7,-24(7) 	go to beginning of loop 
- 57:    LDA  7,14(7) 	No more loop 
+ 57:    LDA  7,14(7) 	No more loop [backpatch] 
 * ENDWHILE
-  0:    LDA  7,71(7) 	Jump around the THEN [backpatch] 
+* ELSE
+* BUG in emitBackup
+134544570:    LDA  7,-134544498(7) 	Jump around the THEN [backpatch] 
 * ENDIF
- 72:    LDC  3,0(6) 	Load constant 
- 73:     ST  3,-2(1) 	Store variable x
+* EXPRESSION STMT
+ 73:    LDC  3,0(6) 	Load constant 
+ 74:     ST  3,-2(1) 	Store variable x
 * IF
- 74:    LDC  3,0(6) 	Load constant 
- 75:    JGT  3,1(7) 	Jump to then part 
+* EXPRESSION STMT
+ 75:    LDC  3,0(6) 	Load constant 
+ 76:    JGT  3,1(7) 	Jump to then part 
 * THEN
 * WHILE
- 77:     LD  3,-2(1) 	Load variable x
- 78:     ST  3,-3(1) 	Save left side 
- 79:    LDC  3,10(6) 	Load constant 
- 80:     LD  4,-3(1) 	Load left into ac1 
- 81:    SUB  4,4,3 	Op < 
- 82:    LDC  3,1(6) 	True case 
- 83:    JLT  4,1(7) 	Jump if true 
- 84:    LDC  3,0(6) 	False case 
- 85:    JGT  3,1(7) 	Jump to while part 
+* EXPRESSION STMT
+ 78:     LD  3,-2(1) 	Load variable x
+ 79:     ST  3,-3(1) 	Save left side 
+* EXPRESSION STMT
+ 80:    LDC  3,10(6) 	Load constant 
+ 81:     LD  4,-3(1) 	Load left into ac1 
+ 82:    SUB  4,4,3 	Op < 
+ 83:    LDC  3,1(6) 	True case 
+ 84:    JLT  4,1(7) 	Jump if true 
+ 85:    LDC  3,0(6) 	False case 
+ 86:    JGT  3,1(7) 	Jump to while part 
 * DO
 * BEGIN compound statement
+* EXPRESSION STMT
 * 			Begin call to  output
- 87:     ST  1,-3(1) 	Store old fp in ghost frame 
-* 			Load Param 1
- 88:     LD  3,-2(1) 	Load variable x
- 89:     ST  3,-5(1) 	Store parameter 
-* 			Jump to  output
- 90:    LDA  1,-3(1) 	Load address of new frame 
- 91:    LDA  3,1(7) 	Return address in ac 
- 92:    LDA  7,-87(7) 	Call  output
- 93:    LDA  3,0(2) 	Save the result in ac 
+ 88:     ST  1,-3(1) 	Store old fp in ghost frame 
+* 			Load param 1
+ 89:     LD  3,-2(1) 	Load variable x
+ 90:     ST  3,-5(1) 	Store parameter 
+* 			Jump to output
+ 91:    LDA  1,-3(1) 	Load address of new frame 
+ 92:    LDA  3,1(7) 	Return address in ac 
+ 93:    LDA  7,-88(7) 	CALL output
+ 94:    LDA  3,0(2) 	Save the result in ac 
 * 			End call to output
- 94:     LD  3,-2(1) 	Load variable x
- 95:     ST  3,-3(1) 	Save left side 
- 96:    LDC  3,1(6) 	Load constant 
- 97:     LD  4,-3(1) 	Load left into ac1 
- 98:    ADD  3,4,3 	Op + 
- 99:     ST  3,-2(1) 	Store variable x
+* EXPRESSION STMT
+* EXPRESSION STMT
+ 95:     LD  3,-2(1) 	Load variable x
+ 96:     ST  3,-3(1) 	Save left side 
+* EXPRESSION STMT
+ 97:    LDC  3,1(6) 	Load constant 
+ 98:     LD  4,-3(1) 	Load left into ac1 
+ 99:    ADD  3,4,3 	Op + 
+100:     ST  3,-2(1) 	Store variable x
 * END compound statement
-100:    LDA  7,-24(7) 	go to beginning of loop 
- 86:    LDA  7,14(7) 	No more loop 
+101:    LDA  7,-24(7) 	go to beginning of loop 
+ 87:    LDA  7,14(7) 	No more loop [backpatch] 
 * ENDWHILE
-  0:    LDA  7,100(7) 	Jump around the THEN [backpatch] 
+* ELSE
+134544570:    LDA  7,-134544468(7) 	Jump around the THEN [backpatch] 
 * ENDIF
 * END compound statement
 * Add standard closing in case there is no return statement
-101:    LDC  2,0(6) 	Set return value to 0 
-102:     LD  3,-1(1) 	Load return address 
-103:     LD  1,0(1) 	Adjust fp 
-104:    LDA  7,0(3) 	Return 
+103:    LDC  2,0(6) 	Set return value to 0 
+104:     LD  3,-1(1) 	Load return address 
+105:     LD  1,0(1) 	Adjust fp 
+106:    LDA  7,0(3) 	Return 
 * END of function main
-  0:    LDA  7,104(7) 	Jump to init [backpatch] 
+  0:    LDA  7,106(7) 	Jump to init [backpatch] 
 * BEGIN Init
-105:     LD  0,0(0) 	Set the global pointer 
+107:     LD  0,0(0) 	Set the global pointer 
 * BEGIN init of globals
 * END init of globals
-106:    LDA  1,0(0) 	set first frame at end of globals 
-107:     ST  1,0(1) 	store old fp (point to self) 
-108:    LDA  3,0(7) 	return address in ac 
-109:    LDA  7,-68(7) 	Jump to main 
-110:   HALT  0,0,0 	DONE 
-* END init
+108:    LDA  1,0(0) 	set first frame at end of globals 
+109:     ST  1,0(1) 	store old fp (point to self) 
+110:    LDA  3,1(7) 	Return address in ac 
+111:    LDA  7,-70(7) 	Jump to main 
+112:   HALT  0,0,0 	DONE! 
+* END Init

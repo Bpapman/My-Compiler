@@ -13,6 +13,7 @@
     extern int yydebug;
     extern FILE* yyin;
     FILE *code;
+    char* out;
 
     extern SymTab* tab;
 
@@ -619,38 +620,52 @@ main(int argc, char* argv[])
         c = getopt(argc, argv, "d:p:s");
     }
     inputfile = argv + optind;
+    
     yyin = fopen((inputfile[0]), "r");
     length = strlen(inputfile[0]);
     //printf("String length %d\n", length);
-    char* out = inputfile[0];
+    out = inputfile[0];
     out[length-2] = 't';
     out[length-1] = 'm';
     //printf("Outstring %s\n", out);
-    code = fopen(out, "w");
     
     initYyerror(); 
     yyparse();
     
-    if(printTreeFlag)
-        printTree(savedTree);
+    if(numerrors == 0)
+    {
+        if(printTreeFlag)
+            printTree(savedTree);
 
-    //set the preprocess to savedTree
-    preProcess();
-    savedTree = input;
+        //set the preprocess to savedTree
+        preProcess();
+        savedTree = input;
 
-    checkNode(savedTree);
+        checkNode(savedTree);
 
-    if(symbolTracing)
-        tab->print();
+        if(symbolTracing)
+            tab->print();
+
+        TreeNode *temp = (TreeNode*)tab->lookup((char*)"main");
+        if(temp == NULL)
+        {
+            printf("ERROR(LINKER): Procedure main is not defined.\n");
+            numerrors++;
+        }
+    }
+
 
     printf("Number of warnings: %d\n", numwarnings);
     printf("Number of errors: %d\n", numerrors);
 
-    printf("Codegen started \n");
-    emitHeader();
-    codeGen(savedTree);
-    emitEnd();
-    printf("Codegen ended \n");
+    //printf("Codegen started \n");
+    if(numerrors == 0)
+    {
+        code = fopen(out, "w");
+        emitHeader();
+        codeGen(savedTree);
+        emitEnd();
+    }
 
     return 0;
 
